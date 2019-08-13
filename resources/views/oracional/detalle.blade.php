@@ -103,6 +103,7 @@
                             <label for="exampleInputPassword1"
                                 >Imagen de portada</label
                             >
+                            <input type="file" name="portada">
                         </div>
                         <div class="form-group col-md-12">
                             <img
