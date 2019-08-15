@@ -18,5 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('oracionales','OracionalController@oracionales');
+Route::get('dias/{id}','DiaController@dias');
 
 Route::get('dias-demo/{id}','DiaController@diasDemo');
