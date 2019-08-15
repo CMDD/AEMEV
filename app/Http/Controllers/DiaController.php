@@ -12,7 +12,7 @@ class DiaController extends Controller
         return $dias;
     }
     public function diasDemo($id){
-        $dias = Dia::where('oracional_id',$id)->first();
+        $dias = Dia::where('oracional_id',$id)->paginate(2);
         return $dias;
     }
 }
