@@ -11,4 +11,8 @@ class DiaController extends Controller
         $dias = Dia::where('oracional_id',$id)->get();
         return $dias;
     }
+    public function diasDemo($id){
+        $dias = Dia::where('oracional_id',$id)->first();
+        return $dias;
+    }
 }
