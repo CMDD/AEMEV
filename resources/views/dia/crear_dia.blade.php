@@ -46,7 +46,7 @@ SUBIR DÍA AL ORACIONAL
                     </div>
                     <div class="form-group col-md-6">
                     <label for="exampleInputPassword1">Día</label>
-                    <input type="text" class="form-control" name="dia">
+                    <input type="number" class="form-control" name="dia">
                     </div>
                     <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Tarea del día</label>

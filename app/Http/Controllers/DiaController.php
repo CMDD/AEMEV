@@ -15,4 +15,10 @@ class DiaController extends Controller
         $dias = Dia::where('oracional_id',$id)->first();
         return $dias;
     }
+
+    public function detalleDia($id){
+
+        return Dia::where('dia',$dia)->get();
+
+    }
 }

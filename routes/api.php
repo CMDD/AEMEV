@@ -21,3 +21,4 @@ Route::get('oracionales','OracionalController@oracionales');
 Route::get('dias/{id}','DiaController@dias');
 
 Route::get('dias-demo/{id}','DiaController@diasDemo');
+Route::get('detalle-dia/{id}','DiaController@detalleDia');
