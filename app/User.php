@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     public function suscribirme(Request $request){
 
-        return $request;
+        return 200;
         
     }
 }
