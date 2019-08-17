@@ -22,3 +22,5 @@ Route::get('dias/{id}','DiaController@dias');
 
 Route::get('dias-demo/{id}','DiaController@diasDemo');
 Route::get('detalle-dia/{id}','DiaController@detalleDia');
+
+Route::post('suscribirme','UserController@suscribirme');
