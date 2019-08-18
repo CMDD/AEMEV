@@ -16,9 +16,8 @@ class DiaController extends Controller
         return $dias;
     }
 
-    public function detalleDia($id){
-
-        return Dia::where('dia',$id)->first();
-
+    public function detalleDia($id_oracional,$dia){
+        return Dia::where('oracional_id',(int)$id_oracional)->where('dia',(int)$dia)->first();
+      
     }
 }

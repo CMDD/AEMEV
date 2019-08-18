@@ -21,6 +21,6 @@ Route::get('oracionales','OracionalController@oracionales');
 Route::get('dias/{id}','DiaController@dias');
 
 Route::get('dias-demo/{id}','DiaController@diasDemo');
-Route::get('detalle-dia/{id}','DiaController@detalleDia');
+Route::get('detalle-dia/{id_oracional}/{dia}','DiaController@detalleDia');
 
 Route::post('suscribirme','UserController@suscribirme');
