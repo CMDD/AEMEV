@@ -54,7 +54,7 @@
                     <input type="number" class="form-control" placeholder="2019" name="ano" />
                   </div>
                   <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Descripción</label>
+                    <label for="exampleInputPassword1">Descripción...</label>
                     <textarea name="descripcion" class="form-control" cols="30" rows="10"></textarea>
                   </div>
                 </div>

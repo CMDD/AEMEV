@@ -22405,7 +22405,7 @@ var staticRenderFns = [
                         _c(
                           "label",
                           { attrs: { for: "exampleInputPassword1" } },
-                          [_vm._v("Descripción")]
+                          [_vm._v("Descripción...")]
                         ),
                         _vm._v(" "),
                         _c("textarea", {
