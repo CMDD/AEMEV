@@ -41,15 +41,17 @@
           </a>
           <ul class="treeview-menu">
             <li>
-            <a href="/crear-oracional">Crear Oracional</a>
+            
+            <router-link
+                to="/subir-oracional">Crear Oracional </router-link>
             </li>
             <li>
-            <a href="/oracionales">Oracionales</a>
+            
             </li>
             <li>
                 <router-link
-                to="/crear-dia">Crear Dia </router-link>
-              <a href="/crear-dia">Subir día</a>
+                to="/crear-dia">Subir Dia </router-link>
+              
             </li>
           </ul>
         </li>
