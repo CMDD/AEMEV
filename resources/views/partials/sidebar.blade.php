@@ -47,6 +47,8 @@
             <a href="/oracionales">Oracionales</a>
             </li>
             <li>
+                <router-link
+                to="/crear-dia">Crear Dia </router-link>
               <a href="/crear-dia">Subir día</a>
             </li>
           </ul>

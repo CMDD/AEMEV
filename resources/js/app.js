@@ -16,6 +16,8 @@ Vue.component(
     require("./components/ExampleComponent.vue").default
 );
 Vue.component("oracional-component", require("./oracional/Index.vue").default);
+// Dia
+Vue.component("crear-dia", require("./dia/Crear.vue").default);
 
 const routes = [
     {
@@ -25,6 +27,10 @@ const routes = [
     {
         path: "/subir-oracional",
         component: require("../js/oracional/Subir").default
+    },
+    {
+        path: "/crear-dia",
+        component: require("./dia/Crear").default
     }
 ];
 const router = new VueRouter({

@@ -49,7 +49,8 @@
             <!-- Left side column. contains the logo and sidebar -->
             @include('partials.sidebar')
             <div class="content-wrapper">
-                @yield('content')
+                {{-- @yield('content') --}}
+                <router-view></router-view>
             </div>
             <!-- Main Footer -->
             <footer class="main-footer">

@@ -15,10 +15,10 @@ class CreateOracionalsTable extends Migration
     {
         Schema::create('oracionals', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('estado')->nullable();
+            $table->string('estado');
             $table->string('nombre');
-            $table->string('mes')->nullable();
-            $table->string('ano')->nullable();
+            $table->string('mes');
+            $table->string('ano');
             $table->text('descripcion')->nullable();
             $table->string('portada')->nullable();
             $table->timestamps();
