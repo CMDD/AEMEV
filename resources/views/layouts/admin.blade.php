@@ -28,6 +28,8 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"
         />
+          <!-- bootstrap datepicker -->
+        <link rel="stylesheet" href="../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         @stack('styles')
     </head>
 
@@ -75,7 +77,71 @@
         @stack('scripts')
         <script src="/dist/js/adminlte.min.js"></script>
         <!-- CK Editor -->
-        
         <script src="/js/app.js"></script>
+
+        <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script>
+
+            //Date picker
+            var date = new Date();
+            var nextMonth = new Date(date.getFullYear(), date.getMonth() + 1, 1);
+            $('#datepicker').datepicker({
+                autoclose: true,
+                startDate: nextMonth
+            });
+
+        </script>
+        <style>
+            .mb-2 {
+                margin-bottom: 15px;
+            }
+            .ml-4 {
+                margin-left: 30px;
+            }
+            .px-0 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+            .pl-0 {
+                padding-left: 0;
+            }
+            .pr-0 {
+                padding-right: 0;
+            }
+            .box-module {
+                padding: 20px;
+                border: 1px solid #d2d6de;
+                background: #f9f9f9;
+            }
+
+            ul.versiculos {
+                list-style: none;
+                padding-left: 30px;
+            }
+            ul.versiculos li {
+                display: flex;
+                align-items: center;
+                margin-bottom: 15px;
+            }
+            ul.versiculos li input {
+                flex: 1;
+            }
+            ul.versiculos li span {
+                flex: 0 0 auto;
+                margin-left: 10px;
+                cursor: pointer;
+                padding: 5px 10px;
+                font-size: 16px;
+                color: #b7261c;
+            }
+            .nuevo {
+                display: block;
+                margin: auto;
+                text-align: center;
+                margin-top: 30px;
+            }
+
+        </style>
+
     </body>
 </html>
