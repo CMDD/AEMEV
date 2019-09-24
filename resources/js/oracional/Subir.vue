@@ -54,8 +54,10 @@
                     <input type="number" class="form-control" placeholder="2019" name="ano" />
                   </div>
                   <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Descripción...</label>
-                    <textarea name="descripcion" class="form-control" cols="30" rows="10"></textarea>
+                    <label for="exampleInputPassword1">Editorial</label>
+                    <input type="text" class="form-control" placeholder="Titulo" name="editorial_titulo" />
+                    <textarea class="form-control my-2" placeholder="Contenido" name="editorial_contenido" rows="10"></textarea>
+                    <input type="text" class="form-control" placeholder="Autor" name="editorial_autor" />
                   </div>
                 </div>
               </div>
@@ -86,6 +88,12 @@
     </section>
   </div>
 </template>
+
+<style>
+    .my-2 {
+        margin: 10px 0;
+    }
+</style>
 
 <script>
 export default {};

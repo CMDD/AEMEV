@@ -2,7 +2,7 @@
   <div>
     <section class="content-header">
       <h1>
-        SUBIR DÍA - ADULTOS
+        SUBIR DÍA - JÓVENES
         <small>El Man Está Vivo</small>
       </h1>
       <ol class="breadcrumb">
@@ -35,26 +35,22 @@
                     </div>
 
                     <div class="form-group col-md-12">
-                        <button class="btn btn-primary" @click="mostrarTema()">Tema del día</button>
-                        <button class="btn btn-primary" @click="mostrarOraciones()">Oración de la mañana y noche</button>
+                        <button class="btn btn-primary" @click="mostrarManana()">Oración de la mañana</button>
+                        <button class="btn btn-primary" @click="mostrarFlexion()">Reflexión</button>
+                        <button class="btn btn-primary" @click="mostrarNoche()">Oración de la noche</button>
                     </div>
 
-                    <div class="form-group col-md-12" v-if="temaVisible">
-                        <input type="text" class="form-control mb-2" placeholder="Título">
-                        <input type="text" class="form-control mb-2" placeholder="Oración">
+                    <div class="form-group col-md-12" v-if="mananaVisible">
                         <textarea class="form-control" rows="10" placeholder="Contenido"></textarea>
                     </div>
 
-                    <div class="form-group col-md-12" v-if="oracionesVisible">
-                        <div class="col-md-12 mb-2 px-0">
-                            <input type="text" class="form-control" placeholder="Tarea del día">
-                        </div>
-                        <div class="col-md-6 pl-0">
-                            <textarea class="form-control" rows="10" placeholder="Oración de la mañana"></textarea>
-                        </div>
-                        <div class="col-md-6 pr-0">
-                            <textarea class="form-control" rows="10" placeholder="Oracion de la noche"></textarea>
-                        </div>
+                    <div class="form-group col-md-12" v-if="reflexionVisible">
+                        <textarea class="form-control mb-2" rows="10" placeholder="Contenido"></textarea>
+                        <input type="text" class="form-control" placeholder="Ejercicio">
+                    </div>
+
+                    <div class="form-group col-md-12" v-if="nocheVisible">
+                        <textarea class="form-control" rows="10" placeholder="Contenido"></textarea>
                     </div>
 
                 </div>
@@ -73,22 +69,29 @@
 
         data(){
             return{
-                temaVisible:false,
-                oracionesVisible:false
+                mananaVisible:false,
+                reflexionVisible:false,
+                nocheVisible:false
             }
         },
         created(){
 
         },
         methods:{
-            mostrarTema(){
-                this.temaVisible = true;
-                this.oracionesVisible = false
-
+            mostrarManana(){
+                this.mananaVisible = true;
+                this.reflexionVisible = false;
+                this.nocheVisible = false
             },
-            mostrarOraciones(){
-                this.oracionesVisible = true;
-                this.temaVisible = false;
+            mostrarFlexion(){
+                this.mananaVisible = false;
+                this.reflexionVisible = true;
+                this.nocheVisible = false
+            },
+            mostrarNoche(){
+                this.mananaVisible = false;
+                this.reflexionVisible = false;
+                this.nocheVisible = true
             }
         }
 
