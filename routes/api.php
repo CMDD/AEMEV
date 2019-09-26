@@ -24,3 +24,4 @@ Route::get('dias-demo/{id}','DiaController@diasDemo');
 Route::get('detalle-dia/{id_oracional}/{dia}','DiaController@detalleDia');
 
 Route::post('suscribirme','UserController@suscribirme');
+Route::post('crear-dia-puerta','DiaController@crearDia');
