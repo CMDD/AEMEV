@@ -14,7 +14,7 @@ class CreateVersiculosTable extends Migration
     public function up()
     {
         Schema::create('versiculos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->text('contenido')->nullable();
 
             $table->integer('salmo_id')->unsigned()->nullable();

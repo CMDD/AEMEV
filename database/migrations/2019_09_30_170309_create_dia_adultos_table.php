@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTemaDiasTable extends Migration
+class CreateDiaAdultosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,17 @@ class CreateTemaDiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('tema_dias', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->string('oracion');
-            $table->string('contenido');
-           
+        Schema::create('dia_adultos', function (Blueprint $table) {
+            $table->Increments('id');
+            $table->string('oracion_manana');
+            $table->string('oracion_noche');
+            $table->string('tarea_dia');
 
             $table->integer('oracional_id')->unsigned()->nullable();
             $table->foreign('oracional_id')
                   ->references('id')
                   ->on('oracionals')
                   ->onDelete('cascade');
-
             $table->timestamps();
         });
     }
@@ -37,6 +35,6 @@ class CreateTemaDiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tema_dias');
+        Schema::dropIfExists('dia_adultos');
     }
 }

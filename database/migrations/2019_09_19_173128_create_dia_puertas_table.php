@@ -14,10 +14,10 @@ class CreateDiaPuertasTable extends Migration
     public function up()
     {
         Schema::create('dia_puertas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('descripcion');
-            $table->text('oracion_colecta')->nullable();
+            $table->Increments('id');
+            $table->text('colecta')->nullable();
             $table->text('oracion')->nullable();
+            $table->string('fecha')->nullable();
 
             $table->integer('oracional_id')->unsigned()->nullable();
             $table->foreign('oracional_id')

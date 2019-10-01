@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatequesisTable extends Migration
+class CreateDescripcionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,17 @@ class CreateCatequesisTable extends Migration
      */
     public function up()
     {
-        Schema::create('catequesis', function (Blueprint $table) {
-
+        Schema::create('descripcions', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('titulo');
-            $table->text('contenido');
+            $table->string('titulo')->nullable();
+            $table->string('color')->nullable();
+            $table->string('contenido')->nullable();
 
-            $table->integer('diapuerta_id')->unsigned()->nullable();
-            $table->foreign('diapuerta_id')
+            $table->integer('dia_puerta_id')->unsigned()->nullable();
+            $table->foreign('dia_puerta_id')
                   ->references('id')
                   ->on('dia_puertas')
                   ->onDelete('cascade');
-
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ class CreateCatequesisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('catequesis');
+        Schema::dropIfExists('descripcions');
     }
 }

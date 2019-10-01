@@ -47,6 +47,11 @@
             </li>
             <li>
             
+            <router-link
+                to="/oracionales">Lista Oracional </router-link>
+            </li>
+            <li>
+            
             </li>
             <li>
                 <router-link

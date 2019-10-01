@@ -5,23 +5,56 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Oracional;
 use App\Dia;
+use App\Models\Editorial;
 use Yajra\Datatables\Datatables;
 use Response;
 
 class OracionalController extends Controller
 {
     public function store(Request $request){
-        
+        if($request->file('portada')){
         $oracional = new Oracional();
-        $oracional->nombre = $request->nombre;
-        $oracional->estado = "Activo";
+        $oracional->nombre = $request->oracional;
+        $oracional->estado = "Desactivo";
         $oracional->mes = $request->mes;
         $oracional->ano = $request->ano;
-        $oracional->descripcion = $request->descripcion;
         $oracional->portada = $request->file('portada')->store("portadas");
         $oracional->save();
-        return $request;
+
+        $editorial = new Editorial();
+        $editorial->titulo = $request->editorial_titulo;
+        $editorial->contenido = $request->editorial_contenido;
+        $editorial->autor = $request->editorial_autor;
+        $editorial->oracional_id = $oracional->id;
+        $editorial->save();
+        return 200;
+
+        }else{
+            return 500;
+        }
+        
+        
     }
+
+    public function lista(){
+        $oracionales =  Oracional::orderBy('id','DESC');
+  
+        return Datatables::of($oracionales)
+                  //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+                  ->addColumn('btn', function ($oracionales) {
+                  return '
+                  <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$oracionales->id) . '">
+                    <i class="fa fa-eye"></i>
+                  </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$oracionales->nombre.'/'.$oracionales->id) . '">
+                  <i class="fa fa-plus"></i>
+                </a> ';
+                  })
+                  ->rawColumns(['btn'])
+                  ->make(true);
+      }
+      public function detail($id){
+        return Oracional::find($id);
+      }
     public function detalleOracional($id){
         $oracional = Oracional::find($id);
         return view('oracional.detalle')->with('oracional',$oracional);
@@ -85,18 +118,5 @@ class OracionalController extends Controller
         return view('dia.detalle')->with('dia',$dia)->with('oracionales',$oracionales);
     }
 
-    // public function lista(){
-    //     $users =  User::orderBy('id','DESC');
-  
-    //     return Datatables::of($users)
-    //               //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
-    //               ->addColumn('btn', function ($users) {
-    //               return '
-    //               <a class="btn btn-primary btn-sm"  href="#">
-    //                 <i class="fa fa-eye"></i>
-    //               </a>';
-    //               })
-    //               ->rawColumns(['btn'])
-    //               ->make(true);
-    //   }
+   
 }

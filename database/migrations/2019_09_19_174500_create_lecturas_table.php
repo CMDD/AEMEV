@@ -14,15 +14,18 @@ class CreateLecturasTable extends Migration
     public function up()
     {
         Schema::create('lecturas', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('titulo');
+            $table->string('cita');
             $table->text('contenido')->nullable();
 
-            $table->integer('dia_puerta_id')->unsigned()->nullable();
-            $table->foreign('dia_puerta_id')
+    
+            $table->integer('diapuerta_id')->unsigned()->nullable();
+            $table->foreign('diapuerta_id')
                   ->references('id')
                   ->on('dia_puertas')
                   ->onDelete('cascade');
+                  
             $table->timestamps();
         });
     }

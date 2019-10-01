@@ -14,7 +14,7 @@ class CreateEvangeliosTable extends Migration
     public function up()
     {
         Schema::create('evangelios', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('titulo');
             $table->text('contenido')->nullable();
 

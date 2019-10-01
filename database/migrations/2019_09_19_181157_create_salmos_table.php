@@ -14,9 +14,9 @@ class CreateSalmosTable extends Migration
     public function up()
     {
         Schema::create('salmos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
 
-            $table->string('cita');
+            $table->string('cita')->nullable();
             $table->text('respuesta')->nullable();
 
             $table->integer('dia_puerta_id')->unsigned()->nullable();

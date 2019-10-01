@@ -14,14 +14,14 @@ class CreateOracionGeneralsTable extends Migration
     public function up()
     {
         Schema::create('oracion_generals', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
             $table->string('titulo');
             $table->text('contenido');
 
-            $table->integer('oracional_id')->unsigned()->nullable();
-            $table->foreign('oracional_id')
+            $table->integer('diapuerta_id')->unsigned()->nullable();
+            $table->foreign('diapuerta_id')
                   ->references('id')
-                  ->on('oracionals')
+                  ->on('dia_puertas')
                   ->onDelete('cascade');
             $table->timestamps();
         });

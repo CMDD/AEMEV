@@ -2,7 +2,7 @@
   <div>
     <section class="content-header">
       <h1>
-        CREAR ORACIONAL
+        CREAR ORACIONALES
         <small>El Man Está Vivo</small>
       </h1>
       <ol class="breadcrumb">
@@ -17,7 +17,7 @@
     <section class="content container-fluid">
       <!-- Main content -->
       <section class="content">
-        <form method="POST" enctype="multipart/form-data">
+        <form method="POST" @submit.prevent="storeOracional">
           <div class="row">
             <div class="col-md-8">
               <div class="box box-primary">
@@ -36,7 +36,7 @@
                   </div>-->
                   <div class="form-group col-md-6">
                     <label>ORACIONAL</label>
-                    <select class="form-control" name="nombre">
+                    <select class="form-control" v-model="form.oracional">
                       <option value>Seleccione...</option>
                       <option value="Adultos">Adultos</option>
                       <option value="Jovenes">Jovénes</option>
@@ -47,17 +47,32 @@
 
                   <div class="form-group col-md-3">
                     <label for="exampleInputPassword1">Mes</label>
-                    <input type="text" class="form-control" placeholder="Enero" name="mes" />
+                    <input type="text" class="form-control" placeholder="Enero" v-model="form.mes" />
                   </div>
                   <div class="form-group col-md-3">
                     <label for="exampleInputPassword1">Año</label>
-                    <input type="number" class="form-control" placeholder="2019" name="ano" />
+                    <input type="number" class="form-control" placeholder="2019" v-model="form.ano" />
                   </div>
                   <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Editorial</label>
-                    <input type="text" class="form-control" placeholder="Titulo" name="editorial_titulo" />
-                    <textarea class="form-control my-2" placeholder="Contenido" name="editorial_contenido" rows="10"></textarea>
-                    <input type="text" class="form-control" placeholder="Autor" name="editorial_autor" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Titulo"
+                      v-model="form.editorial_titulo"
+                    />
+                    <textarea
+                      class="form-control my-2"
+                      placeholder="Contenido"
+                      v-model="form.editorial_contenido"
+                      rows="10"
+                    ></textarea>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Autor"
+                      v-model="form.editorial_autor"
+                    />
                   </div>
                 </div>
               </div>
@@ -71,7 +86,7 @@
 
                 <div class="form-group col-md-12">
                   <label for="exampleInputPassword1">Imagen de portada</label>
-                  <input type="file" name="portada" />
+                  <input type="file" @change="getImage" ref="file" />
                 </div>
 
                 <div class="box-footer">
@@ -90,11 +105,45 @@
 </template>
 
 <style>
-    .my-2 {
-        margin: 10px 0;
-    }
+.my-2 {
+  margin: 10px 0;
+}
 </style>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      form: {}
+    };
+  },
+  methods: {
+    getImage(event) {
+      //Asignamos la imagen a  nuestra data
+      this.form.portada = this.$refs.file.files[0];
+    },
+    storeOracional() {
+      //Creamos el formData
+      var data = new FormData();
+      //Añadimos la imagen seleccionada
+      data.append("portada", this.form.portada);
+      data.append("oracional", this.form.oracional);
+      data.append("mes", this.form.mes);
+      data.append("ano", this.form.ano);
+      data.append("editorial_titulo", this.form.editorial_titulo);
+      data.append("editorial_contenido", this.form.editorial_contenido);
+      data.append("editorial_autor", this.form.editorial_autor);
+
+      axios
+        .post("/api/crear-oracional", data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+        .then(res => {
+          console.log(res.data);
+        });
+    }
+  }
+};
 </script>

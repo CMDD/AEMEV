@@ -9,6 +9,7 @@ require("./bootstrap");
 window.Vue = require("vue");
 
 import VueRouter from "vue-router";
+
 Vue.use(VueRouter);
 
 Vue.component(
@@ -17,11 +18,14 @@ Vue.component(
 );
 Vue.component("oracional-component", require("./oracional/Index.vue").default);
 // Dia
-Vue.component("crear-dia", require("./dia/Crear.vue").default);
-Vue.component("crear-dia-jovenes", require("./dia/Jovenes.vue").default);
+Vue.component("adultos", require("./dia/Crear.vue").default);
+Vue.component("jovenes", require("./dia/Jovenes.vue").default);
 
-Vue.component("crear-dia-kids", require("./dia/Kids.vue").default);
-Vue.component("crear-dia-puerta", require("./dia/Puerta.vue").default);
+Vue.component("kids", require("./dia/Kids.vue").default);
+//Puerta
+Vue.component("puerta", require("./dia/Puerta.vue").default);
+Vue.component("editar-puerta", require("./puerta/Editar.vue").default);
+Vue.component("detalle-oracional", require("./oracional/Detalle.vue").default);
 
 const routes = [
     {
@@ -29,24 +33,32 @@ const routes = [
         component: require("./oracional/Index.vue").default
     },
     {
+        path: "/detalle-oracional/:id",
+        component: require("./oracional/Detalle.vue").default
+    },
+    {
         path: "/subir-oracional",
         component: require("../js/oracional/Subir").default
     },
     {
-        path: "/crear-dia",
+        path: "/Adultos/:id",
         component: require("./dia/Crear").default
     },
     {
-        path: "/crear-dia-jovenes",
+        path: "/Jovenes/:id",
         component: require("./dia/Jovenes").default
     },
     {
-        path: "/crear-dia-kids",
+        path: "/Kids/:id",
         component: require("./dia/Kids").default
     },
     {
-        path: "/crear-dia-puerta",
+        path: "/Puerta/:id",
         component: require("./dia/Puerta").default
+    },
+    {
+        path: "/editar-puerta/:id",
+        component: require("./puerta/Editar").default
     }
 ];
 const router = new VueRouter({

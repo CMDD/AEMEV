@@ -14,10 +14,11 @@ class CreateReflexionsTable extends Migration
     public function up()
     {
         Schema::create('reflexions', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->Increments('id');
 
-            $table->string('cita');
-            $table->text('respuesta')->nullable();
+            $table->string('titulo');
+            $table->text('contenido')->nullable();
+            $table->text('oracion')->nullable();
 
             $table->integer('dia_puerta_id')->unsigned()->nullable();
             $table->foreign('dia_puerta_id')

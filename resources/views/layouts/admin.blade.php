@@ -24,6 +24,7 @@
         />
         <link rel="stylesheet" href="/dist/css/AdminLTE.min.css" />
         <link rel="stylesheet" href="/dist/css/skins/skin-purple.min.css" />
+        <link rel="stylesheet" href="/css/app.css" />
         <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"

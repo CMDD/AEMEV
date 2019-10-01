@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models\adulto;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Dia extends Model
+class DiaAdulto extends Model
 {
     //
 }

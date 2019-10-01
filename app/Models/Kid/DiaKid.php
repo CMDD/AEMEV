@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Kid;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TemaDia extends Model
+class DiaKid extends Model
 {
     //
 }

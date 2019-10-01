@@ -14,12 +14,9 @@ class CreateMeditacionsTable extends Migration
     public function up()
     {
         Schema::create('meditacions', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
-            $table->string('pregunta_uno');
-            $table->string('pregunta_dos');
+            $table->Increments('id');
+            $table->string('contenido');
             
-
             $table->integer('dia_puerta_id')->unsigned()->nullable();
             $table->foreign('dia_puerta_id')
                   ->references('id')
