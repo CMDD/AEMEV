@@ -3,6 +3,7 @@
 namespace App\Models\Puerta;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Puerta\DiaPuerta;
 
 class Descripcion extends Model
 {
@@ -12,5 +13,9 @@ class Descripcion extends Model
         $des->dia_puerta_id = $id;
         $des->save();
         return 200;
+    }
+
+    public function diaPuerta(){
+        return $this->belongsTo(DiaPuerta::class,'dia_puerta_id');
     }
 }

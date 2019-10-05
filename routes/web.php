@@ -11,8 +11,14 @@
 |
 */
 use App\Oracional;
+use App\Models\Puerta\DiaPuerta;
 Route::get('/', function () {
     return view('oracional.index');
+});
+Route::get('/test', function () {
+    $dia = new DiaPuerta();
+    return $dia->getInfo();
+   
 });
 // Oracionale
 Route::get('crear-oracional',function(){return view('oracional.crear_oracional');});

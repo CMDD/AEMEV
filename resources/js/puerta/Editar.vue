@@ -36,8 +36,10 @@
                       autocomplete="off"
                     />-->
                   </div>
-                  <label>Descripción del día</label>
-                  <textarea class="form-control" v-model="form.descripcion"></textarea>
+                  <div v-if="form.descripcion">
+                    <label>Descripción del día</label>
+                    <textarea v-model="form.descripcion.contenido" class="form-control"></textarea>
+                  </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
                   <button class="btn btn-success">Guardar</button>
@@ -105,7 +107,7 @@
                       <input
                         type="text"
                         class="form-control mb-2"
-                        v-model="salmo.salmo"
+                        v-model="salmo.cita"
                         placeholder="Salmo"
                       />
                       <input
@@ -143,13 +145,13 @@
                   <input
                     type="text"
                     class="form-control mb-2"
-                    v-model="form.evangelio[0].titulo"
+                    v-model="form.evangelio.titulo"
                     placeholder="Lectura del evangelio según..."
                   />
                   <textarea
                     class="form-control"
+                    v-model="form.evangelio.contenido"
                     rows="10"
-                    v-model="form.evangelio[0].contenido"
                     placeholder="Contenido"
                   ></textarea>
                 </div>
@@ -157,20 +159,20 @@
                 <div class="form-group col-md-12" v-if="reflexionVisible">
                   <input
                     type="text"
-                    v-model="form.reflexion[0].titulo"
+                    v-model="form.reflexion.titulo"
                     class="form-control mb-2"
                     placeholder="Título"
                   />
                   <textarea
                     class="form-control mb-2"
-                    v-model="form.reflexion[0].contenido"
+                    v-model="form.reflexion.contenido"
                     rows="10"
                     placeholder="Contenido"
                   ></textarea>
                   <textarea
                     class="form-control"
-                    v-model="form.reflexion[0].oracion"
                     rows="5"
+                    v-model="form.reflexion.oracion"
                     placeholder="Oración"
                   ></textarea>
                 </div>
@@ -204,34 +206,25 @@ export default {
       evangelioVisible: false,
       reflexionVisible: false,
       oraional: [],
-      form: {
-        evangelio: [
-          {
-            titulo: "",
-            contenido: ""
-          }
-        ],
-        reflexion: [
-          {
-            titulo: "",
-            contenido: "",
-            oracion: ""
-          }
-        ],
-        salmos: [],
-        lecturas: [],
-        fecha: "",
-        id_oracional: this.$route.params.id
-      }
+      id_dia: this.$route.params.id,
+      dia: [],
+      form: {}
     };
   },
   created() {
     this.getOracional();
+    this.getDia();
   },
   methods: {
     storeDia() {
       axios.post("/api/crear-dia-puerta", this.form).then(res => {
         console.log(res.data);
+      });
+    },
+    getDia() {
+      axios.get("/api/get-dia/" + this.id_dia).then(res => {
+        this.form = res.data;
+        console.log(this.form);
       });
     },
     getOracional() {

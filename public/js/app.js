@@ -2241,7 +2241,7 @@ __webpack_require__.r(__webpack_exports__);
       salmosVisible: false,
       evangelioVisible: false,
       reflexionVisible: false,
-      oraional: [],
+      oracional: [],
       form: {
         evangelio: [{
           titulo: "",
@@ -2273,6 +2273,7 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/get-oracional/" + this.form.id_oracional).then(function (res) {
         _this.oracional = res.data;
+        _this.form.oracional = res.data.nombre;
       });
     },
     addInput: function addInput(index) {
@@ -2425,51 +2426,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detalle",
   created: function created() {
-    $(document).ready(function () {
-      $("#datatable-suscripciones").DataTable({
-        serverSide: true,
-        processing: true,
-        ajax: "api/get-dias/2",
-        columns: [{
-          data: "fecha"
-        }, {
-          data: "oracional_id"
-        }, {
-          data: "id"
-        }, {
-          data: "btn"
-        }],
-        language: {
-          sProcessing: "Procesando...",
-          sLengthMenu: "Mostrar _MENU_ registros",
-          sZeroRecords: "No se encontraron resultados",
-          sEmptyTable: "Ningún dato disponible en esta tabla",
-          sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
-          sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-          sInfoPostFix: "",
-          sSearch: "Buscar:",
-          sUrl: "",
-          sInfoThousands: ",",
-          sLoadingRecords: "Cargando...",
-          oPaginate: {
-            sFirst: "Primero",
-            sLast: "Último",
-            sNext: "Siguiente",
-            sPrevious: "Anterior"
-          },
-          oAria: {
-            sSortAscending: ": Activar para ordenar la columna de manera ascendente",
-            sSortDescending: ": Activar para ordenar la columna de manera descendente"
-          }
-        }
-      });
-    });
     this.getOracional();
+    this.getDias(this.id);
   },
   data: function data() {
     return {
@@ -2489,6 +2454,48 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/get-oracional/" + this.id).then(function (res) {
         _this.oracional = res.data;
+      });
+    },
+    getDias: function getDias(id) {
+      $(document).ready(function () {
+        $("#datatable-suscripciones").DataTable({
+          serverSide: true,
+          processing: true,
+          ajax: "/api/get-dias/" + id,
+          columns: [{
+            data: "fecha"
+          }, {
+            data: "oracional_id"
+          }, {
+            data: "id"
+          }, {
+            data: "btn"
+          }],
+          language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+              sFirst: "Primero",
+              sLast: "Último",
+              sNext: "Siguiente",
+              sPrevious: "Anterior"
+            },
+            oAria: {
+              sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+              sSortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+          }
+        });
       });
     }
   }
@@ -2966,6 +2973,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2983,25 +2992,14 @@ __webpack_require__.r(__webpack_exports__);
       evangelioVisible: false,
       reflexionVisible: false,
       oraional: [],
-      form: {
-        evangelio: [{
-          titulo: "",
-          contenido: ""
-        }],
-        reflexion: [{
-          titulo: "",
-          contenido: "",
-          oracion: ""
-        }],
-        salmos: [],
-        lecturas: [],
-        fecha: "",
-        id_oracional: this.$route.params.id
-      }
+      id_dia: this.$route.params.id,
+      dia: [],
+      form: {}
     };
   },
   created: function created() {
     this.getOracional();
+    this.getDia();
   },
   methods: {
     storeDia: function storeDia() {
@@ -3009,11 +3007,19 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data);
       });
     },
-    getOracional: function getOracional() {
+    getDia: function getDia() {
       var _this = this;
 
+      axios.get("/api/get-dia/" + this.id_dia).then(function (res) {
+        _this.form = res.data;
+        console.log(_this.form);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
       axios.get("/api/get-oracional/" + this.form.id_oracional).then(function (res) {
-        _this.oracional = res.data;
+        _this2.oracional = res.data;
       });
     },
     addInput: function addInput(index) {
@@ -51118,67 +51124,61 @@ var render = function() {
             _c("div", { staticClass: "col-md-4" }, [
               _c("img", {
                 staticClass: "img-responsive",
-                attrs: {
-                  src: "/" + _vm.oracional.portada,
-                  height: "80",
-                  width: "100"
-                }
+                attrs: { src: "/" + _vm.oracional.portada, width: "50%" }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4" }, [
-              _c(
-                "form",
-                { attrs: { action: "" } },
-                [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Datos")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.oracional.nombre,
-                          expression: "oracional.nombre"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { type: "text", placeholder: "Enero" },
-                      domProps: { value: _vm.oracional.nombre },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.oracional, "nombre", $event.target.value)
-                        }
-                      }
-                    })
+              _c("form", { attrs: { action: "" } }, [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                    _vm._v("Datos")
                   ]),
                   _vm._v(" "),
-                  _vm._m(0),
-                  _vm._v(" "),
-                  _vm._m(1),
-                  _vm._v(" "),
                   _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.oracional.nombre,
+                        expression: "oracional.nombre"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { type: "text", placeholder: "Enero" },
+                    domProps: { value: _vm.oracional.nombre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.oracional, "nombre", $event.target.value)
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "btn btn-default",
+                  attrs: { type: "button", value: "Actualizar" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
                     staticClass: "btn btn-default",
-                    attrs: { type: "button", value: "Actualizar" }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-default",
-                      attrs: { to: "/Puerta/1" }
-                    },
-                    [_vm._v("Agregar Dia")]
-                  )
-                ],
-                1
-              )
+                    attrs: {
+                      href:
+                        "/#/" + _vm.oracional.nombre + "/" + _vm.oracional.id
+                    }
+                  },
+                  [_vm._v("Agregar dia")]
+                )
+              ])
             ])
           ])
         : _vm._e(),
@@ -51744,28 +51744,36 @@ var render = function() {
                       1
                     ),
                     _vm._v(" "),
-                    _c("label", [_vm._v("Descripción del día")]),
-                    _vm._v(" "),
-                    _c("textarea", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.form.descripcion,
-                          expression: "form.descripcion"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      domProps: { value: _vm.form.descripcion },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.form, "descripcion", $event.target.value)
-                        }
-                      }
-                    })
+                    _vm.form.descripcion
+                      ? _c("div", [
+                          _c("label", [_vm._v("Descripción del día")]),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.descripcion.contenido,
+                                expression: "form.descripcion.contenido"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            domProps: { value: _vm.form.descripcion.contenido },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form.descripcion,
+                                  "contenido",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _vm._m(2),
@@ -51999,8 +52007,8 @@ var render = function() {
                                       {
                                         name: "model",
                                         rawName: "v-model",
-                                        value: salmo.salmo,
-                                        expression: "salmo.salmo"
+                                        value: salmo.cita,
+                                        expression: "salmo.cita"
                                       }
                                     ],
                                     staticClass: "form-control mb-2",
@@ -52008,7 +52016,7 @@ var render = function() {
                                       type: "text",
                                       placeholder: "Salmo"
                                     },
-                                    domProps: { value: salmo.salmo },
+                                    domProps: { value: salmo.cita },
                                     on: {
                                       input: function($event) {
                                         if ($event.target.composing) {
@@ -52016,7 +52024,7 @@ var render = function() {
                                         }
                                         _vm.$set(
                                           salmo,
-                                          "salmo",
+                                          "cita",
                                           $event.target.value
                                         )
                                       }
@@ -52153,8 +52161,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.evangelio[0].titulo,
-                              expression: "form.evangelio[0].titulo"
+                              value: _vm.form.evangelio.titulo,
+                              expression: "form.evangelio.titulo"
                             }
                           ],
                           staticClass: "form-control mb-2",
@@ -52162,14 +52170,14 @@ var render = function() {
                             type: "text",
                             placeholder: "Lectura del evangelio según..."
                           },
-                          domProps: { value: _vm.form.evangelio[0].titulo },
+                          domProps: { value: _vm.form.evangelio.titulo },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
-                                _vm.form.evangelio[0],
+                                _vm.form.evangelio,
                                 "titulo",
                                 $event.target.value
                               )
@@ -52182,20 +52190,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.evangelio[0].contenido,
-                              expression: "form.evangelio[0].contenido"
+                              value: _vm.form.evangelio.contenido,
+                              expression: "form.evangelio.contenido"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: { rows: "10", placeholder: "Contenido" },
-                          domProps: { value: _vm.form.evangelio[0].contenido },
+                          domProps: { value: _vm.form.evangelio.contenido },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
-                                _vm.form.evangelio[0],
+                                _vm.form.evangelio,
                                 "contenido",
                                 $event.target.value
                               )
@@ -52212,20 +52220,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.reflexion[0].titulo,
-                              expression: "form.reflexion[0].titulo"
+                              value: _vm.form.reflexion.titulo,
+                              expression: "form.reflexion.titulo"
                             }
                           ],
                           staticClass: "form-control mb-2",
                           attrs: { type: "text", placeholder: "Título" },
-                          domProps: { value: _vm.form.reflexion[0].titulo },
+                          domProps: { value: _vm.form.reflexion.titulo },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
-                                _vm.form.reflexion[0],
+                                _vm.form.reflexion,
                                 "titulo",
                                 $event.target.value
                               )
@@ -52238,20 +52246,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.reflexion[0].contenido,
-                              expression: "form.reflexion[0].contenido"
+                              value: _vm.form.reflexion.contenido,
+                              expression: "form.reflexion.contenido"
                             }
                           ],
                           staticClass: "form-control mb-2",
                           attrs: { rows: "10", placeholder: "Contenido" },
-                          domProps: { value: _vm.form.reflexion[0].contenido },
+                          domProps: { value: _vm.form.reflexion.contenido },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
-                                _vm.form.reflexion[0],
+                                _vm.form.reflexion,
                                 "contenido",
                                 $event.target.value
                               )
@@ -52264,20 +52272,20 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.reflexion[0].oracion,
-                              expression: "form.reflexion[0].oracion"
+                              value: _vm.form.reflexion.oracion,
+                              expression: "form.reflexion.oracion"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: { rows: "5", placeholder: "Oración" },
-                          domProps: { value: _vm.form.reflexion[0].oracion },
+                          domProps: { value: _vm.form.reflexion.oracion },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
-                                _vm.form.reflexion[0],
+                                _vm.form.reflexion,
                                 "oracion",
                                 $event.target.value
                               )
@@ -69830,7 +69838,7 @@ var routes = [{
   path: "/Puerta/:id",
   component: __webpack_require__(/*! ./dia/Puerta */ "./resources/js/dia/Puerta.vue")["default"]
 }, {
-  path: "/editar-puerta/:id",
+  path: "/editar-Puerta/:id",
   component: __webpack_require__(/*! ./puerta/Editar */ "./resources/js/puerta/Editar.vue")["default"]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({

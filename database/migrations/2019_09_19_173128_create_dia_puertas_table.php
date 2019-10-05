@@ -18,6 +18,7 @@ class CreateDiaPuertasTable extends Migration
             $table->text('colecta')->nullable();
             $table->text('oracion')->nullable();
             $table->string('fecha')->nullable();
+            $table->string('nombre_oracional')->nullable();
 
             $table->integer('oracional_id')->unsigned()->nullable();
             $table->foreign('oracional_id')

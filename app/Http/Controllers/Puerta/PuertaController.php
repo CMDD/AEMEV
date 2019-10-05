@@ -17,6 +17,7 @@ class PuertaController extends Controller
     public function store(Request $request){
         $dia = new DiaPuerta();
         $dia->colecta = $request->colecta;
+        $dia->nombre_oracional = $request->oracional;
         $dia->fecha = $request->fecha;
         $dia->oracional_id  = $request->id_oracional;
         $dia->save(); 
@@ -52,11 +53,15 @@ class PuertaController extends Controller
                   //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
                   ->addColumn('btn', function ($dias) {
                   return '
-                  <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$dias->id) . '">
+                  <a class="btn btn-primary btn-sm"   href="' . url('#/editar-'.$dias->nombre_oracional.'/'.$dias->id) . '">
                     <i class="fa fa-eye"></i>
                   </a>';
                   })
                   ->rawColumns(['btn'])
                   ->make(true);
+    }
+    public function getDia($id){
+        $dato = new DiaPuerta();                   
+        return $dato->getInfo($id); ;
     }
 }

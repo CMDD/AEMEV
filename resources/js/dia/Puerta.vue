@@ -203,7 +203,7 @@ export default {
       salmosVisible: false,
       evangelioVisible: false,
       reflexionVisible: false,
-      oraional: [],
+      oracional: [],
       form: {
         evangelio: [
           {
@@ -237,6 +237,7 @@ export default {
     getOracional() {
       axios.get("/api/get-oracional/" + this.form.id_oracional).then(res => {
         this.oracional = res.data;
+        this.form.oracional = res.data.nombre;
       });
     },
     addInput(index) {

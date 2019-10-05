@@ -10,7 +10,7 @@
       </h1>-->
       <div v-if="oracional" class="row">
         <div class="col-md-4">
-          <img :src="'/'+ oracional.portada" class="img-responsive" height="80" width="100" />
+          <img :src="'/'+ oracional.portada" class="img-responsive" width="50%" />
         </div>
         <div class="col-md-4">
           <form action>
@@ -33,7 +33,10 @@
             </div>
 
             <input type="button" class="btn btn-default" value="Actualizar" />
-            <router-link to="/Puerta/1" class="btn btn-default">Agregar Dia</router-link>
+            <a
+              class="btn btn-default"
+              :href="'/#/' + oracional.nombre + '/' + oracional.id"
+            >Agregar dia</a>
           </form>
         </div>
       </div>
@@ -77,49 +80,8 @@ import datatable from "datatables";
 export default {
   name: "Detalle",
   created() {
-    $(document).ready(function() {
-      $("#datatable-suscripciones").DataTable({
-        serverSide: true,
-        processing: true,
-        ajax: "api/get-dias/2",
-        columns: [
-          { data: "fecha" },
-          { data: "oracional_id" },
-          { data: "id" },
-          { data: "btn" }
-        ],
-        language: {
-          sProcessing: "Procesando...",
-          sLengthMenu: "Mostrar _MENU_ registros",
-          sZeroRecords: "No se encontraron resultados",
-          sEmptyTable: "Ningún dato disponible en esta tabla",
-          sInfo:
-            "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          sInfoEmpty:
-            "Mostrando registros del 0 al 0 de un total de 0 registros",
-          sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-          sInfoPostFix: "",
-          sSearch: "Buscar:",
-          sUrl: "",
-          sInfoThousands: ",",
-          sLoadingRecords: "Cargando...",
-          oPaginate: {
-            sFirst: "Primero",
-            sLast: "Último",
-            sNext: "Siguiente",
-            sPrevious: "Anterior"
-          },
-          oAria: {
-            sSortAscending:
-              ": Activar para ordenar la columna de manera ascendente",
-            sSortDescending:
-              ": Activar para ordenar la columna de manera descendente"
-          }
-        }
-      });
-    });
-
     this.getOracional();
+    this.getDias(this.id);
   },
   data() {
     return {
@@ -139,6 +101,49 @@ export default {
     getOracional() {
       axios.get("/api/get-oracional/" + this.id).then(res => {
         this.oracional = res.data;
+      });
+    },
+    getDias(id) {
+      $(document).ready(function() {
+        $("#datatable-suscripciones").DataTable({
+          serverSide: true,
+          processing: true,
+          ajax: "/api/get-dias/" + id,
+          columns: [
+            { data: "fecha" },
+            { data: "oracional_id" },
+            { data: "id" },
+            { data: "btn" }
+          ],
+          language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo:
+              "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty:
+              "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+              sFirst: "Primero",
+              sLast: "Último",
+              sNext: "Siguiente",
+              sPrevious: "Anterior"
+            },
+            oAria: {
+              sSortAscending:
+                ": Activar para ordenar la columna de manera ascendente",
+              sSortDescending:
+                ": Activar para ordenar la columna de manera descendente"
+            }
+          }
+        });
       });
     }
   }

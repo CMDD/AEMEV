@@ -57,7 +57,7 @@ const routes = [
         component: require("./dia/Puerta").default
     },
     {
-        path: "/editar-puerta/:id",
+        path: "/editar-Puerta/:id",
         component: require("./puerta/Editar").default
     }
 ];
