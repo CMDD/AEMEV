@@ -1,36 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\Adulto;
+namespace App\Http\Controllers\Kids;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\adulto\DiaAdulto;
-use App\Models\adulto\TemaDia;
+use App\Models\Kid\DiaKid;
 use Yajra\Datatables\Datatables;
 
 class DiaController extends Controller
 {
     public function store(Request $request){
 
-        $dia = new DiaAdulto();
+        $dia = new DiaKid();
         $dia->oracion_manana = $request->oracion_manana;
         $dia->oracion_noche = $request->oracion_noche;
-        $dia->tarea_dia = $request->tarea_dia;
+        $dia->tema_dia = $request->tema_dia;
+        $dia->ejercicio = $request->ejercicio;
         $dia->oracional_id = $request->oracional_id;
         $dia->nombre_oracional = $request->oracional;
+        $dia->fecha = $request->fecha;
+
         $dia->save();
 
-        $tema = new TemaDia();
-        $tema->titulo = $request->tema[0]['titulo'];
-        $tema->contenido = $request->tema[0]['contenido'];
-        $tema->oracion = $request->tema[0]['oracion'];
-        $tema->dia_adulto_id = $dia->id;
-        $tema->save();
         return $request;
     }
-
     public function getDias($id){
-        $dias =  DiaAdulto::where('oracional_id',$id)->get();
+        $dias =  DiaKid::where('oracional_id',$id)->get();
   
         return Datatables::of($dias)
                   //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
@@ -45,7 +40,6 @@ class DiaController extends Controller
     }
 
     public function getDia($id){
-        $dato =  DiaAdulto::find($id);                   
-        return  $dato;
+        return DiaKid::find($id);
     }
 }

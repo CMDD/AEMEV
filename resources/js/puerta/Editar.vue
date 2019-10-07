@@ -42,7 +42,7 @@
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button class="btn btn-success">Actualizar</button>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -217,7 +217,7 @@ export default {
   },
   methods: {
     storeDia() {
-      axios.post("/api/crear-dia-puerta", this.form).then(res => {
+      axios.post("/api/actualizar-dia-puerta", this.form).then(res => {
         console.log(res.data);
       });
     },

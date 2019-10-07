@@ -1688,6 +1688,182 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/adulto/Editar.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/adulto/Editar.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
+    props: [{
+      inline: true
+    }]
+  },
+  data: function data() {
+    return {
+      temaVisible: false,
+      oracionesVisible: false,
+      oracional: "",
+      id_dia: this.$route.params.id,
+      form: {
+        tema: [{
+          titulo: "",
+          contenido: "",
+          oracion: ""
+        }],
+        oracional_id: this.$route.params.id
+      }
+    };
+  },
+  created: function created() {
+    this.getOracional();
+    this.getDia();
+  },
+  methods: {
+    store: function store() {
+      axios.post("api/crear-dia-adultos", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getDia: function getDia() {
+      var _this = this;
+
+      axios.get("/api/get-dia-adultos/" + this.id_dia).then(function (res) {
+        _this.form = res.data;
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
+      });
+    },
+    mostrarTema: function mostrarTema() {
+      this.temaVisible = true;
+      this.oracionesVisible = false;
+    },
+    mostrarOraciones: function mostrarOraciones() {
+      this.oracionesVisible = true;
+      this.temaVisible = false;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=script&lang=js& ***!
@@ -1730,6 +1906,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 //
 //
 //
@@ -1799,15 +1976,80 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
+    props: [{
+      inline: true
+    }]
+  },
   data: function data() {
     return {
       temaVisible: false,
-      oracionesVisible: false
+      oracionesVisible: false,
+      oracional: "",
+      form: {
+        tema: [{
+          titulo: "",
+          contenido: "",
+          oracion: ""
+        }],
+        oracional_id: this.$route.params.id
+      }
     };
   },
-  created: function created() {},
+  created: function created() {
+    this.getOracional();
+  },
   methods: {
+    store: function store() {
+      axios.post("api/crear-dia-adultos", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this.oracional = res.data;
+        _this.form.oracional = res.data.nombre;
+      });
+    },
     mostrarTema: function mostrarTema() {
       this.temaVisible = true;
       this.oracionesVisible = false;
@@ -1895,16 +2137,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mananaVisible: false,
       reflexionVisible: false,
-      nocheVisible: false
+      nocheVisible: false,
+      oracional: [],
+      form: {
+        oracional_id: this.$route.params.id
+      }
     };
   },
-  created: function created() {},
+  created: function created() {
+    this.getOracional();
+  },
   methods: {
+    store: function store() {
+      axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this.oracional = res.data;
+        _this.form.oracional = res.data.nombre;
+      });
+    },
     mostrarManana: function mostrarManana() {
       this.mananaVisible = true;
       this.reflexionVisible = false;
@@ -1999,16 +2293,68 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       mananaVisible: false,
       temaVisible: false,
-      nocheVisible: false
+      nocheVisible: false,
+      oracional: [],
+      form: {
+        oracional_id: this.$route.params.id
+      }
     };
   },
-  created: function created() {},
+  created: function created() {
+    this.getOracional();
+  },
   methods: {
+    store: function store() {
+      axios.post("api/crear-dia-kids", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this.oracional = res.data;
+        _this.form.oracional = res.data.nombre;
+      });
+    },
     mostrarManana: function mostrarManana() {
       this.mananaVisible = true;
       this.temaVisible = false;
@@ -2252,7 +2598,11 @@ __webpack_require__.r(__webpack_exports__);
           contenido: "",
           oracion: ""
         }],
-        salmos: [],
+        salmos: [{
+          salmo: "",
+          respuesta: "",
+          versiculo: []
+        }],
         lecturas: [],
         fecha: "",
         id_oracional: this.$route.params.id
@@ -2335,6 +2685,338 @@ __webpack_require__.r(__webpack_exports__);
       this.salmosVisible = false;
       this.evangelioVisible = false;
       this.reflexionVisible = true;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/jovenes/Editar.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/jovenes/Editar.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mananaVisible: false,
+      reflexionVisible: false,
+      nocheVisible: false,
+      oracional: [],
+      id_dia: this.$route.params.id,
+      form: {
+        oracional_id: this.$route.params.id
+      }
+    };
+  },
+  created: function created() {
+    this.getOracional();
+    this.getDia();
+  },
+  methods: {
+    store: function store() {
+      axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getDia: function getDia() {
+      var _this = this;
+
+      axios.get("/api/get-dia-jovenes/" + this.id_dia).then(function (res) {
+        _this.form = res.data;
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
+      });
+    },
+    mostrarManana: function mostrarManana() {
+      this.mananaVisible = true;
+      this.reflexionVisible = false;
+      this.nocheVisible = false;
+    },
+    mostrarFlexion: function mostrarFlexion() {
+      this.mananaVisible = false;
+      this.reflexionVisible = true;
+      this.nocheVisible = false;
+    },
+    mostrarNoche: function mostrarNoche() {
+      this.mananaVisible = false;
+      this.reflexionVisible = false;
+      this.nocheVisible = true;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/kids/Editar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/kids/Editar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      mananaVisible: false,
+      temaVisible: false,
+      nocheVisible: false,
+      id_dia: this.$route.params.id,
+      oracional: [],
+      form: {
+        oracional_id: this.$route.params.id
+      }
+    };
+  },
+  created: function created() {
+    this.getOracional();
+    this.getDia();
+  },
+  methods: {
+    store: function store() {
+      axios.post("api/crear-dia-kids", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this = this;
+
+      axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
+        _this.oracional = res.data;
+        _this.form.oracional = res.data.nombre;
+      });
+    },
+    getDia: function getDia() {
+      var _this2 = this;
+
+      axios.get("/api/get-dia-kids/" + this.id_dia).then(function (res) {
+        _this2.form = res.data;
+        console.log(res.data);
+      });
+    },
+    mostrarManana: function mostrarManana() {
+      this.mananaVisible = true;
+      this.temaVisible = false;
+      this.nocheVisible = false;
+    },
+    mostrarTema: function mostrarTema() {
+      this.mananaVisible = false;
+      this.temaVisible = true;
+      this.nocheVisible = false;
+    },
+    mostrarNoche: function mostrarNoche() {
+      this.mananaVisible = false;
+      this.temaVisible = false;
+      this.nocheVisible = true;
     }
   }
 });
@@ -2434,18 +3116,12 @@ __webpack_require__.r(__webpack_exports__);
   name: "Detalle",
   created: function created() {
     this.getOracional();
-    this.getDias(this.id);
   },
   data: function data() {
     return {
-      perPage: ["10", "25", "50"],
-      columns: [{
-        label: "ID",
-        name: "id",
-        filterable: true
-      }],
       id: this.$route.params.id,
-      oracional: ""
+      oracional: "",
+      url: ""
     };
   },
   methods: {
@@ -2454,20 +3130,23 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/get-oracional/" + this.id).then(function (res) {
         _this.oracional = res.data;
+        _this.url = "/api/get-dias-" + _this.oracional.nombre + "/" + _this.id;
+
+        _this.getDias(_this.url);
       });
     },
-    getDias: function getDias(id) {
+    getDias: function getDias(url) {
       $(document).ready(function () {
         $("#datatable-suscripciones").DataTable({
           serverSide: true,
           processing: true,
-          ajax: "/api/get-dias/" + id,
+          ajax: url,
           columns: [{
-            data: "fecha"
-          }, {
-            data: "oracional_id"
-          }, {
             data: "id"
+          }, {
+            data: "nombre_oracional"
+          }, {
+            data: "fecha"
           }, {
             data: "btn"
           }],
@@ -3003,7 +3682,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     storeDia: function storeDia() {
-      axios.post("/api/crear-dia-puerta", this.form).then(function (res) {
+      axios.post("/api/actualizar-dia-puerta", this.form).then(function (res) {
         console.log(res.data);
       });
     },
@@ -49853,6 +50532,323 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content container-fluid" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.store($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _c("div", { staticClass: "box-body" }, [
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Fecha")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group date" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("datepicker", {
+                          staticClass: "form-control pull-right",
+                          model: {
+                            value: _vm.form.fecha,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "fecha", $$v)
+                            },
+                            expression: "form.fecha"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarTema()
+                          }
+                        }
+                      },
+                      [_vm._v("Tema del día")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarOraciones()
+                          }
+                        }
+                      },
+                      [_vm._v("Oración de la mañana y noche")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.temaVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema,
+                              expression: "form.tema"
+                            }
+                          ],
+                          staticClass: "form-control mb-2",
+                          attrs: { type: "text", placeholder: "Título" },
+                          domProps: { value: _vm.form.tema },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "tema", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema,
+                              expression: "form.tema"
+                            }
+                          ],
+                          staticClass: "form-control mb-2",
+                          attrs: { type: "text", placeholder: "Oración" },
+                          domProps: { value: _vm.form.tema },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "tema", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema,
+                              expression: "form.tema"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.tema },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.form, "tema", $event.target.value)
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.oracionesVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("div", { staticClass: "col-md-12 mb-2 px-0" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tarea_dia,
+                                expression: "form.tarea_dia"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Tarea del día"
+                            },
+                            domProps: { value: _vm.form.tarea_dia },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "tarea_dia",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 pl-0" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.oracion_manana,
+                                expression: "form.oracion_manana"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "10",
+                              placeholder: "Oración de la mañana"
+                            },
+                            domProps: { value: _vm.form.oracion_manana },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "oracion_manana",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6 pr-0" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.oracion_noche,
+                                expression: "form.oracion_noche"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "10",
+                              placeholder: "Oracion de la noche"
+                            },
+                            domProps: { value: _vm.form.oracion_noche },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "oracion_noche",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      EDITAR - ADULTOS\n      "),
+        _c("small", [_vm._v("El Man Está Vivo")])
+      ]),
+      _vm._v(" "),
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "fa fa-dashboard" }),
+            _vm._v(" Oracionales\n        ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Actualizar")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
@@ -49925,6 +50921,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.store($event)
             }
           }
         },
@@ -49933,7 +50930,31 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Fecha")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "input-group date" },
+                      [
+                        _vm._m(1),
+                        _vm._v(" "),
+                        _c("datepicker", {
+                          staticClass: "form-control pull-right",
+                          model: {
+                            value: _vm.form.fecha,
+                            callback: function($$v) {
+                              _vm.$set(_vm.form, "fecha", $$v)
+                            },
+                            expression: "form.fecha"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
                   _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
@@ -49942,6 +50963,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarTema()
@@ -49955,6 +50977,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarOraciones()
@@ -49968,29 +50991,179 @@ var render = function() {
                   _vm.temaVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema[0].titulo,
+                              expression: "form.tema[0].titulo"
+                            }
+                          ],
                           staticClass: "form-control mb-2",
-                          attrs: { type: "text", placeholder: "Título" }
+                          attrs: { type: "text", placeholder: "Título" },
+                          domProps: { value: _vm.form.tema[0].titulo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.tema[0],
+                                "titulo",
+                                $event.target.value
+                              )
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema[0].oracion,
+                              expression: "form.tema[0].oracion"
+                            }
+                          ],
                           staticClass: "form-control mb-2",
-                          attrs: { type: "text", placeholder: "Oración" }
+                          attrs: { type: "text", placeholder: "Oración" },
+                          domProps: { value: _vm.form.tema[0].oracion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.tema[0],
+                                "oracion",
+                                $event.target.value
+                              )
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema[0].contenido,
+                              expression: "form.tema[0].contenido"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.tema[0].contenido },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form.tema[0],
+                                "contenido",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.oracionesVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
-                        _vm._m(3),
+                        _c("div", { staticClass: "col-md-12 mb-2 px-0" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.tarea_dia,
+                                expression: "form.tarea_dia"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Tarea del día"
+                            },
+                            domProps: { value: _vm.form.tarea_dia },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "tarea_dia",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
-                        _vm._m(4),
+                        _c("div", { staticClass: "col-md-6 pl-0" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.oracion_manana,
+                                expression: "form.oracion_manana"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "10",
+                              placeholder: "Oración de la mañana"
+                            },
+                            domProps: { value: _vm.form.oracion_manana },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "oracion_manana",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
                         _vm._v(" "),
-                        _vm._m(5)
+                        _c("div", { staticClass: "col-md-6 pr-0" }, [
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.oracion_noche,
+                                expression: "form.oracion_noche"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              rows: "10",
+                              placeholder: "Oracion de la noche"
+                            },
+                            domProps: { value: _vm.form.oracion_noche },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "oracion_noche",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
                       ])
                     : _vm._e()
                 ])
@@ -50029,21 +51202,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Fecha")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group date" }, [
-        _c("div", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-calendar" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control pull-right",
-          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
-        })
-      ])
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
@@ -50051,40 +51211,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 mb-2 px-0" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Tarea del día" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 pl-0" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { rows: "10", placeholder: "Oración de la mañana" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6 pr-0" }, [
-      _c("textarea", {
-        staticClass: "form-control",
-        attrs: { rows: "10", placeholder: "Oracion de la noche" }
-      })
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
     ])
   }
 ]
@@ -50119,6 +51250,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.store($event)
             }
           }
         },
@@ -50136,6 +51268,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarManana()
@@ -50149,6 +51282,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarFlexion()
@@ -50162,6 +51296,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarNoche()
@@ -50175,8 +51310,29 @@ var render = function() {
                   _vm.mananaVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_manana,
+                              expression: "form.oracion_manana"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_manana },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_manana",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e(),
@@ -50184,13 +51340,55 @@ var render = function() {
                   _vm.reflexionVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.reflexion,
+                              expression: "form.reflexion"
+                            }
+                          ],
                           staticClass: "form-control mb-2",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.reflexion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "reflexion",
+                                $event.target.value
+                              )
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.ejercicio,
+                              expression: "form.ejercicio"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Ejercicio" }
+                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          domProps: { value: _vm.form.ejercicio },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "ejercicio",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e(),
@@ -50198,8 +51396,29 @@ var render = function() {
                   _vm.nocheVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_noche,
+                              expression: "form.oracion_noche"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_noche },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_noche",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e()
@@ -50296,6 +51515,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
+              return _vm.store($event)
             }
           }
         },
@@ -50313,6 +51533,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarManana()
@@ -50326,6 +51547,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarTema()
@@ -50339,6 +51561,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.mostrarNoche()
@@ -50352,8 +51575,29 @@ var render = function() {
                   _vm.mananaVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_manana,
+                              expression: "form.oracion_manana"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_manana },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_manana",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e(),
@@ -50361,13 +51605,55 @@ var render = function() {
                   _vm.temaVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema_dia,
+                              expression: "form.tema_dia"
+                            }
+                          ],
                           staticClass: "form-control mb-2",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.tema_dia },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "tema_dia",
+                                $event.target.value
+                              )
+                            }
+                          }
                         }),
                         _vm._v(" "),
                         _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.ejercicio,
+                              expression: "form.ejercicio"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Ejercicio" }
+                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          domProps: { value: _vm.form.ejercicio },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "ejercicio",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e(),
@@ -50375,8 +51661,29 @@ var render = function() {
                   _vm.nocheVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
                         _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_noche,
+                              expression: "form.oracion_noche"
+                            }
+                          ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" }
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_noche },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_noche",
+                                $event.target.value
+                              )
+                            }
+                          }
                         })
                       ])
                     : _vm._e()
@@ -51102,6 +52409,536 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content container-fluid" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.store($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _c("div", { staticClass: "box-body" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarManana()
+                          }
+                        }
+                      },
+                      [_vm._v("Oración de la mañana")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarFlexion()
+                          }
+                        }
+                      },
+                      [_vm._v("Reflexión")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarNoche()
+                          }
+                        }
+                      },
+                      [_vm._v("Oración de la noche")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.mananaVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_manana,
+                              expression: "form.oracion_manana"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_manana },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_manana",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.reflexionVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.reflexion,
+                              expression: "form.reflexion"
+                            }
+                          ],
+                          staticClass: "form-control mb-2",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.reflexion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "reflexion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.ejercicio,
+                              expression: "form.ejercicio"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          domProps: { value: _vm.form.ejercicio },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "ejercicio",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.nocheVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_noche,
+                              expression: "form.oracion_noche"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_noche },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_noche",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      EDITAR - JÓVENES\n      "),
+        _c("small", [_vm._v("El Man Está Vivo")])
+      ]),
+      _vm._v(" "),
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "fa fa-dashboard" }),
+            _vm._v(" Oracionales\n        ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-3" }, [
+      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+        _vm._v("Fecha")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-group date" }, [
+        _c("div", { staticClass: "input-group-addon" }, [
+          _c("i", { staticClass: "fa fa-calendar" })
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control pull-right",
+          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Actualizar")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2&":
+/*!***************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2& ***!
+  \***************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content container-fluid" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.store($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-12" }, [
+              _c("div", { staticClass: "box box-primary" }, [
+                _c("div", { staticClass: "box-body" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-12" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarManana()
+                          }
+                        }
+                      },
+                      [_vm._v("Oración de la mañana")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarTema()
+                          }
+                        }
+                      },
+                      [_vm._v("Tema del día")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.mostrarNoche()
+                          }
+                        }
+                      },
+                      [_vm._v("Oración de la noche")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _vm.mananaVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_manana,
+                              expression: "form.oracion_manana"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_manana },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_manana",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.temaVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tema_dia,
+                              expression: "form.tema_dia"
+                            }
+                          ],
+                          staticClass: "form-control mb-2",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.tema_dia },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "tema_dia",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.ejercicio,
+                              expression: "form.ejercicio"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          domProps: { value: _vm.form.ejercicio },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "ejercicio",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.nocheVisible
+                    ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.oracion_noche,
+                              expression: "form.oracion_noche"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { rows: "10", placeholder: "Contenido" },
+                          domProps: { value: _vm.form.oracion_noche },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "oracion_noche",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    : _vm._e()
+                ])
+              ])
+            ])
+          ])
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      EDITAR - KIDS\n      "),
+        _c("small", [_vm._v("El Man Está Vivo")])
+      ]),
+      _vm._v(" "),
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "fa fa-dashboard" }),
+            _vm._v(" Oracionales\n        ")
+          ])
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-3" }, [
+      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+        _vm._v("Fecha")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-group date" }, [
+        _c("div", { staticClass: "input-group-addon" }, [
+          _c("i", { staticClass: "fa fa-calendar" })
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control pull-right",
+          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=template&id=13500ec8&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/oracional/Detalle.vue?vue&type=template&id=13500ec8& ***!
@@ -51255,11 +53092,11 @@ var staticRenderFns = [
             [
               _c("thead", [
                 _c("tr", [
-                  _c("th", [_vm._v("Fecha")]),
+                  _c("th", [_vm._v("Id")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Oracional")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("Mes")]),
+                  _c("th", [_vm._v("Fecha")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Acción")])
                 ])
@@ -52339,7 +54176,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
+      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Actualizar")])
     ])
   }
 ]
@@ -69786,6 +71623,75 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/adulto/Editar.vue":
+/*!****************************************!*\
+  !*** ./resources/js/adulto/Editar.vue ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editar.vue?vue&type=template&id=639d9db2& */ "./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2&");
+/* harmony import */ var _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editar.vue?vue&type=script&lang=js& */ "./resources/js/adulto/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/adulto/Editar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/adulto/Editar.vue?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./resources/js/adulto/Editar.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/adulto/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2&":
+/*!***********************************************************************!*\
+  !*** ./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2& ***!
+  \***********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=template&id=639d9db2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/adulto/Editar.vue?vue&type=template&id=639d9db2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_639d9db2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -69815,7 +71721,9 @@ Vue.component("kids", __webpack_require__(/*! ./dia/Kids.vue */ "./resources/js/
 
 Vue.component("puerta", __webpack_require__(/*! ./dia/Puerta.vue */ "./resources/js/dia/Puerta.vue")["default"]);
 Vue.component("editar-puerta", __webpack_require__(/*! ./puerta/Editar.vue */ "./resources/js/puerta/Editar.vue")["default"]);
-Vue.component("detalle-oracional", __webpack_require__(/*! ./oracional/Detalle.vue */ "./resources/js/oracional/Detalle.vue")["default"]);
+Vue.component("detalle-oracional", __webpack_require__(/*! ./oracional/Detalle.vue */ "./resources/js/oracional/Detalle.vue")["default"]); // Adulto
+
+Vue.component("editar-adulto", __webpack_require__(/*! ./adulto/Editar.vue */ "./resources/js/adulto/Editar.vue")["default"]);
 var routes = [{
   path: "/oracionales",
   component: __webpack_require__(/*! ./oracional/Index.vue */ "./resources/js/oracional/Index.vue")["default"]
@@ -69829,11 +71737,20 @@ var routes = [{
   path: "/Adultos/:id",
   component: __webpack_require__(/*! ./dia/Crear */ "./resources/js/dia/Crear.vue")["default"]
 }, {
+  path: "/editar-Adultos/:id",
+  component: __webpack_require__(/*! ./adulto/Editar */ "./resources/js/adulto/Editar.vue")["default"]
+}, {
   path: "/Jovenes/:id",
   component: __webpack_require__(/*! ./dia/Jovenes */ "./resources/js/dia/Jovenes.vue")["default"]
 }, {
+  path: "/editar-Jovenes/:id",
+  component: __webpack_require__(/*! ./jovenes/Editar */ "./resources/js/jovenes/Editar.vue")["default"]
+}, {
   path: "/Kids/:id",
   component: __webpack_require__(/*! ./dia/Kids */ "./resources/js/dia/Kids.vue")["default"]
+}, {
+  path: "/editar-Kids/:id",
+  component: __webpack_require__(/*! ./kids/Editar */ "./resources/js/kids/Editar.vue")["default"]
 }, {
   path: "/Puerta/:id",
   component: __webpack_require__(/*! ./dia/Puerta */ "./resources/js/dia/Puerta.vue")["default"]
@@ -70248,6 +72165,144 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Puerta_vue_vue_type_template_id_fdfb0720___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Puerta_vue_vue_type_template_id_fdfb0720___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/jovenes/Editar.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/jovenes/Editar.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editar.vue?vue&type=template&id=4af5be60& */ "./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60&");
+/* harmony import */ var _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editar.vue?vue&type=script&lang=js& */ "./resources/js/jovenes/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/jovenes/Editar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/jovenes/Editar.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/jovenes/Editar.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/jovenes/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60&":
+/*!************************************************************************!*\
+  !*** ./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=template&id=4af5be60& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/jovenes/Editar.vue?vue&type=template&id=4af5be60&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_4af5be60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/kids/Editar.vue":
+/*!**************************************!*\
+  !*** ./resources/js/kids/Editar.vue ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Editar.vue?vue&type=template&id=97977fa2& */ "./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2&");
+/* harmony import */ var _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Editar.vue?vue&type=script&lang=js& */ "./resources/js/kids/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/kids/Editar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/kids/Editar.vue?vue&type=script&lang=js&":
+/*!***************************************************************!*\
+  !*** ./resources/js/kids/Editar.vue?vue&type=script&lang=js& ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/kids/Editar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2&":
+/*!*********************************************************************!*\
+  !*** ./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2& ***!
+  \*********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Editar.vue?vue&type=template&id=97977fa2& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/kids/Editar.vue?vue&type=template&id=97977fa2&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Editar_vue_vue_type_template_id_97977fa2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

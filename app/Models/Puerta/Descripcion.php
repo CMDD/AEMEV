@@ -14,6 +14,13 @@ class Descripcion extends Model
         $des->save();
         return 200;
     }
+    public function actualizar($request){
+        $des = Descripcion::find($request['id']);
+        $des->contenido = $request['contenido'];
+        // $des->dia_puerta_id = $id;
+        $des->save();
+        return 200;
+    }
 
     public function diaPuerta(){
         return $this->belongsTo(DiaPuerta::class,'dia_puerta_id');

@@ -2,7 +2,7 @@
   <div>
     <section class="content-header">
       <h1>
-        SUBIR DÍA - KIDS
+        EDITAR - JÓVENES
         <small>El Man Está Vivo</small>
       </h1>
       <ol class="breadcrumb">
@@ -37,7 +37,7 @@
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button class="btn btn-success">Actualizar</button>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -46,7 +46,7 @@
                     class="btn btn-primary"
                     @click="mostrarManana()"
                   >Oración de la mañana</button>
-                  <button type="button" class="btn btn-primary" @click="mostrarTema()">Tema del día</button>
+                  <button type="button" class="btn btn-primary" @click="mostrarFlexion()">Reflexión</button>
                   <button
                     type="button"
                     class="btn btn-primary"
@@ -56,23 +56,23 @@
 
                 <div class="form-group col-md-12" v-if="mananaVisible">
                   <textarea
-                    v-model="form.oracion_manana"
                     class="form-control"
+                    v-model="form.oracion_manana"
                     rows="10"
                     placeholder="Contenido"
                   ></textarea>
                 </div>
 
-                <div class="form-group col-md-12" v-if="temaVisible">
+                <div class="form-group col-md-12" v-if="reflexionVisible">
                   <textarea
-                    v-model="form.tema_dia"
                     class="form-control mb-2"
+                    v-model="form.reflexion"
                     rows="10"
                     placeholder="Contenido"
                   ></textarea>
                   <input
-                    v-model="form.ejercicio"
                     type="text"
+                    v-model="form.ejercicio"
                     class="form-control"
                     placeholder="Ejercicio"
                   />
@@ -101,9 +101,10 @@ export default {
   data() {
     return {
       mananaVisible: false,
-      temaVisible: false,
+      reflexionVisible: false,
       nocheVisible: false,
       oracional: [],
+      id_dia: this.$route.params.id,
       form: {
         oracional_id: this.$route.params.id
       }
@@ -111,10 +112,17 @@ export default {
   },
   created() {
     this.getOracional();
+    this.getDia();
   },
   methods: {
     store() {
-      axios.post("api/crear-dia-kids", this.form).then(res => {
+      axios.post("api/crear-dia-jovenes", this.form).then(res => {
+        console.log(res.data);
+      });
+    },
+    getDia() {
+      axios.get("/api/get-dia-jovenes/" + this.id_dia).then(res => {
+        this.form = res.data;
         console.log(res.data);
       });
     },
@@ -126,17 +134,17 @@ export default {
     },
     mostrarManana() {
       this.mananaVisible = true;
-      this.temaVisible = false;
+      this.reflexionVisible = false;
       this.nocheVisible = false;
     },
-    mostrarTema() {
+    mostrarFlexion() {
       this.mananaVisible = false;
-      this.temaVisible = true;
+      this.reflexionVisible = true;
       this.nocheVisible = false;
     },
     mostrarNoche() {
       this.mananaVisible = false;
-      this.temaVisible = false;
+      this.reflexionVisible = false;
       this.nocheVisible = true;
     }
   }

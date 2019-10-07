@@ -2,7 +2,7 @@
   <div>
     <section class="content-header">
       <h1>
-        SUBIR DÍA - KIDS
+        EDITAR - ADULTOS
         <small>El Man Está Vivo</small>
       </h1>
       <ol class="breadcrumb">
@@ -28,63 +28,68 @@
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
-                    <input
-                      type="text"
-                      class="form-control pull-right"
-                      id="datepicker"
-                      autocomplete="off"
-                    />
+                    <datepicker v-model="form.fecha" class="form-control pull-right"></datepicker>
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button type="submit" class="btn btn-success">Actualizar</button>
                 </div>
 
                 <div class="form-group col-md-12">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    @click="mostrarManana()"
-                  >Oración de la mañana</button>
                   <button type="button" class="btn btn-primary" @click="mostrarTema()">Tema del día</button>
                   <button
                     type="button"
                     class="btn btn-primary"
-                    @click="mostrarNoche()"
-                  >Oración de la noche</button>
-                </div>
-
-                <div class="form-group col-md-12" v-if="mananaVisible">
-                  <textarea
-                    v-model="form.oracion_manana"
-                    class="form-control"
-                    rows="10"
-                    placeholder="Contenido"
-                  ></textarea>
+                    @click="mostrarOraciones()"
+                  >Oración de la mañana y noche</button>
                 </div>
 
                 <div class="form-group col-md-12" v-if="temaVisible">
-                  <textarea
-                    v-model="form.tema_dia"
+                  <input
+                    type="text"
+                    v-model="form.tema"
                     class="form-control mb-2"
+                    placeholder="Título"
+                  />
+                  <input
+                    type="text"
+                    v-model="form.tema"
+                    class="form-control mb-2"
+                    placeholder="Oración"
+                  />
+                  <textarea
+                    v-model="form.tema"
+                    class="form-control"
                     rows="10"
                     placeholder="Contenido"
                   ></textarea>
-                  <input
-                    v-model="form.ejercicio"
-                    type="text"
-                    class="form-control"
-                    placeholder="Ejercicio"
-                  />
                 </div>
 
-                <div class="form-group col-md-12" v-if="nocheVisible">
-                  <textarea
-                    v-model="form.oracion_noche"
-                    class="form-control"
-                    rows="10"
-                    placeholder="Contenido"
-                  ></textarea>
+                <div class="form-group col-md-12" v-if="oracionesVisible">
+                  <div class="col-md-12 mb-2 px-0">
+                    <input
+                      v-model="form.tarea_dia"
+                      type="text"
+                      class="form-control"
+                      placeholder="Tarea del día"
+                    />
+                  </div>
+                  <div class="col-md-6 pl-0">
+                    <textarea
+                      v-model="form.oracion_manana"
+                      class="form-control"
+                      rows="10"
+                      placeholder="Oración de la mañana"
+                    ></textarea>
+                  </div>
+                  <div class="col-md-6 pr-0">
+                    <textarea
+                      v-model="form.oracion_noche"
+                      class="form-control"
+                      rows="10"
+                      placeholder="Oracion de la noche"
+                    ></textarea>
+                  </div>
                 </div>
               </div>
             </div>
@@ -97,24 +102,47 @@
 </template>
 
 <script>
+import Datepicker from "vuejs-datepicker";
 export default {
+  components: {
+    Datepicker,
+    props: [
+      {
+        inline: true
+      }
+    ]
+  },
   data() {
     return {
-      mananaVisible: false,
       temaVisible: false,
-      nocheVisible: false,
-      oracional: [],
+      oracionesVisible: false,
+      oracional: "",
+      id_dia: this.$route.params.id,
       form: {
+        tema: [
+          {
+            titulo: "",
+            contenido: "",
+            oracion: ""
+          }
+        ],
         oracional_id: this.$route.params.id
       }
     };
   },
   created() {
     this.getOracional();
+    this.getDia();
   },
   methods: {
     store() {
-      axios.post("api/crear-dia-kids", this.form).then(res => {
+      axios.post("api/crear-dia-adultos", this.form).then(res => {
+        console.log(res.data);
+      });
+    },
+    getDia() {
+      axios.get("/api/get-dia-adultos/" + this.id_dia).then(res => {
+        this.form = res.data;
         console.log(res.data);
       });
     },
@@ -124,20 +152,13 @@ export default {
         this.form.oracional = res.data.nombre;
       });
     },
-    mostrarManana() {
-      this.mananaVisible = true;
-      this.temaVisible = false;
-      this.nocheVisible = false;
-    },
     mostrarTema() {
-      this.mananaVisible = false;
       this.temaVisible = true;
-      this.nocheVisible = false;
+      this.oracionesVisible = false;
     },
-    mostrarNoche() {
-      this.mananaVisible = false;
+    mostrarOraciones() {
+      this.oracionesVisible = true;
       this.temaVisible = false;
-      this.nocheVisible = true;
     }
   }
 };

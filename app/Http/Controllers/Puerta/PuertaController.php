@@ -46,6 +46,37 @@ class PuertaController extends Controller
         return 'Casi';
     }
 
+    public function update(Request $request){
+        $dia = DiaPuerta::find($request->id);
+        $dia->colecta = $request->colecta;
+        $dia->fecha = $request->fecha;
+        // $dia->oracional_id  = $request->id_oracional;
+        $dia->save(); 
+        //Lectura
+        $let = new Lectura();
+        $let->actualizar($request,$dia->id);
+
+        //Descripcion
+        $des =  new Descripcion();
+        
+       
+        //Salmo
+        $salmo = new Salmo();
+        $salmo->actualizar($request,$dia->id);
+
+        // //Evangelio
+        // $ev = new Evangelio();
+        // $ev->store($request,$dia->id);
+
+        // //Reflexion
+        // $ref = new Reflexion();
+        // $ref->store($request,$dia->id);
+       
+       
+
+        return $des->actualizar($request->descripcion);
+    }
+
     public function getDias($id){
         $dias =  DiaPuerta::where('oracional_id',$id)->get();
   

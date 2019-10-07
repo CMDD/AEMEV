@@ -26,6 +26,8 @@ Vue.component("kids", require("./dia/Kids.vue").default);
 Vue.component("puerta", require("./dia/Puerta.vue").default);
 Vue.component("editar-puerta", require("./puerta/Editar.vue").default);
 Vue.component("detalle-oracional", require("./oracional/Detalle.vue").default);
+// Adulto
+Vue.component("editar-adulto", require("./adulto/Editar.vue").default);
 
 const routes = [
     {
@@ -45,12 +47,24 @@ const routes = [
         component: require("./dia/Crear").default
     },
     {
+        path: "/editar-Adultos/:id",
+        component: require("./adulto/Editar").default
+    },
+    {
         path: "/Jovenes/:id",
         component: require("./dia/Jovenes").default
     },
     {
+        path: "/editar-Jovenes/:id",
+        component: require("./jovenes/Editar").default
+    },
+    {
         path: "/Kids/:id",
         component: require("./dia/Kids").default
+    },
+    {
+        path: "/editar-Kids/:id",
+        component: require("./kids/Editar").default
     },
     {
         path: "/Puerta/:id",

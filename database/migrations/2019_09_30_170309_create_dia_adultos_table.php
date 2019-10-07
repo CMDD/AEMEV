@@ -18,6 +18,8 @@ class CreateDiaAdultosTable extends Migration
             $table->string('oracion_manana');
             $table->string('oracion_noche');
             $table->string('tarea_dia');
+            $table->string('nombre_oracional')->nullable();
+            $table->string('fecha')->nullable();
 
             $table->integer('oracional_id')->unsigned()->nullable();
             $table->foreign('oracional_id')

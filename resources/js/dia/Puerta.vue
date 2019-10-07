@@ -218,7 +218,13 @@ export default {
             oracion: ""
           }
         ],
-        salmos: [],
+        salmos: [
+          {
+            salmo: "",
+            respuesta: "",
+            versiculo: []
+          }
+        ],
         lecturas: [],
         fecha: "",
         id_oracional: this.$route.params.id

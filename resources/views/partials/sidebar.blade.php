@@ -53,17 +53,7 @@
             <li>
             
             </li>
-            <li>
-                <router-link
-                to="/crear-dia">Adultos </router-link>
-                 <router-link
-                to="/crear-dia-jovenes">Jovenes </router-link>
-                 <router-link
-                to="/crear-dia-kids">Kids</router-link>
-                <router-link
-                to="/crear-dia-puerta">Puerta</router-link>
-              
-            </li>
+           
           </ul>
         </li>
       </ul>

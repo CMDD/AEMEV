@@ -2,7 +2,7 @@
   <div>
     <section class="content-header">
       <h1>
-        SUBIR DÍA - KIDS
+        EDITAR - KIDS
         <small>El Man Está Vivo</small>
       </h1>
       <ol class="breadcrumb">
@@ -103,6 +103,7 @@ export default {
       mananaVisible: false,
       temaVisible: false,
       nocheVisible: false,
+      id_dia: this.$route.params.id,
       oracional: [],
       form: {
         oracional_id: this.$route.params.id
@@ -111,6 +112,7 @@ export default {
   },
   created() {
     this.getOracional();
+    this.getDia();
   },
   methods: {
     store() {
@@ -122,6 +124,12 @@ export default {
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(res => {
         this.oracional = res.data;
         this.form.oracional = res.data.nombre;
+      });
+    },
+    getDia() {
+      axios.get("/api/get-dia-kids/" + this.id_dia).then(res => {
+        this.form = res.data;
+        console.log(res.data);
       });
     },
     mostrarManana() {

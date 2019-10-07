@@ -26,8 +26,22 @@ Route::get('get-oracional/{id}','OracionalController@detail');
 Route::post('adulto-crear-dia','Adulto\DiaController@store');
 //Rutas Puerta
 Route::post('crear-dia-puerta','Puerta\PuertaController@store');
-Route::get('get-dias/{id}','Puerta\PuertaController@getDias');
+Route::post('actualizar-dia-puerta','Puerta\PuertaController@update');
+Route::get('get-dias-Puerta/{id}','Puerta\PuertaController@getDias');
 Route::get('get-dia/{id}','Puerta\PuertaController@getDia');
+//Adultos
+Route::post('crear-dia-adultos','Adulto\DiaController@store');
+Route::get('get-dias-Adultos/{id}','Adulto\DiaController@getDias');
+Route::get('get-dia-adultos/{id}','Adulto\DiaController@getDia');
+//Jovenes
+Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
+Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 
+Route::get('get-dia-jovenes/{id}','Jovenes\DiaController@getDia');
+
+// Kids
+Route::get('get-dias-Kids/{id}','Kids\DiaController@getDias');
+Route::post('crear-dia-kids','Kids\DiaController@store'); 
+Route::get('get-dia-kids/{id}','Kids\DiaController@getDia');
 
 Route::get('oracionales','OracionalController@oracionales');
 Route::get('dias/{id}','DiaController@dias');

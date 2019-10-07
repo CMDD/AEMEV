@@ -60,9 +60,9 @@
           <table id="datatable-suscripciones" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Fecha</th>
+                <th>Id</th>
                 <th>Oracional</th>
-                <th>Mes</th>
+                <th>Fecha</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -81,38 +81,32 @@ export default {
   name: "Detalle",
   created() {
     this.getOracional();
-    this.getDias(this.id);
   },
   data() {
     return {
-      perPage: ["10", "25", "50"],
-      columns: [
-        {
-          label: "ID",
-          name: "id",
-          filterable: true
-        }
-      ],
       id: this.$route.params.id,
-      oracional: ""
+      oracional: "",
+      url: ""
     };
   },
   methods: {
     getOracional() {
       axios.get("/api/get-oracional/" + this.id).then(res => {
         this.oracional = res.data;
+        this.url = "/api/get-dias-" + this.oracional.nombre + "/" + this.id;
+        this.getDias(this.url);
       });
     },
-    getDias(id) {
+    getDias(url) {
       $(document).ready(function() {
         $("#datatable-suscripciones").DataTable({
           serverSide: true,
           processing: true,
-          ajax: "/api/get-dias/" + id,
+          ajax: url,
           columns: [
-            { data: "fecha" },
-            { data: "oracional_id" },
             { data: "id" },
+            { data: "nombre_oracional" },
+            { data: "fecha" },
             { data: "btn" }
           ],
           language: {
