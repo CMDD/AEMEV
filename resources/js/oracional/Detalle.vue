@@ -62,7 +62,7 @@
               <tr>
                 <th>Id</th>
                 <th>Oracional</th>
-                <th>Fecha</th>
+                <th>Dia</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -106,7 +106,12 @@ export default {
           columns: [
             { data: "id" },
             { data: "nombre_oracional" },
-            { data: "fecha" },
+
+            {
+              data: function(data, type, row) {
+                return data.tipo_dia + " " + data.dia;
+              }
+            },
             { data: "btn" }
           ],
           language: {

@@ -3372,7 +3372,9 @@ __webpack_require__.r(__webpack_exports__);
           }, {
             data: "nombre_oracional"
           }, {
-            data: "fecha"
+            data: function data(_data, type, row) {
+              return _data.tipo_dia + " " + _data.dia;
+            }
           }, {
             data: "btn"
           }],
@@ -54043,7 +54045,7 @@ var staticRenderFns = [
                   _vm._v(" "),
                   _c("th", [_vm._v("Oracional")]),
                   _vm._v(" "),
-                  _c("th", [_vm._v("Fecha")]),
+                  _c("th", [_vm._v("Dia")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Acción")])
                 ])
