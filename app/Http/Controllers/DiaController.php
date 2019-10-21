@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kid\DiaKid;
-use App\Models\Jovenes\DiaJoven;
-use App\Models\Adulto\DiaAdulto;
+use App\Models\jovenes\DiaJoven;
+use App\Models\adulto\DiaAdulto;
 use App\Models\Puerta\DiaPuerta;
 
 class DiaController extends Controller

@@ -4,6 +4,7 @@ namespace App\Models\adulto;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\adulto\TemaDia;
+use App\Models\adulto\DiaAdulto;
 
 class DiaAdulto extends Model
 {
