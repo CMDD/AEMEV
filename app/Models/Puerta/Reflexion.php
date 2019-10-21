@@ -15,4 +15,14 @@ class Reflexion extends Model
         $ref->save();
 
     }
+    public function actualizar($request,$id){
+        $ref = Reflexion::find($id);
+        $ref->titulo = $request->reflexion['titulo'];
+        $ref->contenido = $request->reflexion['contenido'];
+        $ref->oracion = $request->reflexion['oracion'];
+        $ref->save();
+
+        return $request;
+
+    }
 }

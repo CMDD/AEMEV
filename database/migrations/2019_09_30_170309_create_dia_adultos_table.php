@@ -15,8 +15,10 @@ class CreateDiaAdultosTable extends Migration
     {
         Schema::create('dia_adultos', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('oracion_manana');
-            $table->string('oracion_noche');
+            $table->string('tipo_dia')->nullable();
+            $table->string('dia')->nullable();
+            $table->text('oracion_manana');
+            $table->text('oracion_noche');
             $table->string('tarea_dia');
             $table->string('nombre_oracional')->nullable();
             $table->string('fecha')->nullable();

@@ -1801,6 +1801,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1907,6 +1941,32 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2170,6 +2230,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2228,6 +2308,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
 //
 //
 //
@@ -2326,7 +2407,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Datepicker: vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__["default"],
+    props: [{
+      inline: true
+    }]
+  },
   data: function data() {
     return {
       mananaVisible: false,
@@ -2385,6 +2510,40 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2798,6 +2957,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2866,6 +3058,40 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3466,6 +3692,40 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -50568,31 +50828,114 @@ var render = function() {
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group col-md-3" }, [
                     _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Fecha")
+                      _vm._v("Tipo Dia")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "input-group date" },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("datepicker", {
-                          staticClass: "form-control pull-right",
-                          model: {
-                            value: _vm.form.fecha,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "fecha", $$v)
-                            },
-                            expression: "form.fecha"
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
                           }
-                        })
-                      ],
-                      1
-                    )
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -50834,6 +51177,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
       _c(
         "button",
@@ -50932,31 +51283,114 @@ var render = function() {
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group col-md-3" }, [
                     _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                      _vm._v("Fecha")
+                      _vm._v("Tipo Dia")
                     ]),
                     _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "input-group date" },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("datepicker", {
-                          staticClass: "form-control pull-right",
-                          model: {
-                            value: _vm.form.fecha,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "fecha", $$v)
-                            },
-                            expression: "form.fecha"
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
                           }
-                        })
-                      ],
-                      1
-                    )
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -51210,6 +51644,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
       _c(
         "button",
@@ -51259,9 +51701,116 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -51458,21 +52007,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Fecha")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group date" }, [
-        _c("div", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-calendar" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control pull-right",
-          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
-        })
-      ])
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
@@ -51524,9 +52068,116 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -51723,21 +52374,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Fecha")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group date" }, [
-        _c("div", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-calendar" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control pull-right",
-          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
-        })
-      ])
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
@@ -51790,28 +52436,6 @@ var render = function() {
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group col-md-3" }, [
-                    _c("label", [_vm._v("Fecha")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "input-group date mb-2" },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("datepicker", {
-                          staticClass: "form-control pull-right",
-                          model: {
-                            value: _vm.form.fecha,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "fecha", $$v)
-                            },
-                            expression: "form.fecha"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
                     _c("label", [_vm._v("Descripción del día")]),
                     _vm._v(" "),
                     _c("textarea", {
@@ -51836,7 +52460,116 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -52398,6 +53131,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
       _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
     ])
@@ -52443,9 +53184,116 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -52642,21 +53490,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Fecha")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group date" }, [
-        _c("div", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-calendar" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control pull-right",
-          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
-        })
-      ])
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
@@ -52708,9 +53551,118 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _vm._m(1),
+                  _c("div", { staticClass: "form-group col-md-3" }),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -52907,21 +53859,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Fecha")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group date" }, [
-        _c("div", { staticClass: "input-group-addon" }, [
-          _c("i", { staticClass: "fa fa-calendar" })
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control pull-right",
-          attrs: { type: "text", id: "datepicker", autocomplete: "off" }
-        })
-      ])
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {
@@ -53559,28 +54506,6 @@ var render = function() {
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group col-md-3" }, [
-                    _c("label", [_vm._v("Fecha")]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "input-group date mb-2" },
-                      [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c("datepicker", {
-                          staticClass: "form-control pull-right",
-                          model: {
-                            value: _vm.form.fecha,
-                            callback: function($$v) {
-                              _vm.$set(_vm.form, "fecha", $$v)
-                            },
-                            expression: "form.fecha"
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
                     _vm.form.descripcion
                       ? _c("div", [
                           _c("label", [_vm._v("Descripción del día")]),
@@ -53613,7 +54538,116 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _vm._m(2),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Tipo Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.tipoDia,
+                              expression: "form.tipoDia"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.form,
+                                "tipoDia",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Selecione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Lunes" } }, [
+                            _vm._v("Lunes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Martes" } }, [
+                            _vm._v("Martes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Miercoles" } }, [
+                            _vm._v("Miercoles")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jueves" } }, [
+                            _vm._v("Jueves")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Viernes" } }, [
+                            _vm._v("Viernes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Sabado" } }, [
+                            _vm._v("Sabado")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Domingo" } }, [
+                            _vm._v("Domingo")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group col-md-3" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Dia")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group date" }, [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.dia,
+                            expression: "form.dia"
+                          }
+                        ],
+                        staticClass: "form-control pull-right",
+                        attrs: { type: "text", autocomplete: "off" },
+                        domProps: { value: _vm.form.dia },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.form, "dia", $event.target.value)
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(3),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -54161,6 +55195,14 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-addon" }, [
+      _c("i", { staticClass: "fa fa-calendar" })
     ])
   },
   function() {

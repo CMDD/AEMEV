@@ -16,6 +16,8 @@ class DiaController extends Controller
         $dia->oracion_manana = $request->oracion_manana;
         $dia->oracion_noche = $request->oracion_noche;
         $dia->tarea_dia = $request->tarea_dia;
+        $dia->tipo_dia = $request->tipoDia;
+        $dia->dia = $request->dia;
         $dia->oracional_id = $request->oracional_id;
         $dia->nombre_oracional = $request->oracional;
         $dia->save();
@@ -45,7 +47,8 @@ class DiaController extends Controller
     }
 
     public function getDia($id){
-        $dato =  DiaAdulto::find($id);                   
-        return  $dato;
+
+        $dato = new DiaAdulto();              
+        return  $dato->getInfo($id); 
     }
 }

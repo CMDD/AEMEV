@@ -15,6 +15,8 @@ class CreateDiaPuertasTable extends Migration
     {
         Schema::create('dia_puertas', function (Blueprint $table) {
             $table->Increments('id');
+            $table->string('tipo_dia')->nullable();
+            $table->string('dia')->nullable();
             $table->text('colecta')->nullable();
             $table->text('oracion')->nullable();
             $table->string('fecha')->nullable();

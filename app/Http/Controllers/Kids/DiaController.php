@@ -14,12 +14,14 @@ class DiaController extends Controller
         $dia = new DiaKid();
         $dia->oracion_manana = $request->oracion_manana;
         $dia->oracion_noche = $request->oracion_noche;
+        $dia->tipo_dia = $request->tipoDia;
+        $dia->dia = $request->dia;
         $dia->tema_dia = $request->tema_dia;
         $dia->ejercicio = $request->ejercicio;
         $dia->oracional_id = $request->oracional_id;
         $dia->nombre_oracional = $request->oracional;
         $dia->fecha = $request->fecha;
-
+        
         $dia->save();
 
         return $request;

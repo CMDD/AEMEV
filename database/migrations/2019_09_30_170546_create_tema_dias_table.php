@@ -17,7 +17,7 @@ class CreateTemaDiasTable extends Migration
             $table->Increments('id');
             $table->string('titulo');
             $table->string('oracion');
-            $table->string('contenido');
+            $table->text('contenido');
 
 
             $table->integer('dia_adulto_id')->unsigned()->nullable();

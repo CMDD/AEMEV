@@ -15,10 +15,12 @@ class CreateDiaKidsTable extends Migration
     {
         Schema::create('dia_kids', function (Blueprint $table) {
             $table->Increments('id');
-            $table->string('oracion_manana');
-            $table->string('oracion_noche');
-            $table->string('ejercicio');
-            $table->string('tema_dia');
+            $table->text('oracion_manana');
+            $table->text('oracion_noche');
+            $table->string('tipo_dia')->nullable();
+            $table->string('dia')->nullable();
+            $table->text('ejercicio');
+            $table->text('tema_dia');
             $table->string('nombre_oracional')->nullable();
             $table->string('fecha')->nullable();
             

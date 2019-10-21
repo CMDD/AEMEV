@@ -46,9 +46,23 @@ Route::get('get-dia-kids/{id}','Kids\DiaController@getDia');
 Route::get('oracionales','OracionalController@oracionales');
 Route::get('dias/{id}','DiaController@dias');
 
-Route::get('dias-demo/{id}','DiaController@diasDemo');
+Route::get('dias-demo/{dato}','DiaController@diasDemo');
 Route::get('detalle-dia/{id_oracional}/{dia}','DiaController@detalleDia');
 
 Route::post('suscribirme','UserController@suscribirme');
+
+
+// Rutas Apps Movil
+Route::get('dias-demo-kids/{id}','DiaController@diasKids');
+Route::get('dias-demo-jovenes/{id}','DiaController@diasJovenes');
+Route::get('dias-demo-adultos/{id}','DiaController@diasAdultos');
+Route::get('dias-demo-puerta/{id}','DiaController@diasPuerta');
+    //Suscritos
+
+Route::get('dias-kids/{id}','DiaController@diasKidsAll');
+Route::get('dias-jovenes/{id}','DiaController@diasJovenesAll');
+Route::get('dias-adultos/{id}','DiaController@diasAdultosAll');
+Route::get('dias-puerta/{id}','DiaController@diasPuertaAll');
+Route::get('editorial/{id}','OracionalController@editorial');
 
 

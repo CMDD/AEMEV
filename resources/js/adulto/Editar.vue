@@ -22,13 +22,47 @@
           <div class="col-md-12">
             <div class="box box-primary">
               <div class="box-body">
-                <div class="form-group col-md-3">
+                <!-- <div class="form-group col-md-3">
                   <label for="exampleInputPassword1">Fecha</label>
                   <div class="input-group date">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
                     <datepicker v-model="form.fecha" class="form-control pull-right"></datepicker>
+                  </div>
+                </div>-->
+                <div class="form-group col-md-3">
+                  <label for="exampleInputPassword1">Tipo Dia</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <select v-model="form.tipoDia" class="form-control">
+                      <option value>Selecione...</option>
+                      <option value="Lunes">Lunes</option>
+                      <option value="Martes">Martes</option>
+                      <option value="Miercoles">Miercoles</option>
+                      <option value="Jueves">Jueves</option>
+                      <option value="Viernes">Viernes</option>
+                      <option value="Sabado">Sabado</option>
+                      <option value="Domingo">Domingo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="exampleInputPassword1">Dia</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <input
+                      v-model="form.dia"
+                      type="text"
+                      class="form-control pull-right"
+                      autocomplete="off"
+                    />
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">

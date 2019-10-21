@@ -16,4 +16,14 @@ class Evangelio extends Model
         return 'desde evangelio';
 
     }
+
+    public function actualizar($request,$id){
+        $ev = Evangelio::find($id);
+        $ev->titulo = $request->evangelio['titulo'];
+        $ev->contenido = $request->evangelio['contenido'];
+        $ev->save();
+
+        return $request->evangelio['contenido'];
+
+    }
 }

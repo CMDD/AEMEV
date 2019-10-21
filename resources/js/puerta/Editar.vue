@@ -23,22 +23,56 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="form-group col-md-3">
-                  <label>Fecha</label>
-                  <div class="input-group date mb-2">
+                  <!-- <label>Fecha</label> -->
+                  <!-- <div class="input-group date mb-2">
                     <div class="input-group-addon">
                       <i class="fa fa-calendar"></i>
                     </div>
                     <datepicker v-model="form.fecha" class="form-control pull-right"></datepicker>
-                    <!-- <input
+                    <input
                       type="text"
                       class="form-control pull-right"
                       id="datepicker"
                       autocomplete="off"
-                    />-->
-                  </div>
+                    />
+                  </div>-->
                   <div v-if="form.descripcion">
                     <label>Descripción del día</label>
                     <textarea v-model="form.descripcion.contenido" class="form-control"></textarea>
+                  </div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="exampleInputPassword1">Tipo Dia</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <select v-model="form.tipoDia" class="form-control">
+                      <option value>Selecione...</option>
+                      <option value="Lunes">Lunes</option>
+                      <option value="Martes">Martes</option>
+                      <option value="Miercoles">Miercoles</option>
+                      <option value="Jueves">Jueves</option>
+                      <option value="Viernes">Viernes</option>
+                      <option value="Sabado">Sabado</option>
+                      <option value="Domingo">Domingo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="exampleInputPassword1">Dia</label>
+                  <div class="input-group date">
+                    <div class="input-group-addon">
+                      <i class="fa fa-calendar"></i>
+                    </div>
+
+                    <input
+                      v-model="form.dia"
+                      type="text"
+                      class="form-control pull-right"
+                      autocomplete="off"
+                    />
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">

@@ -43,4 +43,21 @@ class DiaPuerta extends Model
         $dato->reflexion;
         return $dato;
     }
+
+    // Methods para appsMovil
+    public function getDiaInfo($id){
+        $dato = DiaPuerta::where('oracional_id',$id)->first();
+        $dato->oracionalInfo;
+        $dato->descripcion;
+        $dato->lecturas;
+        $dato->salmos;
+        $dato->versiculos;
+        $dato->evangelio;
+        $dato->reflexion;
+        return $dato;
+    }
+    public function getDias($id){
+        $dato = DiaPuerta::where('oracional_id',$id)->get();
+        return $dato;
+    }
 }

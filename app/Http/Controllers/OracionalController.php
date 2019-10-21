@@ -92,6 +92,9 @@ class OracionalController extends Controller
         $oracionales = Oracional::orderBy('id','desc')->where('estado',"Activo")->get();
         return Response::json($oracionales);
     }
+    public function editorial($id){
+        return Editorial::where('oracional_id',$id)->first();
+    }
 
     public function verDias($id){
         $dias = Dia::where('oracional_id',$id)->get();

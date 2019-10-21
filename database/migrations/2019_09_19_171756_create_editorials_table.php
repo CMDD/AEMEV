@@ -16,7 +16,7 @@ class CreateEditorialsTable extends Migration
         Schema::create('editorials', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('titulo');
-            $table->string('contenido');
+            $table->text('contenido');
             $table->string('autor');
         
 

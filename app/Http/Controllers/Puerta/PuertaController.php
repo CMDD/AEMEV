@@ -16,6 +16,8 @@ class PuertaController extends Controller
 {
     public function store(Request $request){
         $dia = new DiaPuerta();
+        $dia->tipo_dia = $request->tipoDia;
+        $dia->dia = $request->dia;
         $dia->colecta = $request->colecta;
         $dia->nombre_oracional = $request->oracional;
         $dia->fecha = $request->fecha;
@@ -64,17 +66,17 @@ class PuertaController extends Controller
         $salmo = new Salmo();
         $salmo->actualizar($request,$dia->id);
 
-        // //Evangelio
-        // $ev = new Evangelio();
-        // $ev->store($request,$dia->id);
+        //Evangelio
+        $ev = new Evangelio();
+        $ev->actualizar($request,$dia->id);
 
         // //Reflexion
-        // $ref = new Reflexion();
-        // $ref->store($request,$dia->id);
+        $ref = new Reflexion();
+        $ref->actualizar($request,$dia->id);
        
        
 
-        return $des->actualizar($request->descripcion);
+        return $ref->actualizar($request,$dia->id);
     }
 
     public function getDias($id){

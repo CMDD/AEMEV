@@ -17,7 +17,7 @@ class CreateDescripcionsTable extends Migration
             $table->Increments('id');
             $table->string('titulo')->nullable();
             $table->string('color')->nullable();
-            $table->string('contenido')->nullable();
+            $table->text('contenido')->nullable();
 
             $table->integer('dia_puerta_id')->unsigned()->nullable();
             $table->foreign('dia_puerta_id')
