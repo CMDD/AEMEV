@@ -41,7 +41,7 @@ class DiaController extends Controller
                   ->make(true);
     }
 
-    public function getDia($id){
-        return DiaKid::find($id);
+    public function getDia($dia,$oracional){
+        return DiaKid::where('dia',$dia)->where('oracional_id',$oracional)->first();
     }
 }
