@@ -41,7 +41,8 @@ class DiaController extends Controller
                   ->make(true);
     }
 
-    public function getDia($id,$oracional_id){
-        return DiaJoven::where('id',$id)->where('oracional_id',$oracional_id)->firts();
+    public function getDia($id,$oracional){
+        
+        return DiaJoven::where('id',$id)->where('oracional_id',$oracional)->first();
     }
 }
