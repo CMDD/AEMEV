@@ -32,7 +32,7 @@ Route::get('get-dia/{id}','Puerta\PuertaController@getDia');
 //Adultos
 Route::post('crear-dia-adultos','Adulto\DiaController@store');
 Route::get('get-dias-Adultos/{id}','Adulto\DiaController@getDias');
-Route::get('get-dia-adultos/{id}','Adulto\DiaController@getDia');
+Route::get('get-dia-adultos/{id}/{oracional}','Adulto\DiaController@getDia');
 //Jovenes
 Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
 Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 

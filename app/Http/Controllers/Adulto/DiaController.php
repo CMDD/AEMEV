@@ -46,9 +46,9 @@ class DiaController extends Controller
                   ->make(true);
     }
 
-    public function getDia($id){
+    public function getDia($id,$oracional){
 
         $dato = new DiaAdulto();              
-        return  $dato->getInfo($id); 
+        return  $dato->getInfo($id,$oracional); 
     }
 }

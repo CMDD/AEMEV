@@ -12,8 +12,8 @@ class DiaAdulto extends Model
         return $this->hasOne(TemaDia::class,'dia_adulto_id');
     }
 
-    public function getInfo($id){
-        $datos = DiaAdulto::find($id);
+    public function getInfo($id,$oracional){
+        $datos = DiaAdulto::where('dia',1)->where('oracional_id',1)->first();
         $datos->tema;
         return $datos;
     }
