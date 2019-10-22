@@ -36,7 +36,7 @@ Route::get('get-dia-adultos/{id}/{oracional}','Adulto\DiaController@getDia');
 //Jovenes
 Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
 Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 
-Route::get('get-dia-jovenes/{id}/{oracional}','Jovenes\DiaController@getDia');
+Route::get('get-dia-jovenes/{dia}/{oracional}','Jovenes\DiaController@getDia');
 
 // Kids
 Route::get('get-dias-Kids/{id}','Kids\DiaController@getDias');
