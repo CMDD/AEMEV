@@ -17,6 +17,11 @@ class DiaAdulto extends Model
         $datos->tema;
         return $datos;
     }
+    public function getInfoDemo($id){
+        $datos = DiaAdulto::find($id);
+        $datos->tema;
+        return $datos;
+    }
     public function getDias($id){
         $datos = DiaAdulto::where('oracional_id',$id)->get();
         // $datos->tema;
