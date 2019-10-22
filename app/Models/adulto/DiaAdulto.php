@@ -13,7 +13,7 @@ class DiaAdulto extends Model
     }
 
     public function getInfo($id,$oracional){
-        $datos = DiaAdulto::where('dia',1)->where('oracional_id',1)->first();
+        $datos = DiaAdulto::where('dia',$id)->where('oracional_id',$oracional)->first();
         $datos->tema;
         return $datos;
     }
