@@ -93,8 +93,8 @@ class PuertaController extends Controller
                   ->rawColumns(['btn'])
                   ->make(true);
     }
-    public function getDia($id){
+    public function getDia($dia,$oracional){
         $dato = new DiaPuerta();                   
-        return $dato->getInfo($id); ;
+        return $dato->getInfo($dia,$oracional); ;
     }
 }

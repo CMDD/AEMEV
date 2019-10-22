@@ -32,8 +32,8 @@ class DiaPuerta extends Model
         return $this->hasOne(Reflexion::class,'dia_puerta_id');
     }
 
-    public function getInfo($id){
-        $dato = DiaPuerta::find($id);
+    public function getInfo($dia,$oracional){
+        $dato = DiaPuerta::where('dia',$dia)->where('oracional_id',$oracional)->first();
         $dato->oracionalInfo;
         $dato->descripcion;
         $dato->lecturas;
