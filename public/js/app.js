@@ -1864,15 +1864,15 @@ __webpack_require__.r(__webpack_exports__);
     this.getDia();
   },
   methods: {
-    store: function store() {
-      axios.post("api/crear-dia-adultos", this.form).then(function (res) {
+    update: function update() {
+      axios.post("api/update-dia-adultos", this.form).then(function (res) {
         console.log(res.data);
       });
     },
     getDia: function getDia() {
       var _this = this;
 
-      axios.get("/api/get-dia-adultos/" + this.id_dia).then(function (res) {
+      axios.get("/api/get-admin-dia-adultos/" + this.id_dia).then(function (res) {
         _this.form = res.data;
         console.log(res.data);
       });
@@ -50819,7 +50819,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.store($event)
+              return _vm.update($event)
             }
           }
         },
@@ -50843,8 +50843,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tipoDia,
-                              expression: "form.tipoDia"
+                              value: _vm.form.tipo_dia,
+                              expression: "form.tipo_dia"
                             }
                           ],
                           staticClass: "form-control",
@@ -50860,7 +50860,7 @@ var render = function() {
                                 })
                               _vm.$set(
                                 _vm.form,
-                                "tipoDia",
+                                "tipo_dia",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
@@ -50869,9 +50869,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Selecione...")
-                          ]),
+                          _c("option", [_vm._v("Selecione...")]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Lunes" } }, [
                             _vm._v("Lunes")
@@ -50976,19 +50974,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tema,
-                              expression: "form.tema"
+                              value: _vm.form.tema.titulo,
+                              expression: "form.tema.titulo"
                             }
                           ],
                           staticClass: "form-control mb-2",
                           attrs: { type: "text", placeholder: "Título" },
-                          domProps: { value: _vm.form.tema },
+                          domProps: { value: _vm.form.tema.titulo },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "tema", $event.target.value)
+                              _vm.$set(
+                                _vm.form.tema,
+                                "titulo",
+                                $event.target.value
+                              )
                             }
                           }
                         }),
@@ -50998,19 +51000,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tema,
-                              expression: "form.tema"
+                              value: _vm.form.tema.oracion,
+                              expression: "form.tema.oracion"
                             }
                           ],
                           staticClass: "form-control mb-2",
                           attrs: { type: "text", placeholder: "Oración" },
-                          domProps: { value: _vm.form.tema },
+                          domProps: { value: _vm.form.tema.oracion },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "tema", $event.target.value)
+                              _vm.$set(
+                                _vm.form.tema,
+                                "oracion",
+                                $event.target.value
+                              )
                             }
                           }
                         }),
@@ -51020,19 +51026,23 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tema,
-                              expression: "form.tema"
+                              value: _vm.form.tema.contenido,
+                              expression: "form.tema.contenido"
                             }
                           ],
                           staticClass: "form-control",
                           attrs: { rows: "10", placeholder: "Contenido" },
-                          domProps: { value: _vm.form.tema },
+                          domProps: { value: _vm.form.tema.contenido },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.form, "tema", $event.target.value)
+                              _vm.$set(
+                                _vm.form.tema,
+                                "contenido",
+                                $event.target.value
+                              )
                             }
                           }
                         })

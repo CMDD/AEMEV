@@ -24,6 +24,10 @@ Route::get('get-oracional/{id}','OracionalController@detail');
 
 // Rutas Adultos
 Route::post('adulto-crear-dia','Adulto\DiaController@store');
+//Jovenes
+Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
+Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 
+Route::get('get-admin-dia-jovenes/{dia}','Jovenes\DiaController@getDiaAdmin');
 //Rutas Puerta
 Route::post('crear-dia-puerta','Puerta\PuertaController@store');
 Route::post('actualizar-dia-puerta','Puerta\PuertaController@update');
@@ -32,11 +36,9 @@ Route::get('get-dia/{id}/{oracional}','Puerta\PuertaController@getDia');
 //Adultos
 Route::post('crear-dia-adultos','Adulto\DiaController@store');
 Route::get('get-dias-Adultos/{id}','Adulto\DiaController@getDias');
-Route::get('get-dia-adultos/{id}/{oracional}','Adulto\DiaController@getDia');
-//Jovenes
-Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
-Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 
-Route::get('get-dia-jovenes/{dia}/{oracional}','Jovenes\DiaController@getDia');
+Route::get('get-admin-dia-adultos/{id}','Adulto\DiaController@getDiaAdmin');
+Route::post('update-dia-adultos','Adulto\DiaController@update');
+
 
 // Kids
 Route::get('get-dias-Kids/{id}','Kids\DiaController@getDias');
@@ -57,6 +59,8 @@ Route::get('dias-demo-kids/{id}','DiaController@diasKids');
 Route::get('dias-demo-jovenes/{id}','DiaController@diasJovenes');
 Route::get('dias-demo-adultos/{id}','DiaController@diasAdultos');
 Route::get('dias-demo-puerta/{id}','DiaController@diasPuerta');
+//Jovenes
+Route::get('get-dia-jovenes/{dia}/{oracional}','Jovenes\DiaController@getDia');
     //Suscritos
 
 Route::get('dias-kids/{id}','DiaController@diasKidsAll');

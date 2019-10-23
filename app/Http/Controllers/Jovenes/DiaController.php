@@ -45,4 +45,7 @@ class DiaController extends Controller
         
         return DiaJoven::where('dia',$dia)->where('oracional_id',$oracional)->first();
     }
+    public function getDiaAdmin($id){    
+        return DiaJoven::find($id);
+    }
 }

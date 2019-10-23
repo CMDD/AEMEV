@@ -17,7 +17,7 @@
     <!-- Main content -->
     <section class="content container-fluid">
       <!-- Main content -->
-      <form @submit.prevent="store">
+      <form @submit.prevent="update">
         <div class="row">
           <div class="col-md-12">
             <div class="box box-primary">
@@ -38,8 +38,8 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
-                      <option value>Selecione...</option>
+                    <select v-model="form.tipo_dia" class="form-control">
+                      <option>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
                       <option value="Miercoles">Miercoles</option>
@@ -81,18 +81,18 @@
                 <div class="form-group col-md-12" v-if="temaVisible">
                   <input
                     type="text"
-                    v-model="form.tema"
+                    v-model="form.tema.titulo"
                     class="form-control mb-2"
                     placeholder="Título"
                   />
                   <input
                     type="text"
-                    v-model="form.tema"
+                    v-model="form.tema.oracion"
                     class="form-control mb-2"
                     placeholder="Oración"
                   />
                   <textarea
-                    v-model="form.tema"
+                    v-model="form.tema.contenido"
                     class="form-control"
                     rows="10"
                     placeholder="Contenido"
@@ -169,13 +169,13 @@ export default {
     this.getDia();
   },
   methods: {
-    store() {
-      axios.post("api/crear-dia-adultos", this.form).then(res => {
+    update() {
+      axios.post("api/update-dia-adultos", this.form).then(res => {
         console.log(res.data);
       });
     },
     getDia() {
-      axios.get("/api/get-dia-adultos/" + this.id_dia).then(res => {
+      axios.get("/api/get-admin-dia-adultos/" + this.id_dia).then(res => {
         this.form = res.data;
         console.log(res.data);
       });

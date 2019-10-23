@@ -30,6 +30,26 @@ class DiaController extends Controller
         $tema->save();
         return $request;
     }
+    public function update(Request $request){
+
+        $dia = DiaAdulto::find($request->id);
+        $dia->oracion_manana = $request->oracion_manana;
+        $dia->oracion_noche = $request->oracion_noche;
+        $dia->tarea_dia = $request->tarea_dia;
+        $dia->tipo_dia = $request->tipo_dia;
+        $dia->dia = $request->dia;
+        // $dia->oracional_id = $request->oracional_id;
+        // $dia->nombre_oracional = $request->oracional;
+        $dia->save();
+
+        $tema =  TemaDia::find($request->tema['id']);
+        $tema->titulo = $request->tema['titulo'];
+        $tema->contenido = $request->tema['contenido'];
+        $tema->oracion = $request->tema['oracion'];
+        $tema->dia_adulto_id = $dia->id;
+        $tema->save();
+        return $request->tema['id'];
+    }
 
     public function getDias($id){
         $dias =  DiaAdulto::where('oracional_id',$id)->get();
@@ -50,5 +70,9 @@ class DiaController extends Controller
 
         $dato = new DiaAdulto();              
         return  $dato->getInfo($id,$oracional); 
+    }
+    public function getDiaAdmin($id){
+        $dato = new DiaAdulto();              
+        return  $dato->getInfoDemo($id); 
     }
 }
