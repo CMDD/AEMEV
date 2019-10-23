@@ -3951,7 +3951,7 @@ __webpack_require__.r(__webpack_exports__);
     getDia: function getDia() {
       var _this = this;
 
-      axios.get("/api/get-dia/" + this.id_dia).then(function (res) {
+      axios.get("/api/get-admin-dia-puerta/" + this.id_dia).then(function (res) {
         _this.form = res.data;
         console.log(_this.form);
       });
@@ -52487,8 +52487,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tipoDia,
-                              expression: "form.tipoDia"
+                              value: _vm.form.tipo_dia,
+                              expression: "form.tipo_dia"
                             }
                           ],
                           staticClass: "form-control",
@@ -52504,7 +52504,7 @@ var render = function() {
                                 })
                               _vm.$set(
                                 _vm.form,
-                                "tipoDia",
+                                "tipo_dia",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
@@ -54565,8 +54565,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tipoDia,
-                              expression: "form.tipoDia"
+                              value: _vm.form.tipo_dia,
+                              expression: "form.tipo_dia"
                             }
                           ],
                           staticClass: "form-control",
@@ -54582,7 +54582,7 @@ var render = function() {
                                 })
                               _vm.$set(
                                 _vm.form,
-                                "tipoDia",
+                                "tipo_dia",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]

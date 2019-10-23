@@ -48,7 +48,7 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
+                    <select v-model="form.tipo_dia" class="form-control">
                       <option value>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
@@ -256,7 +256,7 @@ export default {
       });
     },
     getDia() {
-      axios.get("/api/get-dia/" + this.id_dia).then(res => {
+      axios.get("/api/get-admin-dia-puerta/" + this.id_dia).then(res => {
         this.form = res.data;
         console.log(this.form);
       });

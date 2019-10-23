@@ -16,7 +16,7 @@ class PuertaController extends Controller
 {
     public function store(Request $request){
         $dia = new DiaPuerta();
-        $dia->tipo_dia = $request->tipoDia;
+        $dia->tipo_dia = $request->tipo_dia;
         $dia->dia = $request->dia;
         $dia->colecta = $request->colecta;
         $dia->nombre_oracional = $request->oracional;
@@ -50,6 +50,8 @@ class PuertaController extends Controller
 
     public function update(Request $request){
         $dia = DiaPuerta::find($request->id);
+        $dia->tipo_dia = $request->tipo_dia;
+        $dia->dia = $request->dia;
         $dia->colecta = $request->colecta;
         $dia->fecha = $request->fecha;
         // $dia->oracional_id  = $request->id_oracional;
@@ -97,4 +99,10 @@ class PuertaController extends Controller
         $dato = new DiaPuerta();                   
         return $dato->getInfo($dia,$oracional); ;
     }
+    public function getDiaAdmin($dia){
+        $dato = new DiaPuerta();                   
+        return $dato->getDiaAdmin($dia); ;
+    }
+
+    
 }
