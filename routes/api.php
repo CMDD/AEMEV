@@ -37,6 +37,7 @@ Route::get('get-dia/{id}/{oracional}','Puerta\PuertaController@getDia');
 Route::post('crear-dia-adultos','Adulto\DiaController@store');
 Route::get('get-dias-Adultos/{id}','Adulto\DiaController@getDias');
 Route::get('get-admin-dia-adultos/{id}','Adulto\DiaController@getDiaAdmin');
+Route::get('get-dia-adultos/{id}/{oracional}','Adulto\DiaController@getDiaAdmin');
 Route::post('update-dia-adultos','Adulto\DiaController@update');
 
 
