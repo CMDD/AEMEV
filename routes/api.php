@@ -28,6 +28,7 @@ Route::post('adulto-crear-dia','Adulto\DiaController@store');
 Route::get('get-dias-Jovenes/{id}','Jovenes\DiaController@getDias');
 Route::post('crear-dia-jovenes','Jovenes\DiaController@store'); 
 Route::get('get-admin-dia-jovenes/{dia}','Jovenes\DiaController@getDiaAdmin');
+Route::post('update-dia-jovenes','Jovenes\DiaController@update');
 //Rutas Puerta
 Route::post('crear-dia-puerta','Puerta\PuertaController@store');
 Route::post('actualizar-dia-puerta','Puerta\PuertaController@update');

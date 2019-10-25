@@ -2896,6 +2896,8 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! toastr */ "./node_modules/toastr/toastr.js");
+/* harmony import */ var toastr__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(toastr__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -3027,6 +3029,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
+  closeButton: true,
+  timeOut: "10000" // "progressBar": true,
+
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3045,17 +3053,17 @@ __webpack_require__.r(__webpack_exports__);
     this.getDia();
   },
   methods: {
-    store: function store() {
-      axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
+    update: function update() {
+      axios.post("api/update-dia-jovenes", this.form).then(function (res) {
         console.log(res.data);
+        toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Correctamente", "Oracional Actualizado");
       });
     },
     getDia: function getDia() {
       var _this = this;
 
-      axios.get("/api/get-dia-jovenes/" + this.id_dia).then(function (res) {
+      axios.get("/api/get-admin-dia-jovenes/" + this.id_dia).then(function (res) {
         _this.form = res.data;
-        console.log(res.data);
       });
     },
     getOracional: function getOracional() {
@@ -53684,7 +53692,7 @@ var render = function() {
           on: {
             submit: function($event) {
               $event.preventDefault()
-              return _vm.store($event)
+              return _vm.update($event)
             }
           }
         },
@@ -53708,8 +53716,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tipoDia,
-                              expression: "form.tipoDia"
+                              value: _vm.form.tipo_dia,
+                              expression: "form.tipo_dia"
                             }
                           ],
                           staticClass: "form-control",
@@ -53725,7 +53733,7 @@ var render = function() {
                                 })
                               _vm.$set(
                                 _vm.form,
-                                "tipoDia",
+                                "tipo_dia",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]

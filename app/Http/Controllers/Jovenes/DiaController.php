@@ -14,13 +14,28 @@ class DiaController extends Controller
         $dia = new DiaJoven();
         $dia->oracion_manana = $request->oracion_manana;
         $dia->reflexion = $request->reflexion;
-        $dia->tipo_dia = $request->tipoDia;
+        $dia->tipo_dia = $request->tipo_dia;
         $dia->dia = $request->dia;
         $dia->ejercicio = $request->ejercicio;
         $dia->oracion_noche = $request->oracion_noche;
         $dia->oracional_id = $request->oracional_id;
         $dia->nombre_oracional = $request->oracional;
         $dia->fecha = $request->fecha;
+
+        $dia->save();
+
+        return $request;
+    }
+    public function update(Request $request){
+
+        $dia = DiaJoven::find($request->id);
+        $dia->oracion_manana = $request->oracion_manana;
+        $dia->reflexion = $request->reflexion;
+        $dia->tipo_dia = $request->tipo_dia;
+        $dia->dia = $request->dia;
+        $dia->ejercicio = $request->ejercicio;
+        $dia->oracion_noche = $request->oracion_noche;
+        // $dia->fecha = $request->fecha;
 
         $dia->save();
 
