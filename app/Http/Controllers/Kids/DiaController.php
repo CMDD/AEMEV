@@ -26,6 +26,20 @@ class DiaController extends Controller
 
         return $request;
     }
+    public function update(Request $request){
+
+        $dia =  DiaKid::find($request->id);
+        $dia->oracion_manana = $request->oracion_manana;
+        $dia->oracion_noche = $request->oracion_noche;
+        $dia->tipo_dia = $request->tipo_dia;
+        $dia->dia = $request->dia;
+        $dia->tema_dia = $request->tema_dia;
+        $dia->ejercicio = $request->ejercicio;
+        
+        $dia->save();
+
+        return $request;
+    }
     public function getDias($id){
         $dias =  DiaKid::where('oracional_id',$id)->get();
   
@@ -43,5 +57,8 @@ class DiaController extends Controller
 
     public function getDia($dia,$oracional){
         return DiaKid::where('dia',$dia)->where('oracional_id',$oracional)->first();
+    }
+    public function getDiaAdmin($id){
+        return DiaKid::find($id);
     }
 }

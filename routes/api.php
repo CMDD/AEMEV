@@ -47,6 +47,8 @@ Route::post('update-dia-adultos','Adulto\DiaController@update');
 Route::get('get-dias-Kids/{id}','Kids\DiaController@getDias');
 Route::post('crear-dia-kids','Kids\DiaController@store'); 
 Route::get('get-dia-kids/{dia}/{oracional}','Kids\DiaController@getDia');
+Route::get('get-admin-dia-kids/{id}','Kids\DiaController@getDiaAdmin');
+Route::post('update-dia-kids','Kids\DiaController@update');
 
 Route::get('oracionales','OracionalController@oracionales');
 Route::get('dias/{id}','DiaController@dias');

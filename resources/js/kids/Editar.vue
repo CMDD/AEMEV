@@ -17,7 +17,7 @@
     <!-- Main content -->
     <section class="content container-fluid">
       <!-- Main content -->
-      <form @submit.prevent="store">
+      <form @submit.prevent="update">
         <div class="row">
           <div class="col-md-12">
             <div class="box box-primary">
@@ -43,7 +43,7 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
+                    <select v-model="form.tipo_dia" class="form-control">
                       <option value>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
@@ -71,7 +71,7 @@
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button class="btn btn-success">Actualizar</button>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -131,6 +131,12 @@
 </template>
 
 <script>
+import toastr from "toastr";
+toastr.options = {
+  closeButton: true,
+  timeOut: "10000"
+  // "progressBar": true,
+};
 export default {
   data() {
     return {
@@ -149,9 +155,10 @@ export default {
     this.getDia();
   },
   methods: {
-    store() {
-      axios.post("api/crear-dia-kids", this.form).then(res => {
+    update() {
+      axios.post("api/update-dia-kids", this.form).then(res => {
         console.log(res.data);
+        toastr.success("Correctamente", "Oracional Actualizado");
       });
     },
     getOracional() {
@@ -161,7 +168,7 @@ export default {
       });
     },
     getDia() {
-      axios.get("/api/get-dia-kids/" + this.id_dia).then(res => {
+      axios.get("/api/get-admin-dia-kids/" + this.id_dia).then(res => {
         this.form = res.data;
         console.log(res.data);
       });
