@@ -219,6 +219,12 @@
 </template>
 
 <script>
+import toastr from "toastr";
+toastr.options = {
+  closeButton: true,
+  timeOut: "10000"
+  // "progressBar": true,
+};
 import Datepicker from "vuejs-datepicker";
 export default {
   components: {

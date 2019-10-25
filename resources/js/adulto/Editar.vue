@@ -136,6 +136,12 @@
 </template>
 
 <script>
+import toastr from "toastr";
+toastr.options = {
+  closeButton: true,
+  timeOut: "10000"
+  // "progressBar": true,
+};
 import Datepicker from "vuejs-datepicker";
 export default {
   components: {
@@ -171,13 +177,12 @@ export default {
   methods: {
     update() {
       axios.post("api/update-dia-adultos", this.form).then(res => {
-        console.log(res.data);
+        toastr.success("Correctamente", "Oracional Actualizado");
       });
     },
     getDia() {
       axios.get("/api/get-admin-dia-adultos/" + this.id_dia).then(res => {
         this.form = res.data;
-        console.log(res.data);
       });
     },
     getOracional() {
