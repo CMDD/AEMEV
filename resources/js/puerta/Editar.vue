@@ -253,6 +253,7 @@ export default {
     storeDia() {
       axios.post("/api/actualizar-dia-puerta", this.form).then(res => {
         console.log(res.data);
+        Vue.swal('Actualizado!!!','','success');
       });
     },
     getDia() {
