@@ -25,8 +25,10 @@ class SuscripcionController extends Controller
 
     }
     public function getSuscripciones($id){
-       
-       
        return Suscripcion::where('user_id',$id)->get();
+    }
+
+    public function getOracionales($nombre){
+        return Oracional::where('nombre',$nombre)->get();
     }
 }

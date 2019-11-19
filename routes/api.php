@@ -80,6 +80,7 @@ Route::get('dias-adultos/{id}','DiaController@diasAdultosAll');
 Route::get('dias-puerta/{id}','DiaController@diasPuertaAll');
 Route::get('editorial/{id}','OracionalController@editorial');
 Route::get('suscripciones/{id}','SuscripcionController@getSuscripciones');
+Route::get('oracionales/{nombre}','SuscripcionController@getOracionales');
 Route::post('suscripcion','SuscripcionController@store');
 
 // Login
