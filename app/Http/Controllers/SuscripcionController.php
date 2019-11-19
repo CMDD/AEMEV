@@ -29,6 +29,7 @@ class SuscripcionController extends Controller
     }
 
     public function getOracionales($nombre){
+        
         return Oracional::where('nombre',$nombre)->get();
     }
 }
