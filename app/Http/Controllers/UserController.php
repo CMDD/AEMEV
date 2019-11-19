@@ -15,8 +15,12 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+
+
       if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
-        return 200;
+
+        $user = User::where('email',$request->email)->get();
+        return response()->json(['status' => 200, 'data' => $user]);
       }else{
         return $request;
       }
