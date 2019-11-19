@@ -34,6 +34,7 @@ class CreateSuscripcionsTable extends Migration
                   ->references('id')
                   ->on('oracionals')
                   ->onDelete('cascade');
+                  
             $table->timestamps();
         });
     }

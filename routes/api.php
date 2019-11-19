@@ -79,6 +79,8 @@ Route::get('dias-jovenes/{id}','DiaController@diasJovenesAll');
 Route::get('dias-adultos/{id}','DiaController@diasAdultosAll');
 Route::get('dias-puerta/{id}','DiaController@diasPuertaAll');
 Route::get('editorial/{id}','OracionalController@editorial');
+Route::get('suscripciones/{id}','SuscripcionController@getSuscripciones');
+Route::post('suscripcion','SuscripcionController@store');
 
 // Login
 Route::post('auth/register','UserController@registro');
