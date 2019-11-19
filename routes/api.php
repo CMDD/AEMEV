@@ -80,4 +80,8 @@ Route::get('dias-adultos/{id}','DiaController@diasAdultosAll');
 Route::get('dias-puerta/{id}','DiaController@diasPuertaAll');
 Route::get('editorial/{id}','OracionalController@editorial');
 
+// Login
+Route::post('auth/register','UserController@registro');
+Route::post('auth/login','UserController@login');
+
 
