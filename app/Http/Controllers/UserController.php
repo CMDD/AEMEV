@@ -33,6 +33,7 @@ class UserController extends Controller
       $user->password = bcrypt($request->password);
       $user->save();
       if (Auth::attempt(['email'=>$request['email'], 'password'=>$request['password']])) {
+        
         return response()->json(['status' => 200, 'data' => $user]);
       }else{
         return 400;

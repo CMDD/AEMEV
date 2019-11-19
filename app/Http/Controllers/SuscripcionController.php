@@ -17,7 +17,7 @@ class SuscripcionController extends Controller
         $suscripcion->portada_oracional = $request->oracional['portada'];
         $suscripcion->mes_oracional = $request->oracional['mes'];
         $suscripcion->ano = $request->oracional['ano'];
-        $suscripcion->oracional_id = 1;
+        $suscripcion->oracional_id = $request->oracional['id'];
         $suscripcion->user_id =  $request->id;
         $suscripcion->save();
         return response()->json(['status'=>200]);
