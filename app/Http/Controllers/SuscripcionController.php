@@ -25,7 +25,7 @@ class SuscripcionController extends Controller
 
     }
     public function getSuscripciones($id){
-       return Suscripcion::where('user_id',$id)->orderBy('id', 'ASC')->get();
+       return Suscripcion::where('user_id',$id)->orderBy('id', 'DESC')->get();
     }
 
     public function getOracionales($nombre){
