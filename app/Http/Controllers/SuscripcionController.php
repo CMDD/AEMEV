@@ -10,7 +10,7 @@ class SuscripcionController extends Controller
 
     public function store(Request $request){
 
-        $result = Suscripcion::where('oracional_nombre',$request->oracional['nombre'])
+        $result = Suscripcion::where('nombre_oracional',$request->oracional['nombre'])
                 ->where('user_id',$request->id)->first();
 
          if (!$result) {
