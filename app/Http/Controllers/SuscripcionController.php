@@ -9,6 +9,11 @@ class SuscripcionController extends Controller
 {
 
     public function store(Request $request){
+
+        $result = Ssuscripcion::where('oracional_nombre',$request->oracional['nombre'])
+                ->where('user_id',$request->id)->firts();
+
+         if (!$result) {
         $suscripcion = new Suscripcion();
         $suscripcion->precio = '';
         $suscripcion->state = true;
@@ -21,10 +26,14 @@ class SuscripcionController extends Controller
         $suscripcion->user_id =  $request->id;
         $suscripcion->save();
         return response()->json(['status'=>200]);
+         }       
+
+         return response()->json(['status'=>100]);
         
 
     }
     public function getSuscripciones($id){
+
        return Suscripcion::where('user_id',$id)->orderBy('id', 'DESC')->get();
     }
 
