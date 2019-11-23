@@ -88,3 +88,8 @@ Route::post('auth/register','UserController@registro');
 Route::post('auth/login','UserController@login');
 
 
+//Administración
+
+Route::get('usuarios','UserController@users');
+
+

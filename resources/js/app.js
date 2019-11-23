@@ -35,6 +35,10 @@ Vue.component("editar-adulto", require("./adulto/Editar.vue").default);
 
 const routes = [
     {
+        path: "/usuarios",
+        component: require("./usuarios/Index.vue").default
+    },
+    {
         path: "/oracionales",
         component: require("./oracional/Index.vue").default
     },

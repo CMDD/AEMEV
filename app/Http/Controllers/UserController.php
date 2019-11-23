@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Auth;
+use Yajra\Datatables\Datatables;
 
 class UserController extends Controller
 {
@@ -40,5 +41,22 @@ class UserController extends Controller
       }
 
         
+    }
+
+    //Administración
+    public function users(){
+      $users =  User::all();
+      return Datatables::of($users)
+      //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+      ->addColumn('btn', function ($users) {
+      return '
+      <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$users->id) . '">
+        <i class="fa fa-eye"></i>
+      </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$users->name.'/'.$users->id) . '">
+      <i class="fa fa-plus"></i>
+    </a> ';
+      })
+      ->rawColumns(['btn'])
+      ->make(true);
     }
 }
