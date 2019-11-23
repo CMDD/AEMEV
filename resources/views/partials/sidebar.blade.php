@@ -66,7 +66,7 @@
             <li>
             
             <router-link
-                to="/subir-oracional">Crear </router-link>
+                to="/store-user">Crear </router-link>
             </li>
             <li>
             

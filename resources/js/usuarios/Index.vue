@@ -30,6 +30,7 @@
               <tr>
                 <th>Nombre</th>
                 <th>Email</th>
+                <th>Acción</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -51,7 +52,7 @@ export default {
         serverSide: true,
         processing: true,
         ajax: "/api/usuarios",
-        columns: [{ data: "name" }, { data: "email" }],
+        columns: [{ data: "name" }, { data: "email" }, { data: "btn" }],
         language: {
           sProcessing: "Procesando...",
           sLengthMenu: "Mostrar _MENU_ registros",
