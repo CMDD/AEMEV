@@ -89,7 +89,7 @@ Route::post('auth/login','UserController@login');
 
 
 //Administración
-
 Route::get('usuarios','UserController@users');
+Route::get('admin-suscripciones','SuscripcionController@suscripciones');
 
 

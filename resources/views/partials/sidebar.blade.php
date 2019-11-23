@@ -79,6 +79,29 @@
            
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-book"></i> <span>Suscripciones</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+          </a>
+          <ul class="treeview-menu">
+            <li>
+            
+            <router-link
+                to="/store-user">Crear </router-link>
+            </li>
+            <li>
+            
+            <router-link
+                to="/suscripciones">Lista </router-link>
+            </li>
+            <li>
+            
+            </li>
+           
+          </ul>
+        </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

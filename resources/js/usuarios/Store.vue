@@ -25,55 +25,48 @@
                   <h3 class="box-title">INFORMACIÓN GENERAL</h3>
                 </div>
                 <div class="box-body">
-                  <!-- <div class="form-group col-md-6">
-                                <label>ESTADO</label>
-                                <select class="form-control" name="estado">
-                                    <option value="">Seleccione...</option>
-                                    <option value="Activo">Activo</option>
-                                    <option value="Desactivo">Desactivo</option>
-                                    
-                                </select>
-                  </div>-->
                   <div class="form-group col-md-6">
-                    <label>ORACIONAL</label>
-                    <select class="form-control" v-model="form.oracional">
-                      <option value>Seleccione...</option>
-                      <option value="Adultos">Adultos</option>
-                      <option value="Jovenes">Jovénes</option>
-                      <option value="Kids">Kids</option>
-                      <option value="Puerta">Puerta</option>
-                    </select>
-                  </div>
-
-                  <div class="form-group col-md-12">
-                    <label for="exampleInputPassword1">Editorial</label>
+                    <label for="exampleInputPassword1">Nombre</label>
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Titulo"
-                      v-model="form.editorial_titulo"
+                      placeholder="Nombre"
+                      v-model="form.name"
                     />
-                    <textarea
-                      class="form-control my-2"
-                      placeholder="Contenido"
-                      v-model="form.editorial_contenido"
-                      rows="10"
-                    ></textarea>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Email"
+                      v-model="form.email"
+                    />
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Contraseña"
+                      v-model="form.password"
+                    />
+                  </div>
+                  <div class="form-group col-md-12">
+                    <button type="submit" class="btn btn-primary">
+                      <span>Crear</span>
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
               <div class="box box-info">
                 <div class="box-header with-border">
                   <h3 class="box-title">Informacion de portada</h3>
                 </div>
 
-                <div class="form-group col-md-12">
-                  <label for="exampleInputPassword1">Imagen de portada</label>
-                  <input type="file" @change="getImage" ref="file" />
-                </div>
 
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary">
@@ -81,7 +74,7 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div>-->
           </div>
         </form>
       </section>

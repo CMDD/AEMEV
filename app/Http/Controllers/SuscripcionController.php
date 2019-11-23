@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Oracional;
 use App\Suscripcion;
+use Yajra\Datatables\Datatables;
 class SuscripcionController extends Controller
 {
 
@@ -40,5 +41,22 @@ class SuscripcionController extends Controller
     public function getOracionales($nombre){
         
         return Oracional::where('nombre',$nombre)->orderBy('id', 'ASC')->get();
+    }
+
+    // Administración
+    public function suscripciones(){
+        $sus = Suscripcion::all();
+        return Datatables::of($sus)
+      //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+      ->addColumn('btn', function ($sus) {
+      return '
+      <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$sus->id) . '">
+        <i class="fa fa-eye"></i>
+      </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$sus->name.'/'.$sus->id) . '">
+      <i class="fa fa-plus"></i>
+    </a> ';
+      })
+      ->rawColumns(['btn'])
+      ->make(true);
     }
 }
