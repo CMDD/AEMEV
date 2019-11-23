@@ -139,7 +139,7 @@ export default {
       });
     },
     getSuscripciones() {
-      axios.get("/api/suscripciones/" + this.form.id).then(res => {
+      axios.get("/api/admin-suscripciones/" + this.form.id).then(res => {
         this.suscripciones = res.data;
         console.log(res.data);
         // Vue.swal("Usuario Creado!!!", "", "success");

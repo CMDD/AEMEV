@@ -4328,7 +4328,7 @@ __webpack_require__.r(__webpack_exports__);
     getSuscripciones: function getSuscripciones() {
       var _this2 = this;
 
-      axios.get("/api/suscripciones/" + this.form.id).then(function (res) {
+      axios.get("/api/admin-suscripciones/" + this.form.id).then(function (res) {
         _this2.suscripciones = res.data;
         console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
       });

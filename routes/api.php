@@ -93,6 +93,8 @@ Route::get('usuarios','UserController@users');
 Route::get('usuario/{id}','UserController@detail');
 Route::post('usuario','UserController@store');
 Route::get('admin-suscripciones','SuscripcionController@suscripciones');
+Route::get('admin-suscripciones/{id}','SuscripcionController@adminSuscripciones');
+
 Route::get('update-state-suscription/{id}','SuscripcionController@updateStateSuscription');
 
 

@@ -60,6 +60,11 @@ class SuscripcionController extends Controller
       ->make(true);
     }
 
+    public function adminSuscripciones($id){
+
+      return Suscripcion::where('user_id',$id)->orderBy('id', 'DESC')->get();
+   }
+
     public function updateStateSuscription($id){
       $sus = Suscripcion::find($id);
       $sus->state = !$sus->state;
