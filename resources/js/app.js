@@ -43,6 +43,10 @@ const routes = [
         component: require("./usuarios/Index.vue").default
     },
     {
+        path: "/usuario/:id",
+        component: require("./usuarios/Detalle.vue").default
+    },
+    {
         path: "/store-user",
         component: require("./usuarios/Store.vue").default
     },

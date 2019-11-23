@@ -50,13 +50,28 @@ class UserController extends Controller
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
       ->addColumn('btn', function ($users) {
       return '
-      <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$users->id) . '">
+      <a class="btn btn-primary btn-sm"   href="' . url('#/usuario/'.$users->id) . '">
         <i class="fa fa-eye"></i>
-      </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$users->name.'/'.$users->id) . '">
-      <i class="fa fa-plus"></i>
+      </a> <a class="btn btn-danger btn-sm"  href="' . url('#/usuario/'.$users->id) . '">
+      <i class="fa fa-trash"></i>
     </a> ';
       })
       ->rawColumns(['btn'])
       ->make(true);
     }
+
+    public function store(Request $request){
+      $user = new User();
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->password = bcrypt($request->password);
+      $user->save();
+      return 200;
+    }
+
+    public function detail($id){
+      return User::find($id);
+    }
+
+       
 }
