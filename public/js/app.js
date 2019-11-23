@@ -4298,6 +4298,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4326,6 +4330,11 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/suscripciones/" + this.form.id).then(function (res) {
         _this2.suscripciones = res.data;
+        console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
+      });
+    },
+    updateStateSucription: function updateStateSucription(id) {
+      axios.get("/api/update-state-suscription/" + id).then(function (res) {
         console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
       });
     },
@@ -64007,34 +64016,39 @@ var render = function() {
                                     : sus.state
                                 },
                                 on: {
-                                  change: function($event) {
-                                    var $$a = sus.state,
-                                      $$el = $event.target,
-                                      $$c = $$el.checked ? true : false
-                                    if (Array.isArray($$a)) {
-                                      var $$v = null,
-                                        $$i = _vm._i($$a, $$v)
-                                      if ($$el.checked) {
-                                        $$i < 0 &&
-                                          _vm.$set(
-                                            sus,
-                                            "state",
-                                            $$a.concat([$$v])
-                                          )
+                                  change: [
+                                    function($event) {
+                                      var $$a = sus.state,
+                                        $$el = $event.target,
+                                        $$c = $$el.checked ? true : false
+                                      if (Array.isArray($$a)) {
+                                        var $$v = null,
+                                          $$i = _vm._i($$a, $$v)
+                                        if ($$el.checked) {
+                                          $$i < 0 &&
+                                            _vm.$set(
+                                              sus,
+                                              "state",
+                                              $$a.concat([$$v])
+                                            )
+                                        } else {
+                                          $$i > -1 &&
+                                            _vm.$set(
+                                              sus,
+                                              "state",
+                                              $$a
+                                                .slice(0, $$i)
+                                                .concat($$a.slice($$i + 1))
+                                            )
+                                        }
                                       } else {
-                                        $$i > -1 &&
-                                          _vm.$set(
-                                            sus,
-                                            "state",
-                                            $$a
-                                              .slice(0, $$i)
-                                              .concat($$a.slice($$i + 1))
-                                          )
+                                        _vm.$set(sus, "state", $$c)
                                       }
-                                    } else {
-                                      _vm.$set(sus, "state", $$c)
+                                    },
+                                    function($event) {
+                                      return _vm.updateStateSucription(sus.id)
                                     }
-                                  }
+                                  ]
                                 }
                               }),
                               _vm._v(

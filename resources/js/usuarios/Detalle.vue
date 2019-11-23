@@ -86,7 +86,11 @@
                       <td>{{sus.nombre_oracional}}</td>
                       <td>{{sus.plan}}</td>
                       <td>
-                        <input type="checkbox" v-model="sus.state" />
+                        <input
+                          type="checkbox"
+                          @change="updateStateSucription(sus.id)"
+                          v-model="sus.state"
+                        />
                         Activo
                       </td>
                     </tr>
@@ -137,6 +141,12 @@ export default {
     getSuscripciones() {
       axios.get("/api/suscripciones/" + this.form.id).then(res => {
         this.suscripciones = res.data;
+        console.log(res.data);
+        // Vue.swal("Usuario Creado!!!", "", "success");
+      });
+    },
+    updateStateSucription(id) {
+      axios.get("/api/update-state-suscription/" + id).then(res => {
         console.log(res.data);
         // Vue.swal("Usuario Creado!!!", "", "success");
       });

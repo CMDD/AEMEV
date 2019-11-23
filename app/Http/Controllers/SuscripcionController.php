@@ -59,4 +59,13 @@ class SuscripcionController extends Controller
       ->rawColumns(['btn'])
       ->make(true);
     }
+
+    public function updateStateSuscription($id){
+      $sus = Suscripcion::find($id);
+      $sus->state = !$sus->state;
+      $sus->save();
+
+      return $sus;
+
+    }
 }
