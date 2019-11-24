@@ -53,7 +53,7 @@ class SuscripcionController extends Controller
       })
       ->addColumn('btn', function ($sus) {
       return '
-      <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$sus->id) . '">
+      <a class="btn btn-primary btn-sm"   href="' . url('#/'.$sus->id) . '">
         <i class="fa fa-eye"></i>
       </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$sus->name.'/'.$sus->id) . '">
       <i class="fa fa-plus"></i>
