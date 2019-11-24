@@ -95,6 +95,7 @@ Route::post('usuario','UserController@store');
 Route::post('update-user','UserController@updateUser');
 Route::get('admin-suscripciones','SuscripcionController@suscripciones');
 Route::get('admin-suscripciones/{id}','SuscripcionController@adminSuscripciones');
+Route::post('admin-store-suscription','SuscripcionController@adminStoreSuscription');
 
 Route::get('update-state-suscription/{id}','SuscripcionController@updateStateSuscription');
 

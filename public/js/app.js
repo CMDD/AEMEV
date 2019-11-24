@@ -4117,6 +4117,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
@@ -4132,6 +4133,8 @@ __webpack_require__.r(__webpack_exports__);
           data: "nombre_oracional"
         }, {
           data: "plan"
+        }, {
+          data: "usuario"
         }, {
           data: "btn"
         }],
@@ -4373,8 +4376,10 @@ __webpack_require__.r(__webpack_exports__);
     this.getSuscripciones();
   },
   methods: {
-    storeOracional: function storeOracional() {
-      console.log(this.suscripcion);
+    storeSuscription: function storeSuscription() {
+      axios.post("api/admin-store-suscription", this.suscripcion).then(function (res) {
+        console.log("desde el server", res.data);
+      });
     },
     updateUsuario: function updateUsuario() {
       var _this = this;
@@ -63866,6 +63871,8 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("th", [_vm._v("Plan")]),
                     _vm._v(" "),
+                    _c("th", [_vm._v("Usuario")]),
+                    _vm._v(" "),
                     _c("th", [_vm._v("Acción")])
                   ])
                 ]),
@@ -64158,7 +64165,7 @@ var render = function() {
                 on: {
                   submit: function($event) {
                     $event.preventDefault()
-                    return _vm.storeOracional($event)
+                    return _vm.storeSuscription($event)
                   }
                 }
               },
@@ -64205,7 +64212,9 @@ var render = function() {
                           }
                         },
                         [
-                          _c("option", [_vm._v("Seleccione...")]),
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Seleccione...")
+                          ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Jovenes" } }, [
                             _vm._v("Jovenes")

@@ -48,6 +48,9 @@ class SuscripcionController extends Controller
         $sus = Suscripcion::all();
         return Datatables::of($sus)
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+      ->addColumn('usuario', function($sus){
+        return $sus->users->email;
+      })
       ->addColumn('btn', function ($sus) {
       return '
       <a class="btn btn-primary btn-sm"   href="' . url('#/detalle-oracional/'.$sus->id) . '">
@@ -72,6 +75,10 @@ class SuscripcionController extends Controller
 
       return $sus;
 
+    }
+
+    public function adminStoreSuscription(Request $request){
+      return $request;
     }
    
 }

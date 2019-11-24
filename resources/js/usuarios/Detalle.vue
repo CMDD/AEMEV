@@ -121,7 +121,7 @@
       aria-hidden="true"
     >
       <div class="modal-dialog" role="document">
-        <form @submit.prevent="storeOracional">
+        <form @submit.prevent="storeSuscription">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title">Crear suscripcion</h5>
@@ -133,7 +133,7 @@
               <div class="form-group col-md-6">
                 <label for="exampleInputPassword1">Nombre oracional</label>
                 <select class="form-control" v-model="suscripcion.oracional">
-                  <option>Seleccione...</option>
+                  <option value>Seleccione...</option>
                   <option value="Jovenes">Jovenes</option>
                   <option value="Adultos">Adultos</option>
                   <option value="Kids">Kids</option>
@@ -187,8 +187,10 @@ export default {
     this.getSuscripciones();
   },
   methods: {
-    storeOracional() {
-      console.log(this.suscripcion);
+    storeSuscription() {
+      axios.post("api/admin-store-suscription", this.suscripcion).then(res => {
+        console.log("desde el server", res.data);
+      });
     },
     updateUsuario() {
       axios.post("api/update-user", this.form).then(res => {

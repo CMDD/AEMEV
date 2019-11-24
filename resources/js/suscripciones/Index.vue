@@ -31,6 +31,7 @@
                 <th>Estado</th>
                 <th>Nombre</th>
                 <th>Plan</th>
+                <th>Usuario</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -57,6 +58,7 @@ export default {
           { data: "state" },
           { data: "nombre_oracional" },
           { data: "plan" },
+          { data: "usuario" },
           { data: "btn" }
         ],
         language: {
