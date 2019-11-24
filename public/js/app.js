@@ -4335,7 +4335,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateStateSucription: function updateStateSucription(id) {
       axios.get("/api/update-state-suscription/" + id).then(function (res) {
-        console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
+        console.log(res.data);
+        Vue.swal("Suscripcion actualizada!!!", "", "success");
       });
     },
     edit: function edit() {

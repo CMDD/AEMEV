@@ -148,7 +148,7 @@ export default {
     updateStateSucription(id) {
       axios.get("/api/update-state-suscription/" + id).then(res => {
         console.log(res.data);
-        // Vue.swal("Usuario Creado!!!", "", "success");
+        Vue.swal("Suscripcion actualizada!!!", "", "success");
       });
     },
     edit() {
