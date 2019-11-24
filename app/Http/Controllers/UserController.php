@@ -73,5 +73,17 @@ class UserController extends Controller
       return User::find($id);
     }
 
+    public function updateUser(Request $request){
+      $user = User::find($request->id);
+      $user->name = $request->name;
+      $user->email = $request->email;
+      if($request->password){
+        $user->password = bcrypt($request->password);
+      }
+      $user->save();
+      return 200;
+
+    }
+
        
 }

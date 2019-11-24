@@ -17,7 +17,7 @@
     <section class="content container-fluid">
       <!-- Main content -->
       <section class="content">
-        <form method="POST" @submit.prevent="store">
+        <form method="POST" @submit.prevent="updateUsuario">
           <div class="row">
             <div class="col-md-6">
               <div class="box box-primary">
@@ -79,7 +79,7 @@
                       <th>Id</th>
                       <th>Oracional</th>
                       <th>Plan</th>
-                      <th>Estadi</th>
+                      <th>Estado</th>
                     </tr>
                     <tr v-for="sus in suscripciones" :key="sus.id">
                       <td>{{sus.id}}</td>
@@ -131,6 +131,11 @@ export default {
     this.getSuscripciones();
   },
   methods: {
+    updateUsuario() {
+      axios.post("api/update-user", this.form).then(res => {
+        console.log(res.data);
+      });
+    },
     getUsuario() {
       axios.get("/api/usuario/" + this.form.id).then(res => {
         this.form = res.data;

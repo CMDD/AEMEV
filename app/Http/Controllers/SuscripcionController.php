@@ -34,7 +34,6 @@ class SuscripcionController extends Controller
 
     }
     public function getSuscripciones($id){
-
        return Suscripcion::where('user_id',$id)->where('state',1)->orderBy('id', 'DESC')->get();
     }
 
@@ -73,4 +72,5 @@ class SuscripcionController extends Controller
       return $sus;
 
     }
+   
 }

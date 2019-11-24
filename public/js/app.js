@@ -4317,6 +4317,11 @@ __webpack_require__.r(__webpack_exports__);
     this.getSuscripciones();
   },
   methods: {
+    updateUsuario: function updateUsuario() {
+      axios.post("api/update-user", this.form).then(function (res) {
+        console.log(res.data);
+      });
+    },
     getUsuario: function getUsuario() {
       var _this = this;
 
@@ -63847,7 +63852,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.store($event)
+                return _vm.updateUsuario($event)
               }
             }
           },
@@ -64121,7 +64126,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", [_vm._v("Plan")]),
       _vm._v(" "),
-      _c("th", [_vm._v("Estadi")])
+      _c("th", [_vm._v("Estado")])
     ])
   }
 ]
