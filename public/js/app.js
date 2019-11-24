@@ -4318,24 +4318,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     updateUsuario: function updateUsuario() {
+      var _this = this;
+
       axios.post("api/update-user", this.form).then(function (res) {
-        console.log(res.data);
+        Vue.swal("Usuario actualizado!!!", "", "success");
+        _this.editar = false;
       });
     },
     getUsuario: function getUsuario() {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/api/usuario/" + this.form.id).then(function (res) {
-        _this.form = res.data;
-        console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
+        _this2.form = res.data;
       });
     },
     getSuscripciones: function getSuscripciones() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/admin-suscripciones/" + this.form.id).then(function (res) {
-        _this2.suscripciones = res.data;
-        console.log(res.data); // Vue.swal("Usuario Creado!!!", "", "success");
+        _this3.suscripciones = res.data; // Vue.swal("Usuario Creado!!!", "", "success");
       });
     },
     updateStateSucription: function updateStateSucription(id) {

@@ -27,11 +27,12 @@ class SuscripcionController extends Controller
             $suscripcion->user_id =  $request->id;
             $suscripcion->save();
             return response()->json(['status'=>200]);
+         }
+         if($result->state){
+          return response()->json(['status'=>101]);
+         }else{
+          return response()->json(['status'=>100]);
          }       
-
-         return response()->json(['status'=>100]);
-        
-
     }
     public function getSuscripciones($id){
        return Suscripcion::where('user_id',$id)->where('state',1)->orderBy('id', 'DESC')->get();

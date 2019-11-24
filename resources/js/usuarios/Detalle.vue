@@ -133,20 +133,18 @@ export default {
   methods: {
     updateUsuario() {
       axios.post("api/update-user", this.form).then(res => {
-        console.log(res.data);
+        Vue.swal("Usuario actualizado!!!", "", "success");
+        this.editar = false;
       });
     },
     getUsuario() {
       axios.get("/api/usuario/" + this.form.id).then(res => {
         this.form = res.data;
-        console.log(res.data);
-        // Vue.swal("Usuario Creado!!!", "", "success");
       });
     },
     getSuscripciones() {
       axios.get("/api/admin-suscripciones/" + this.form.id).then(res => {
         this.suscripciones = res.data;
-        console.log(res.data);
         // Vue.swal("Usuario Creado!!!", "", "success");
       });
     },
