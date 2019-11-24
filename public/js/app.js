@@ -4302,10 +4302,66 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       editar: false,
+      suscripcion: {
+        id: this.$route.params.id
+      },
       form: {
         id: this.$route.params.id
       },
@@ -4317,6 +4373,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getSuscripciones();
   },
   methods: {
+    storeOracional: function storeOracional() {
+      console.log(this.suscripcion);
+    },
     updateUsuario: function updateUsuario() {
       var _this = this;
 
@@ -64074,7 +64133,182 @@ var render = function() {
           ]
         )
       ])
-    ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.storeOracional($event)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-body" }, [
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                        _vm._v("Nombre oracional")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.suscripcion.oracional,
+                              expression: "suscripcion.oracional"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.suscripcion,
+                                "oracional",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", [_vm._v("Seleccione...")]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Jovenes" } }, [
+                            _vm._v("Jovenes")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Adultos" } }, [
+                            _vm._v("Adultos")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Kids" } }, [
+                            _vm._v("Kids")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "Puerta" } }, [
+                            _vm._v("Puerta")
+                          ])
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.suscripcion.id,
+                          expression: "suscripcion.id"
+                        }
+                      ],
+                      attrs: { type: "hidden" },
+                      domProps: { value: _vm.suscripcion.id },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.suscripcion, "id", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                        _vm._v("Plan")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.suscripcion.plan,
+                              expression: "suscripcion.plan"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.suscripcion,
+                                "plan",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _c("option", { attrs: { value: "" } }, [
+                            _vm._v("Seleccione...")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1 año" } }, [
+                            _vm._v("1 año")
+                          ]),
+                          _vm._v(" "),
+                          _c("option", { attrs: { value: "1 mes" } }, [
+                            _vm._v("1 mes")
+                          ])
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(5)
+                ])
+              ]
+            )
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -64113,7 +64347,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
-      _c("h3", { staticClass: "box-title" }, [_vm._v("Suscripciones")])
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Suscripciones")]),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-primary",
+          attrs: { "data-toggle": "modal", "data-target": "#exampleModal" }
+        },
+        [_vm._v("Crear suscripción")]
+      )
     ])
   },
   function() {
@@ -64128,6 +64371,48 @@ var staticRenderFns = [
       _c("th", [_vm._v("Plan")]),
       _vm._v(" "),
       _c("th", [_vm._v("Estado")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h5", { staticClass: "modal-title" }, [_vm._v("Crear suscripcion")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Crear")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Cerrar")]
+      )
     ])
   }
 ]

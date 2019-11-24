@@ -71,6 +71,11 @@
               <div class="box">
                 <div class="box-header with-border">
                   <h3 class="box-title">Suscripciones</h3>
+                  <a
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >Crear suscripción</a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -106,6 +111,54 @@
       </section>
       <!-- /.content -->
     </section>
+
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <form @submit.prevent="storeOracional">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Crear suscripcion</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Nombre oracional</label>
+                <select class="form-control" v-model="suscripcion.oracional">
+                  <option>Seleccione...</option>
+                  <option value="Jovenes">Jovenes</option>
+                  <option value="Adultos">Adultos</option>
+                  <option value="Kids">Kids</option>
+                  <option value="Puerta">Puerta</option>
+                </select>
+              </div>
+              <input type="hidden" v-model="suscripcion.id" />
+              <div class="form-group col-md-6">
+                <label for="exampleInputPassword1">Plan</label>
+                <select class="form-control" v-model="suscripcion.plan">
+                  <option value>Seleccione...</option>
+                  <option value="1 año">1 año</option>
+                  <option value="1 mes">1 mes</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Crear</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -120,6 +173,9 @@ export default {
   data() {
     return {
       editar: false,
+      suscripcion: {
+        id: this.$route.params.id
+      },
       form: {
         id: this.$route.params.id
       },
@@ -131,6 +187,9 @@ export default {
     this.getSuscripciones();
   },
   methods: {
+    storeOracional() {
+      console.log(this.suscripcion);
+    },
     updateUsuario() {
       axios.post("api/update-user", this.form).then(res => {
         Vue.swal("Usuario actualizado!!!", "", "success");
