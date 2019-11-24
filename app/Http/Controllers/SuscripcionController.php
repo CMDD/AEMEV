@@ -28,7 +28,7 @@ class SuscripcionController extends Controller
             $suscripcion->save();
             return response()->json(['status'=>200]);
          }
-         if($result->state){
+         if(!$result->state){
           return response()->json(['status'=>101]);
          }else{
           return response()->json(['status'=>100]);
