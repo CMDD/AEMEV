@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Suscripcion;
+use App\Soporte;
 
 class User extends Authenticatable
 {
@@ -40,6 +41,9 @@ class User extends Authenticatable
 
     public function suscripcion(){
         return $this->hasMany(Suscripcion::class);
+    }
+    public function soporte(){
+        return $this->hasMany(Soporte::class);
     }
     
 }
