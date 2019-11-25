@@ -99,6 +99,7 @@ Route::post('admin-store-suscription','SuscripcionController@adminStoreSuscripti
 Route::get('update-state-suscription/{id}','SuscripcionController@updateStateSuscription');
 //Soporte 
 Route::post('soporte',"SoporteController@store");
+Route::get('get-soporte',"SoporteController@index");
 
 
 

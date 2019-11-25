@@ -51,8 +51,8 @@ export default {
       $("#datatable-suscripciones").DataTable({
         serverSide: true,
         processing: true,
-        ajax: "/api/usuarios",
-        columns: [{ data: "name" }, { data: "email" }, { data: "btn" }],
+        ajax: "/api/get-soporte",
+        columns: [{ data: "name" }, { data: "usuario" }, { data: "btn" }],
         language: {
           sProcessing: "Procesando...",
           sLengthMenu: "Mostrar _MENU_ registros",

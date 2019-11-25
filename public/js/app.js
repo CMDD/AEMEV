@@ -4124,11 +4124,11 @@ __webpack_require__.r(__webpack_exports__);
       $("#datatable-suscripciones").DataTable({
         serverSide: true,
         processing: true,
-        ajax: "/api/usuarios",
+        ajax: "/api/get-soporte",
         columns: [{
           data: "name"
         }, {
-          data: "email"
+          data: "usuario"
         }, {
           data: "btn"
         }],

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Soporte;
+use Yajra\Datatables\Datatables;
 
 class SoporteController extends Controller
 {
@@ -15,5 +16,24 @@ class SoporteController extends Controller
         $soporte->save();
         return response()->json(['status'=>200]);
 
+    }
+
+    public function index(){
+        $soporte = Soporte::all();
+        return Datatables::of($soporte)
+      //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+      ->addColumn('usuario', function($soporte){
+        return $soporte->users;
+      })
+      ->addColumn('btn', function ($soporte) {
+      return '
+      <a class="btn btn-primary btn-sm"   href="' . url('#/'.$soporte->id) . '">
+        <i class="fa fa-eye"></i>
+      </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$soporte->name.'/'.$soporte->id) . '">
+      <i class="fa fa-plus"></i>
+    </a> ';
+      })
+      ->rawColumns(['btn'])
+      ->make(true);
     }
 }
