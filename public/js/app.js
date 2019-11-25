@@ -4116,6 +4116,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
@@ -4129,6 +4130,8 @@ __webpack_require__.r(__webpack_exports__);
           data: "name"
         }, {
           data: "usuario"
+        }, {
+          data: "comentario"
         }, {
           data: "btn"
         }],
@@ -63980,6 +63983,8 @@ var staticRenderFns = [
                     _c("th", [_vm._v("Nombre")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Email")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("Comentario")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Acción")])
                   ])
