@@ -11,29 +11,20 @@ class SuscripcionController extends Controller
 
     public function store(Request $request){
 
-    return response()->json(['status'=>200]);
+    // return response()->json(['status'=>200]);
         // $result = Suscripcion::where('nombre_oracional',$request->oracional['nombre'])
         //         ->where('user_id',$request->id)->first();
 
-        //  if (!$result) {
-        //     $suscripcion = new Suscripcion();
-        //     $suscripcion->precio = '';
-        //     $suscripcion->state = true;
-        //     $suscripcion->plan = '1 año';
-        //     $suscripcion->nombre_oracional = $request->oracional['nombre'];
-        //     $suscripcion->portada_oracional = $request->oracional['portada'];
-        //     $suscripcion->mes_oracional = $request->oracional['mes'];
-        //     $suscripcion->ano = $request->oracional['ano'];
-        //     $suscripcion->oracional_id = $request->oracional['id'];
-        //     $suscripcion->user_id =  $request->id;
-        //     $suscripcion->save();
-        //     return response()->json(['status'=>200]);
-        //  }
-        //  if(!$result->state){
-        //   return response()->json(['status'=>101]);
-        //  }else{
-        //   return response()->json(['status'=>100]);
-        //  }       
+         
+            $suscripcion = new Suscripcion();
+            $suscripcion->precio = '3500';
+            $suscripcion->state = true;
+            $suscripcion->plan = '1 año';
+            $suscripcion->user_id =  $request->id;
+            $suscripcion->save();
+            return response()->json(['status'=>200]);
+         
+               
     }
     public function getSuscripciones($id){
       $result = Suscripcion::where('user_id',$id)->where('state',1)->first();
