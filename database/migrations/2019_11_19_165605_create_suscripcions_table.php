@@ -18,10 +18,15 @@ class CreateSuscripcionsTable extends Migration
             $table->string('precio')->nullable();
             $table->boolean('state')->nullable();
             $table->string('plan')->nullable();
-            $table->string('nombre_oracional')->nullable();
-            $table->string('portada_oracional')->nullable();
-            $table->string('mes_oracional')->nullable();
-            $table->string('ano')->nullable();
+            $table->dateTime('inicio')->nullable();
+            $table->dateTime('final')->nullable();
+
+            // Datos de oracional
+                $table->string('nombre_oracional')->nullable();
+                $table->string('portada_oracional')->nullable();
+                $table->string('mes_oracional')->nullable();
+                $table->string('ano')->nullable();
+            // Fin 
 
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')
