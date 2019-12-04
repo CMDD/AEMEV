@@ -69,7 +69,7 @@ class DiaPuerta extends Model
         return $dato;
     }
     public function getDias($id){
-        $dato = DiaPuerta::where('oracional_id',$id)->get();
+        $dato = DiaPuerta::where('oracional_id',$id)->orderBy('id','ASC')->get();
         return $dato;
     }
 }
