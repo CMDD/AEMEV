@@ -3369,28 +3369,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detalle",
   created: function created() {
     this.getOracional();
+    this.getEditorial();
   },
   data: function data() {
     return {
+      publicar: {
+        id: this.$route.params.id,
+        estado: null
+      },
       id: this.$route.params.id,
       oracional: "",
+      editorial: {},
       url: ""
     };
   },
   methods: {
-    getOracional: function getOracional() {
+    publicarOracional: function publicarOracional() {
+      this.publicar.estado = !this.publicar.estado;
+      axios.post("/oracional-publicar", this.publicar).then(function (res) {
+        if (res.data == 200) {
+          Vue.swal("Publicado", "Oracional publicado correctamente", "success");
+        } else {
+          Vue.swal("Despublicado", "Oracional despublicado correctamente", "success");
+        }
+      });
+    },
+    getEditorial: function getEditorial() {
       var _this = this;
 
-      axios.get("/api/get-oracional/" + this.id).then(function (res) {
-        _this.oracional = res.data;
-        _this.url = "/api/get-dias-" + _this.oracional.nombre + "/" + _this.id;
+      axios.get("/editorial-oracional/" + this.id).then(function (res) {
+        _this.editorial = res.data;
+      });
+    },
+    updateEditorial: function updateEditorial() {
+      axios.post("/update-editorial", this.editorial).then(function (res) {
+        Vue.swal("Actualizado!!!", "Editorial actualizado correctamente", "success");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updateOracional: function updateOracional() {
+      axios.post("/actualizar-oracional", this.oracional).then(function (res) {
+        Vue.swal("Actualizado!!!", "Oracional actualizado correctamente", "success");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
 
-        _this.getDias(_this.url);
+      axios.get("/api/get-oracional/" + this.id).then(function (res) {
+        _this2.oracional = res.data;
+
+        if (res.data.estado == "Activo") {
+          _this2.publicar.estado = true;
+        } else {
+          _this2.publicar.estado = false;
+        }
+
+        _this2.url = "/api/get-dias-" + _this2.oracional.nombre + "/" + _this2.id;
+
+        _this2.getDias(_this2.url);
       });
     },
     getDias: function getDias(url) {
@@ -3681,6 +3759,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3693,6 +3786,8 @@ __webpack_require__.r(__webpack_exports__);
       this.form.portada = this.$refs.file.files[0];
     },
     storeOracional: function storeOracional() {
+      var _this = this;
+
       //Creamos el formData
       var data = new FormData(); //Añadimos la imagen seleccionada
 
@@ -3709,6 +3804,17 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (res) {
         console.log(res.data);
+
+        if (res.data == 200) {
+          Vue.swal("Muy Bien Johnky", "Oracional creado correctamente", "success");
+          _this.form = {};
+        }
+
+        if (res.data == 500) {
+          Vue.swal("Muy Mal Johnky", "Faltan datos", "error");
+        }
+      })["catch"](function (error) {
+        Vue.swal("Error", "Error del servidor", "error");
       });
     }
   }
@@ -9203,6 +9309,25 @@ __webpack_require__.r(__webpack_exports__);
 
 }));
 //# sourceMappingURL=bootstrap.js.map
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.borderDiv {\n  border-left: 1px solid #ccc;\n}\n", ""]);
+
+// exports
 
 
 /***/ }),
@@ -55397,6 +55522,36 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Detalle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Subir.vue?vue&type=style&index=0&lang=css&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/oracional/Subir.vue?vue&type=style&index=0&lang=css& ***!
@@ -62600,105 +62755,308 @@ var render = function() {
     _c("section", { staticClass: "content-header" }, [
       _vm.oracional
         ? _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-4" }, [
+            _c("div", { staticClass: "col-md-2" }, [
               _c("img", {
                 staticClass: "img-responsive",
-                attrs: { src: "/" + _vm.oracional.portada, width: "50%" }
+                attrs: { src: "/" + _vm.oracional.portada, width: "100%" }
+              }),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("input", {
+                staticClass: "btn btn-default",
+                attrs: {
+                  type: "button",
+                  value: "Cambiar Imagen",
+                  width: "100%"
+                }
               })
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4" }, [
-              _c("form", { attrs: { action: "" } }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                    _vm._v("Datos")
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updateOracional($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Nombre")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.oracional.nombre,
+                          expression: "oracional.nombre"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Enero" },
+                      domProps: { value: _vm.oracional.nombre },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.oracional, "nombre", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Mes")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.oracional.mes,
+                          expression: "oracional.mes"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.oracional.mes },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.oracional, "mes", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Año")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.oracional.ano,
+                          expression: "oracional.ano"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.oracional.ano },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.oracional, "ano", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.publicar.estado,
+                          expression: "publicar.estado"
+                        }
+                      ],
+                      attrs: { type: "checkbox" },
+                      domProps: {
+                        checked: Array.isArray(_vm.publicar.estado)
+                          ? _vm._i(_vm.publicar.estado, null) > -1
+                          : _vm.publicar.estado
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.publicarOracional()
+                        },
+                        change: function($event) {
+                          var $$a = _vm.publicar.estado,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(
+                                  _vm.publicar,
+                                  "estado",
+                                  $$a.concat([$$v])
+                                )
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.publicar,
+                                  "estado",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.publicar, "estado", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" Publicar oracional\n          ")
                   ]),
                   _vm._v(" "),
                   _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.oracional.nombre,
-                        expression: "oracional.nombre"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text", placeholder: "Enero" },
-                    domProps: { value: _vm.oracional.nombre },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.oracional, "nombre", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("input", {
-                  staticClass: "btn btn-default",
-                  attrs: { type: "button", value: "Actualizar" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
                     staticClass: "btn btn-default",
-                    attrs: {
-                      href:
-                        "/#/" + _vm.oracional.nombre + "/" + _vm.oracional.id
+                    attrs: { type: "submit", value: "Actualizar oracional" }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-default",
+                      attrs: {
+                        href:
+                          "/#/" + _vm.oracional.nombre + "/" + _vm.oracional.id
+                      }
+                    },
+                    [_vm._v("Agregar dia")]
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4 borderDiv" }, [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.updateEditorial($event)
                     }
-                  },
-                  [_vm._v("Agregar dia")]
-                )
-              ])
+                  }
+                },
+                [
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Titulo editorial")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.editorial.titulo,
+                          expression: "editorial.titulo"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", placeholder: "Enero" },
+                      domProps: { value: _vm.editorial.titulo },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.editorial, "titulo", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Contenido")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.editorial.contenido,
+                          expression: "editorial.contenido"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { name: "", id: "", cols: "40", rows: "6" },
+                      domProps: { value: _vm.editorial.contenido },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.editorial,
+                            "contenido",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "exampleInputPassword1" } }, [
+                      _vm._v("Autor")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.editorial.autor,
+                          expression: "editorial.autor"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text" },
+                      domProps: { value: _vm.editorial.autor },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.editorial, "autor", $event.target.value)
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-default",
+                    attrs: { type: "submit", value: "Actualizar editorial" }
+                  })
+                ]
+              )
             ])
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._m(2)
+      _vm._m(0)
     ]),
     _vm._v(" "),
-    _vm._m(3)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Datos")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Enero" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-3" }, [
-      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-        _vm._v("Datos")
-      ]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Enero" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -62895,6 +63253,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { required: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -62954,7 +63313,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Enero" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Enero",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.mes },
                         on: {
                           input: function($event) {
@@ -62982,7 +63345,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "number", placeholder: "2019" },
+                        attrs: {
+                          type: "number",
+                          placeholder: "2019",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.ano },
                         on: {
                           input: function($event) {
@@ -63010,7 +63377,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Titulo" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Titulo",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.editorial_titulo },
                         on: {
                           input: function($event) {
@@ -63036,7 +63407,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control my-2",
-                        attrs: { placeholder: "Contenido", rows: "10" },
+                        attrs: {
+                          placeholder: "Contenido",
+                          rows: "10",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.editorial_contenido },
                         on: {
                           input: function($event) {
@@ -63062,7 +63437,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Autor" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Autor",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.editorial_autor },
                         on: {
                           input: function($event) {
@@ -63093,7 +63472,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("input", {
                       ref: "file",
-                      attrs: { type: "file" },
+                      attrs: { type: "file", required: "" },
                       on: { change: _vm.getImage }
                     })
                   ]),
@@ -83115,7 +83494,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Detalle_vue_vue_type_template_id_13500ec8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Detalle.vue?vue&type=template&id=13500ec8& */ "./resources/js/oracional/Detalle.vue?vue&type=template&id=13500ec8&");
 /* harmony import */ var _Detalle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Detalle.vue?vue&type=script&lang=js& */ "./resources/js/oracional/Detalle.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Detalle.vue?vue&type=style&index=0&lang=css& */ "./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -83123,7 +83504,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _Detalle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Detalle_vue_vue_type_template_id_13500ec8___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Detalle_vue_vue_type_template_id_13500ec8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -83152,6 +83533,22 @@ component.options.__file = "resources/js/oracional/Detalle.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Detalle.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css& ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Detalle.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/oracional/Detalle.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Detalle_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

@@ -36,7 +36,7 @@
                   </div>-->
                   <div class="form-group col-md-6">
                     <label>ORACIONAL</label>
-                    <select class="form-control" v-model="form.oracional">
+                    <select class="form-control" v-model="form.oracional" required>
                       <option value>Seleccione...</option>
                       <option value="Adultos">Adultos</option>
                       <option value="Jovenes">Jovénes</option>
@@ -47,11 +47,23 @@
 
                   <div class="form-group col-md-3">
                     <label for="exampleInputPassword1">Mes</label>
-                    <input type="text" class="form-control" placeholder="Enero" v-model="form.mes" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Enero"
+                      v-model="form.mes"
+                      required
+                    />
                   </div>
                   <div class="form-group col-md-3">
                     <label for="exampleInputPassword1">Año</label>
-                    <input type="number" class="form-control" placeholder="2019" v-model="form.ano" />
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="2019"
+                      v-model="form.ano"
+                      required
+                    />
                   </div>
                   <div class="form-group col-md-12">
                     <label for="exampleInputPassword1">Editorial</label>
@@ -60,18 +72,21 @@
                       class="form-control"
                       placeholder="Titulo"
                       v-model="form.editorial_titulo"
+                      required
                     />
                     <textarea
                       class="form-control my-2"
                       placeholder="Contenido"
                       v-model="form.editorial_contenido"
                       rows="10"
+                      required
                     ></textarea>
                     <input
                       type="text"
                       class="form-control"
                       placeholder="Autor"
                       v-model="form.editorial_autor"
+                      required
                     />
                   </div>
                 </div>
@@ -86,7 +101,7 @@
 
                 <div class="form-group col-md-12">
                   <label for="exampleInputPassword1">Imagen de portada</label>
-                  <input type="file" @change="getImage" ref="file" />
+                  <input type="file" @change="getImage" ref="file" required />
                 </div>
 
                 <div class="box-footer">
@@ -142,6 +157,21 @@ export default {
         })
         .then(res => {
           console.log(res.data);
+          if (res.data == 200) {
+            Vue.swal(
+              "Muy Bien Johnky",
+              "Oracional creado correctamente",
+              "success"
+            );
+
+            this.form = {};
+          }
+          if (res.data == 500) {
+            Vue.swal("Muy Mal Johnky", "Faltan datos", "error");
+          }
+        })
+        .catch(error => {
+          Vue.swal("Error", "Error del servidor", "error");
         });
     }
   }

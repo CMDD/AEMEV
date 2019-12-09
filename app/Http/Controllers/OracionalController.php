@@ -60,8 +60,8 @@ class OracionalController extends Controller
         return view('oracional.detalle')->with('oracional',$oracional);
 
     }
-    public function actualizarOracional(Request $request,$id){
-        $oracional = Oracional::find($id);
+    public function actualizarOracional(Request $request){
+        $oracional = Oracional::find($request->id);
         $oracional->nombre = $request->nombre;
         $oracional->estado = $request->estado;
         $oracional->mes = $request->mes;
@@ -71,7 +71,7 @@ class OracionalController extends Controller
           $oracional->portada = $request->file('portada')->store("portadas");
         }      
         $oracional->save();
-        return view('oracional.detalle')->with('oracional',$oracional);
+        return 200;
     }
     public function crearDia(Request $request){
         $dia = new  Dia();
@@ -119,6 +119,36 @@ class OracionalController extends Controller
         $dia->save();
         $oracionales = Oracional::all();
         return view('dia.detalle')->with('dia',$dia)->with('oracionales',$oracionales);
+    }
+
+    public function getEditorial($id){
+        return Editorial::find($id);
+    }
+
+    public function updateEditorial(Request $request){
+        $editorial = Editorial::find((int)$request->id);
+        $editorial->titulo = $request->titulo;
+        $editorial->contenido = $request->contenido;
+        $editorial->autor = $request->autor;
+        $editorial->save();
+
+        return $request;
+
+    }
+
+    public function publicar(Request $request){
+        if($request->estado){
+            $oracional = Oracional::find($request->id);
+            $oracional->estado = 'Activo';
+            $oracional->save();
+            return response()->json(['code'=>200]);
+        }else{
+            $oracional = Oracional::find($request->id);
+            $oracional->estado = 'Desactivo';
+            $oracional->save();
+            return response()->json(['code'=>201]);
+        }
+
     }
 
    

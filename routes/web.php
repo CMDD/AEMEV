@@ -23,7 +23,10 @@ Route::get('/test', function () {
 // Oracionale
 Route::get('crear-oracional',function(){return view('oracional.crear_oracional');});
 Route::get('detalle-oracional/{id}','OracionalController@detalleOracional');
-Route::post('actualizar-oracional/{id}','OracionalController@actualizarOracional');
+Route::get('editorial-oracional/{id}','OracionalController@getEditorial');
+Route::post('update-editorial','OracionalController@updateEditorial');
+Route::post('actualizar-oracional','OracionalController@actualizarOracional');
+Route::post('oracional-publicar','OracionalController@publicar');
 Route::get('oracionales',function(){
     $oracionales = Oracional::all();
     return view('oracional.oracionales')->with('oracionales',$oracionales);
