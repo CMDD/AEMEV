@@ -81,7 +81,7 @@
         @stack('scripts')
         <script src="/dist/js/adminlte.min.js"></script>
         <!-- CK Editor -->
-        <script src="/js/app.js"></script>
+        <script src="/js/app.js?v=1"></script>
 
         <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script>
