@@ -94,7 +94,6 @@
           <table id="datatable-suscripciones" class="table table-bordered table-striped">
             <thead>
               <tr>
-                <th>Id</th>
                 <th>Oracional</th>
                 <th>Dia</th>
                 <th>Acción</th>
@@ -133,7 +132,7 @@ export default {
     publicarOracional() {
       this.publicar.estado = !this.publicar.estado;
       axios.post("/oracional-publicar", this.publicar).then(res => {
-        if (res.data == 200) {
+        if (res.data.code === 200) {
           Vue.swal("Publicado", "Oracional publicado correctamente", "success");
         } else {
           Vue.swal(
@@ -197,7 +196,6 @@ export default {
           processing: true,
           ajax: url,
           columns: [
-            { data: "id" },
             { data: "nombre_oracional" },
 
             {

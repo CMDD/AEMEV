@@ -45,7 +45,7 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
+                    <select v-model="form.tipoDia" class="form-control" required>
                       <option value>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
@@ -66,9 +66,10 @@
 
                     <input
                       v-model="form.dia"
-                      type="text"
+                      type="number"
                       class="form-control pull-right"
                       autocomplete="off"
+                      required
                     />
                   </div>
                 </div>
@@ -97,6 +98,7 @@
                     class="form-control"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
 
@@ -106,12 +108,14 @@
                     class="form-control mb-2"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                   <input
                     v-model="form.ejercicio"
                     type="text"
                     class="form-control"
                     placeholder="Ejercicio"
+                    required
                   />
                 </div>
 
@@ -121,6 +125,7 @@
                     class="form-control"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -161,9 +166,29 @@ export default {
   },
   methods: {
     store() {
-      axios.post("api/crear-dia-kids", this.form).then(res => {
-        console.log(res.data);
-      });
+      if (
+        this.form.oracion_manana == null ||
+        this.form.tema_dia == null ||
+        this.form.oracion_noche == null
+      ) {
+        Vue.swal("Error", "Verifica si los datos están completos!", "error");
+      } else {
+        axios
+          .post("api/crear-dia-kids", this.form)
+          .then(res => {
+            Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.form = {
+              oracional_id: this.$route.params.id
+            };
+          })
+          .catch(error => {
+            Vue.swal(
+              "Error",
+              "Error del servidor, Verifica si todos los campos estan llenos",
+              "error"
+            );
+          });
+      }
     },
     getOracional() {
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(res => {

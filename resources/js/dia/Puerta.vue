@@ -46,7 +46,7 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipo_dia" class="form-control">
+                    <select v-model="form.tipo_dia" class="form-control" required>
                       <option value>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
@@ -67,9 +67,10 @@
 
                     <input
                       v-model="form.dia"
-                      type="text"
+                      type="number"
                       class="form-control pull-right"
                       autocomplete="off"
+                      required
                     />
                   </div>
                 </div>
@@ -103,24 +104,32 @@
                     v-model="form.colecta"
                     rows="5"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
 
                 <div class="form-group col-md-12" v-if="lecturasVisible">
                   <div class="col-md-6" v-for="(lectura,idx) in form.lecturas" :key="idx">
                     <div class="box-module">
-                      <input type="text" class="form-control mb-2" v-model="lectura.titulo" />
+                      <input
+                        type="text"
+                        class="form-control mb-2"
+                        v-model="lectura.titulo"
+                        required
+                      />
                       <input
                         type="text"
                         class="form-control mb-2"
                         v-model="lectura.cita"
                         placeholder="Cita"
+                        required
                       />
                       <textarea
                         class="form-control"
                         rows="10"
                         v-model="lectura.contenido"
                         placeholder="Contenido"
+                        required
                       ></textarea>
                     </div>
                   </div>
@@ -179,12 +188,14 @@
                     class="form-control mb-2"
                     v-model="form.evangelio[0].titulo"
                     placeholder="Lectura del evangelio según..."
+                    required
                   />
                   <textarea
                     class="form-control"
                     rows="10"
                     v-model="form.evangelio[0].contenido"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
 
@@ -194,18 +205,21 @@
                     v-model="form.reflexion[0].titulo"
                     class="form-control mb-2"
                     placeholder="Título"
+                    required
                   />
                   <textarea
                     class="form-control mb-2"
                     v-model="form.reflexion[0].contenido"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                   <textarea
                     class="form-control"
                     v-model="form.reflexion[0].oracion"
                     rows="5"
                     placeholder="Oración"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -247,13 +261,13 @@ export default {
       form: {
         evangelio: [
           {
-            titulo: "",
+            titulo: null,
             contenido: ""
           }
         ],
         reflexion: [
           {
-            titulo: "",
+            titulo: null,
             contenido: "",
             oracion: ""
           }
@@ -265,7 +279,13 @@ export default {
             versiculo: []
           }
         ],
-        lecturas: [],
+        lecturas: [
+          {
+            titulo: "Primera Lectura",
+            cita: "",
+            contenido: ""
+          }
+        ],
         fecha: "",
         id_oracional: this.$route.params.id
       }
@@ -276,9 +296,54 @@ export default {
   },
   methods: {
     storeDia() {
-      axios.post("/api/crear-dia-puerta", this.form).then(res => {
-        console.log(res.data);
-      });
+      if (
+        this.form.reflexion[0].titulo == null ||
+        this.form.evangelio[0].titulo == null
+      ) {
+        Vue.swal(
+          "Error",
+          "Verifica hgjhgsi los datos están completos!",
+          "error"
+        );
+      } else {
+        axios
+          .post("/api/crear-dia-puerta", this.form)
+          .then(res => {
+            Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.form = {
+              evangelio: [
+                {
+                  titulo: "",
+                  contenido: ""
+                }
+              ],
+              reflexion: [
+                {
+                  titulo: "",
+                  contenido: "",
+                  oracion: ""
+                }
+              ],
+              salmos: [
+                {
+                  salmo: "",
+                  respuesta: "",
+                  versiculo: []
+                }
+              ],
+              lecturas: [],
+              fecha: "",
+              id_oracional: this.$route.params.id
+            };
+          })
+          .catch(error => {
+            Vue.swal(
+              "Error",
+              "Error del servidor, verifica si los datos están completos!",
+              "error"
+            );
+          });
+      }
     },
     getOracional() {
       axios.get("/api/get-oracional/" + this.form.id_oracional).then(res => {

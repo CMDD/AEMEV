@@ -31,7 +31,11 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        {{-- <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li> --}}
+        <li class="active">
+          <router-link
+                to="/"><i class="fa fa-dashboard"></i> Dashboard </router-link>
+        </li>
         <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li> -->
         <li class="treeview">
           <a href="#"><i class="fa fa-book"></i> <span>Oracionales</span>

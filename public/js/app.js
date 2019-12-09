@@ -1938,6 +1938,30 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dashboard/Index.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/dashboard/Index.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      title: "HOLA"
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dia/Crear.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/dia/Crear.vue?vue&type=script&lang=js& ***!
@@ -1948,6 +1972,13 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuejs_datepicker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuejs-datepicker */ "./node_modules/vuejs-datepicker/dist/vuejs-datepicker.esm.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2092,9 +2123,9 @@ __webpack_require__.r(__webpack_exports__);
       oracional: "",
       form: {
         tema: [{
-          titulo: "",
-          contenido: "",
-          oracion: ""
+          titulo: null,
+          contenido: null,
+          oracion: null
         }],
         oracional_id: this.$route.params.id
       }
@@ -2105,16 +2136,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post("api/crear-dia-adultos", this.form).then(function (res) {
-        console.log(res.data);
-      });
-    },
-    getOracional: function getOracional() {
       var _this = this;
 
+      if (this.form.tema.titulo === null || this.form.tarea_dia == null) {
+        Vue.swal("Error", "Verifica los datos", "error");
+      } else {
+        axios.post("api/crear-dia-adultos", this.form).then(function (res) {
+          Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.form = {
+            tema: [{
+              titulo: "",
+              contenido: "",
+              oracion: ""
+            }]
+          };
+        })["catch"](function (error) {
+          Vue.swal("Error", "Verifica los datos", "error");
+        });
+      }
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
-        _this.oracional = res.data;
-        _this.form.oracional = res.data.nombre;
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
       });
     },
     mostrarTema: function mostrarTema() {
@@ -2257,6 +2303,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2274,16 +2325,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
-        console.log(res.data);
-      });
-    },
-    getOracional: function getOracional() {
       var _this = this;
 
+      if (this.form.oracion_manana == null || this.form.reflexion == null || this.form.oracion_noche == null) {
+        Vue.swal("Error", "Faltan campos por llenar", "error");
+      } else {
+        axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
+          Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.form = {};
+        })["catch"](function (error) {
+          Vue.swal("Error", "Verifica los datos", "error");
+        });
+      }
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
-        _this.oracional = res.data;
-        _this.form.oracional = res.data.nombre;
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
       });
     },
     mostrarManana: function mostrarManana() {
@@ -2451,6 +2511,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2475,16 +2540,27 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     store: function store() {
-      axios.post("api/crear-dia-kids", this.form).then(function (res) {
-        console.log(res.data);
-      });
-    },
-    getOracional: function getOracional() {
       var _this = this;
 
+      if (this.form.oracion_manana == null || this.form.tema_dia == null || this.form.oracion_noche == null) {
+        Vue.swal("Error", "Verifica si los datos están completos!", "error");
+      } else {
+        axios.post("api/crear-dia-kids", this.form).then(function (res) {
+          Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.form = {
+            oracional_id: _this.$route.params.id
+          };
+        })["catch"](function (error) {
+          Vue.swal("Error", "Error del servidor, Verifica si todos los campos estan llenos", "error");
+        });
+      }
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(function (res) {
-        _this.oracional = res.data;
-        _this.form.oracional = res.data.nombre;
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
       });
     },
     mostrarManana: function mostrarManana() {
@@ -2739,6 +2815,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2764,11 +2854,11 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
       oracional: [],
       form: {
         evangelio: [{
-          titulo: "",
+          titulo: null,
           contenido: ""
         }],
         reflexion: [{
-          titulo: "",
+          titulo: null,
           contenido: "",
           oracion: ""
         }],
@@ -2777,7 +2867,11 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
           respuesta: "",
           versiculo: []
         }],
-        lecturas: [],
+        lecturas: [{
+          titulo: "Primera Lectura",
+          cita: "",
+          contenido: ""
+        }],
         fecha: "",
         id_oracional: this.$route.params.id
       }
@@ -2788,16 +2882,43 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   },
   methods: {
     storeDia: function storeDia() {
-      axios.post("/api/crear-dia-puerta", this.form).then(function (res) {
-        console.log(res.data);
-      });
-    },
-    getOracional: function getOracional() {
       var _this = this;
 
+      if (this.form.reflexion[0].titulo == null || this.form.evangelio[0].titulo == null) {
+        Vue.swal("Error", "Verifica hgjhgsi los datos están completos!", "error");
+      } else {
+        axios.post("/api/crear-dia-puerta", this.form).then(function (res) {
+          Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.form = {
+            evangelio: [{
+              titulo: "",
+              contenido: ""
+            }],
+            reflexion: [{
+              titulo: "",
+              contenido: "",
+              oracion: ""
+            }],
+            salmos: [{
+              salmo: "",
+              respuesta: "",
+              versiculo: []
+            }],
+            lecturas: [],
+            fecha: "",
+            id_oracional: _this.$route.params.id
+          };
+        })["catch"](function (error) {
+          Vue.swal("Error", "Error del servidor, verifica si los datos están completos!", "error");
+        });
+      }
+    },
+    getOracional: function getOracional() {
+      var _this2 = this;
+
       axios.get("/api/get-oracional/" + this.form.id_oracional).then(function (res) {
-        _this.oracional = res.data;
-        _this.form.oracional = res.data.nombre;
+        _this2.oracional = res.data;
+        _this2.form.oracional = res.data.nombre;
       });
     },
     addInput: function addInput(index) {
@@ -3201,20 +3322,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -3241,7 +3348,6 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   methods: {
     update: function update() {
       axios.post("api/update-dia-kids", this.form).then(function (res) {
-        console.log(res.data);
         toastr__WEBPACK_IMPORTED_MODULE_0___default.a.success("Correctamente", "Oracional Actualizado");
       });
     },
@@ -3402,7 +3508,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detalle",
@@ -3426,7 +3531,7 @@ __webpack_require__.r(__webpack_exports__);
     publicarOracional: function publicarOracional() {
       this.publicar.estado = !this.publicar.estado;
       axios.post("/oracional-publicar", this.publicar).then(function (res) {
-        if (res.data == 200) {
+        if (res.data.code === 200) {
           Vue.swal("Publicado", "Oracional publicado correctamente", "success");
         } else {
           Vue.swal("Despublicado", "Oracional despublicado correctamente", "success");
@@ -3478,8 +3583,6 @@ __webpack_require__.r(__webpack_exports__);
           processing: true,
           ajax: url,
           columns: [{
-            data: "id"
-          }, {
             data: "nombre_oracional"
           }, {
             data: function data(_data, type, row) {
@@ -4042,18 +4145,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4084,7 +4175,7 @@ __webpack_require__.r(__webpack_exports__);
     storeDia: function storeDia() {
       axios.post("/api/actualizar-dia-puerta", this.form).then(function (res) {
         console.log(res.data);
-        Vue.swal('Actualizado!!!', '', 'success');
+        Vue.swal("Actualizado!!!", "", "success");
       });
     },
     getDia: function getDia() {
@@ -60097,6 +60188,37 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [_c("p", [_vm._v("Dashboard")])])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dia/Crear.vue?vue&type=template&id=b8930af4&":
 /*!*************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/dia/Crear.vue?vue&type=template&id=b8930af4& ***!
@@ -60151,6 +60273,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { required: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -60226,7 +60349,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control pull-right",
-                        attrs: { type: "text", autocomplete: "off" },
+                        attrs: {
+                          type: "number",
+                          autocomplete: "off",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.dia },
                         on: {
                           input: function($event) {
@@ -60284,7 +60411,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { type: "text", placeholder: "Título" },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Título",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.tema[0].titulo },
                           on: {
                             input: function($event) {
@@ -60310,7 +60441,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { type: "text", placeholder: "Oración" },
+                          attrs: {
+                            type: "text",
+                            required: "",
+                            placeholder: "Oración"
+                          },
                           domProps: { value: _vm.form.tema[0].oracion },
                           on: {
                             input: function($event) {
@@ -60336,7 +60471,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            required: "",
+                            rows: "10",
+                            placeholder: "Contenido"
+                          },
                           domProps: { value: _vm.form.tema[0].contenido },
                           on: {
                             input: function($event) {
@@ -60369,7 +60508,8 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               type: "text",
-                              placeholder: "Tarea del día"
+                              placeholder: "Tarea del día",
+                              required: ""
                             },
                             domProps: { value: _vm.form.tarea_dia },
                             on: {
@@ -60400,7 +60540,8 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               rows: "10",
-                              placeholder: "Oración de la mañana"
+                              placeholder: "Oración de la mañana",
+                              required: ""
                             },
                             domProps: { value: _vm.form.oracion_manana },
                             on: {
@@ -60431,7 +60572,8 @@ var render = function() {
                             staticClass: "form-control",
                             attrs: {
                               rows: "10",
-                              placeholder: "Oracion de la noche"
+                              placeholder: "Oracion de la noche",
+                              required: ""
                             },
                             domProps: { value: _vm.form.oracion_noche },
                             on: {
@@ -60566,11 +60708,12 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.form.tipoDia,
-                              expression: "form.tipoDia"
+                              value: _vm.form.tipo_dia,
+                              expression: "form.tipo_dia"
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { required: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -60583,7 +60726,7 @@ var render = function() {
                                 })
                               _vm.$set(
                                 _vm.form,
-                                "tipoDia",
+                                "tipo_dia",
                                 $event.target.multiple
                                   ? $$selectedVal
                                   : $$selectedVal[0]
@@ -60592,7 +60735,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("option", { attrs: { value: "" } }, [
+                          _c("option", { attrs: { value: "Seleccione..." } }, [
                             _vm._v("Selecione...")
                           ]),
                           _vm._v(" "),
@@ -60646,7 +60789,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control pull-right",
-                        attrs: { type: "text", autocomplete: "off" },
+                        attrs: {
+                          type: "text",
+                          autocomplete: "off",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.dia },
                         on: {
                           input: function($event) {
@@ -60718,7 +60865,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.oracion_manana },
                           on: {
                             input: function($event) {
@@ -60748,7 +60899,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.reflexion },
                           on: {
                             input: function($event) {
@@ -60774,7 +60929,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Ejercicio",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.ejercicio },
                           on: {
                             input: function($event) {
@@ -60804,7 +60963,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.oracion_noche },
                           on: {
                             input: function($event) {
@@ -60874,7 +61037,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
+      _c(
+        "button",
+        { staticClass: "btn btn-success", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
     ])
   }
 ]
@@ -60938,6 +61105,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { required: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -61013,7 +61181,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control pull-right",
-                        attrs: { type: "text", autocomplete: "off" },
+                        attrs: {
+                          type: "number",
+                          autocomplete: "off",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.dia },
                         on: {
                           input: function($event) {
@@ -61085,7 +61257,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.oracion_manana },
                           on: {
                             input: function($event) {
@@ -61115,7 +61291,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.tema_dia },
                           on: {
                             input: function($event) {
@@ -61141,7 +61321,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { type: "text", placeholder: "Ejercicio" },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Ejercicio",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.ejercicio },
                           on: {
                             input: function($event) {
@@ -61171,7 +61355,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.oracion_noche },
                           on: {
                             input: function($event) {
@@ -61330,6 +61518,7 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
+                          attrs: { required: "" },
                           on: {
                             change: function($event) {
                               var $$selectedVal = Array.prototype.filter
@@ -61405,7 +61594,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control pull-right",
-                        attrs: { type: "text", autocomplete: "off" },
+                        attrs: {
+                          type: "number",
+                          autocomplete: "off",
+                          required: ""
+                        },
                         domProps: { value: _vm.form.dia },
                         on: {
                           input: function($event) {
@@ -61505,7 +61698,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "5", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "5",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.colecta },
                           on: {
                             input: function($event) {
@@ -61540,7 +61737,7 @@ var render = function() {
                                       }
                                     ],
                                     staticClass: "form-control mb-2",
-                                    attrs: { type: "text" },
+                                    attrs: { type: "text", required: "" },
                                     domProps: { value: lectura.titulo },
                                     on: {
                                       input: function($event) {
@@ -61568,7 +61765,8 @@ var render = function() {
                                     staticClass: "form-control mb-2",
                                     attrs: {
                                       type: "text",
-                                      placeholder: "Cita"
+                                      placeholder: "Cita",
+                                      required: ""
                                     },
                                     domProps: { value: lectura.cita },
                                     on: {
@@ -61597,7 +61795,8 @@ var render = function() {
                                     staticClass: "form-control",
                                     attrs: {
                                       rows: "10",
-                                      placeholder: "Contenido"
+                                      placeholder: "Contenido",
+                                      required: ""
                                     },
                                     domProps: { value: lectura.contenido },
                                     on: {
@@ -61811,7 +62010,8 @@ var render = function() {
                           staticClass: "form-control mb-2",
                           attrs: {
                             type: "text",
-                            placeholder: "Lectura del evangelio según..."
+                            placeholder: "Lectura del evangelio según...",
+                            required: ""
                           },
                           domProps: { value: _vm.form.evangelio[0].titulo },
                           on: {
@@ -61838,7 +62038,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.evangelio[0].contenido },
                           on: {
                             input: function($event) {
@@ -61868,7 +62072,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { type: "text", placeholder: "Título" },
+                          attrs: {
+                            type: "text",
+                            placeholder: "Título",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.reflexion[0].titulo },
                           on: {
                             input: function($event) {
@@ -61894,7 +62102,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control mb-2",
-                          attrs: { rows: "10", placeholder: "Contenido" },
+                          attrs: {
+                            rows: "10",
+                            placeholder: "Contenido",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.reflexion[0].contenido },
                           on: {
                             input: function($event) {
@@ -61920,7 +62132,11 @@ var render = function() {
                             }
                           ],
                           staticClass: "form-control",
-                          attrs: { rows: "5", placeholder: "Oración" },
+                          attrs: {
+                            rows: "5",
+                            placeholder: "Oración",
+                            required: ""
+                          },
                           domProps: { value: _vm.form.reflexion[0].oracion },
                           on: {
                             input: function($event) {
@@ -62401,8 +62617,6 @@ var render = function() {
             _c("div", { staticClass: "col-md-12" }, [
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
-                  _c("div", { staticClass: "form-group col-md-3" }),
-                  _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-3" }, [
                     _c("label", { attrs: { for: "exampleInputPassword1" } }, [
                       _vm._v("Tipo Dia")
@@ -63092,8 +63306,6 @@ var staticRenderFns = [
             [
               _c("thead", [
                 _c("tr", [
-                  _c("th", [_vm._v("Id")]),
-                  _vm._v(" "),
                   _c("th", [_vm._v("Oracional")]),
                   _vm._v(" "),
                   _c("th", [_vm._v("Dia")]),
@@ -63580,36 +63792,34 @@ var render = function() {
               _c("div", { staticClass: "box box-primary" }, [
                 _c("div", { staticClass: "box-body" }, [
                   _c("div", { staticClass: "form-group col-md-3" }, [
-                    _vm.form.descripcion
-                      ? _c("div", [
-                          _c("label", [_vm._v("Descripción del día")]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.descripcion.contenido,
-                                expression: "form.descripcion.contenido"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            domProps: { value: _vm.form.descripcion.contenido },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.form.descripcion,
-                                  "contenido",
-                                  $event.target.value
-                                )
-                              }
+                    _c("div", [
+                      _c("label", [_vm._v("Descripción del día")]),
+                      _vm._v(" "),
+                      _c("textarea", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.form.descripcion,
+                            expression: "form.descripcion"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        domProps: { value: _vm.form.descripcion },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
                             }
-                          })
-                        ])
-                      : _vm._e()
+                            _vm.$set(
+                              _vm.form,
+                              "descripcion",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-3" }, [
@@ -82883,6 +83093,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("detalle-oracional", __webp
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component("editar-adulto", __webpack_require__(/*! ./adulto/Editar.vue */ "./resources/js/adulto/Editar.vue")["default"]);
 var routes = [{
+  path: "/",
+  component: __webpack_require__(/*! ./dashboard/Index.vue */ "./resources/js/dashboard/Index.vue")["default"]
+}, {
   path: "/soporte",
   component: __webpack_require__(/*! ./soporte/Index.vue */ "./resources/js/soporte/Index.vue")["default"]
 }, {
@@ -83064,6 +83277,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/dashboard/Index.vue":
+/*!******************************************!*\
+  !*** ./resources/js/dashboard/Index.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=184831e9& */ "./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9&");
+/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/dashboard/Index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/dashboard/Index.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/dashboard/Index.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/dashboard/Index.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dashboard/Index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=template&id=184831e9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/dashboard/Index.vue?vue&type=template&id=184831e9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_184831e9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

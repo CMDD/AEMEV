@@ -23,22 +23,9 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="form-group col-md-3">
-                  <!-- <label>Fecha</label> -->
-                  <!-- <div class="input-group date mb-2">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <datepicker v-model="form.fecha" class="form-control pull-right"></datepicker>
-                    <input
-                      type="text"
-                      class="form-control pull-right"
-                      id="datepicker"
-                      autocomplete="off"
-                    />
-                  </div>-->
-                  <div v-if="form.descripcion">
+                  <div>
                     <label>Descripción del día</label>
-                    <textarea v-model="form.descripcion.contenido" class="form-control"></textarea>
+                    <textarea v-model="form.descripcion" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group col-md-3">
@@ -75,6 +62,7 @@
                     />
                   </div>
                 </div>
+
                 <div class="form-group col-md-9 text-right">
                   <button class="btn btn-success">Actualizar</button>
                 </div>
@@ -253,7 +241,7 @@ export default {
     storeDia() {
       axios.post("/api/actualizar-dia-puerta", this.form).then(res => {
         console.log(res.data);
-        Vue.swal('Actualizado!!!','','success');
+        Vue.swal("Actualizado!!!", "", "success");
       });
     },
     getDia() {

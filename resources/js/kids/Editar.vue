@@ -23,20 +23,6 @@
             <div class="box box-primary">
               <div class="box-body">
                 <div class="form-group col-md-3">
-                  <!-- <label for="exampleInputPassword1">Fecha</label>
-                  <div class="input-group date">
-                    <div class="input-group-addon">
-                      <i class="fa fa-calendar"></i>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control pull-right"
-                      id="datepicker"
-                      autocomplete="off"
-                    />
-                  </div>-->
-                </div>
-                <div class="form-group col-md-3">
                   <label for="exampleInputPassword1">Tipo Dia</label>
                   <div class="input-group date">
                     <div class="input-group-addon">
@@ -157,7 +143,6 @@ export default {
   methods: {
     update() {
       axios.post("api/update-dia-kids", this.form).then(res => {
-        console.log(res.data);
         toastr.success("Correctamente", "Oracional Actualizado");
       });
     },

@@ -29,8 +29,8 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
-                      <option value>Selecione...</option>
+                    <select v-model="form.tipo_dia" class="form-control" required>
+                      <option value="Seleccione...">Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
                       <option value="Miercoles">Miercoles</option>
@@ -53,11 +53,12 @@
                       type="text"
                       class="form-control pull-right"
                       autocomplete="off"
+                      required
                     />
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button type="submit" class="btn btn-success">Guardar</button>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -80,6 +81,7 @@
                     v-model="form.oracion_manana"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
 
@@ -89,12 +91,14 @@
                     v-model="form.reflexion"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                   <input
                     type="text"
                     v-model="form.ejercicio"
                     class="form-control"
                     placeholder="Ejercicio"
+                    required
                   />
                 </div>
 
@@ -104,6 +108,7 @@
                     class="form-control"
                     rows="10"
                     placeholder="Contenido"
+                    required
                   ></textarea>
                 </div>
               </div>
@@ -134,9 +139,23 @@ export default {
   },
   methods: {
     store() {
-      axios.post("api/crear-dia-jovenes", this.form).then(res => {
-        console.log(res.data);
-      });
+      if (
+        this.form.oracion_manana == null ||
+        this.form.reflexion == null ||
+        this.form.oracion_noche == null
+      ) {
+        Vue.swal("Error", "Faltan campos por llenar", "error");
+      } else {
+        axios
+          .post("api/crear-dia-jovenes", this.form)
+          .then(res => {
+            Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.form = {};
+          })
+          .catch(error => {
+            Vue.swal("Error", "Verifica los datos", "error");
+          });
+      }
     },
     getOracional() {
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(res => {

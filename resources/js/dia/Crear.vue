@@ -29,7 +29,7 @@
                       <i class="fa fa-calendar"></i>
                     </div>
 
-                    <select v-model="form.tipoDia" class="form-control">
+                    <select v-model="form.tipoDia" class="form-control" required>
                       <option value>Selecione...</option>
                       <option value="Lunes">Lunes</option>
                       <option value="Martes">Martes</option>
@@ -50,9 +50,10 @@
 
                     <input
                       v-model="form.dia"
-                      type="text"
+                      type="number"
                       class="form-control pull-right"
                       autocomplete="off"
+                      required
                     />
                   </div>
                 </div>
@@ -76,15 +77,18 @@
                     v-model="form.tema[0].titulo"
                     class="form-control mb-2"
                     placeholder="Título"
+                    required
                   />
                   <input
                     type="text"
                     v-model="form.tema[0].oracion"
+                    required
                     class="form-control mb-2"
                     placeholder="Oración"
                   />
                   <textarea
                     v-model="form.tema[0].contenido"
+                    required
                     class="form-control"
                     rows="10"
                     placeholder="Contenido"
@@ -98,6 +102,7 @@
                       type="text"
                       class="form-control"
                       placeholder="Tarea del día"
+                      required
                     />
                   </div>
                   <div class="col-md-6 pl-0">
@@ -106,6 +111,7 @@
                       class="form-control"
                       rows="10"
                       placeholder="Oración de la mañana"
+                      required
                     ></textarea>
                   </div>
                   <div class="col-md-6 pr-0">
@@ -114,6 +120,7 @@
                       class="form-control"
                       rows="10"
                       placeholder="Oracion de la noche"
+                      required
                     ></textarea>
                   </div>
                 </div>
@@ -146,9 +153,9 @@ export default {
       form: {
         tema: [
           {
-            titulo: "",
-            contenido: "",
-            oracion: ""
+            titulo: null,
+            contenido: null,
+            oracion: null
           }
         ],
         oracional_id: this.$route.params.id
@@ -160,9 +167,27 @@ export default {
   },
   methods: {
     store() {
-      axios.post("api/crear-dia-adultos", this.form).then(res => {
-        console.log(res.data);
-      });
+      if (this.form.tema.titulo === null || this.form.tarea_dia == null) {
+        Vue.swal("Error", "Verifica los datos", "error");
+      } else {
+        axios
+          .post("api/crear-dia-adultos", this.form)
+          .then(res => {
+            Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.form = {
+              tema: [
+                {
+                  titulo: "",
+                  contenido: "",
+                  oracion: ""
+                }
+              ]
+            };
+          })
+          .catch(error => {
+            Vue.swal("Error", "Verifica los datos", "error");
+          });
+      }
     },
     getOracional() {
       axios.get("/api/get-oracional/" + this.form.oracional_id).then(res => {
