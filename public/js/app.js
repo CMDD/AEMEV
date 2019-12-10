@@ -2108,6 +2108,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2118,6 +2119,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      enviando: false,
       temaVisible: false,
       oracionesVisible: false,
       oracional: "",
@@ -2138,11 +2140,15 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
+      this.enviando = true;
+
       if (this.form.tema.titulo === null || this.form.tarea_dia == null) {
         Vue.swal("Error", "Verifica los datos", "error");
+        this.enviando = false;
       } else {
         axios.post("api/crear-dia-adultos", this.form).then(function (res) {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.enviando = false;
           _this.form = {
             tema: [{
               titulo: "",
@@ -2308,9 +2314,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      enviando: false,
       mananaVisible: false,
       reflexionVisible: false,
       nocheVisible: false,
@@ -2327,12 +2335,16 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
+      this.enviando = true;
+
       if (this.form.oracion_manana == null || this.form.reflexion == null || this.form.oracion_noche == null) {
         Vue.swal("Error", "Faltan campos por llenar", "error");
+        this.enviando = false;
       } else {
         axios.post("api/crear-dia-jovenes", this.form).then(function (res) {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
           _this.form = {};
+          _this.enviando = false;
         })["catch"](function (error) {
           Vue.swal("Error", "Verifica los datos", "error");
         });
@@ -2516,6 +2528,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2526,6 +2539,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      enviando: false,
       mananaVisible: false,
       temaVisible: false,
       nocheVisible: false,
@@ -2542,11 +2556,15 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
+      this.enviando = true;
+
       if (this.form.oracion_manana == null || this.form.tema_dia == null || this.form.oracion_noche == null) {
         Vue.swal("Error", "Verifica si los datos están completos!", "error");
+        this.enviando = false;
       } else {
         axios.post("api/crear-dia-kids", this.form).then(function (res) {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.enviando = false;
           _this.form = {
             oracional_id: _this.$route.params.id
           };
@@ -2829,6 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   closeButton: true,
@@ -2845,6 +2864,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
   },
   data: function data() {
     return {
+      enviando: false,
       data_picker: "form-control pull-right",
       colectaVisible: false,
       lecturasVisible: false,
@@ -2884,11 +2904,15 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
     storeDia: function storeDia() {
       var _this = this;
 
+      this.enviando = true;
+
       if (this.form.reflexion[0].titulo == null || this.form.evangelio[0].titulo == null) {
         Vue.swal("Error", "Verifica hgjhgsi los datos están completos!", "error");
+        this.enviando = false;
       } else {
         axios.post("/api/crear-dia-puerta", this.form).then(function (res) {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
+          _this.enviando = false;
           _this.form = {
             evangelio: [{
               titulo: "",
@@ -3508,6 +3532,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Detalle",
@@ -3517,6 +3553,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      actualizandoOracional: false,
+      actualizarEditorial: false,
       publicar: {
         id: this.$route.params.id,
         estado: null
@@ -3546,34 +3584,42 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     updateEditorial: function updateEditorial() {
+      var _this2 = this;
+
+      this.actualizarEditorial = true;
       axios.post("/update-editorial", this.editorial).then(function (res) {
         Vue.swal("Actualizado!!!", "Editorial actualizado correctamente", "success");
+        _this2.actualizarEditorial = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     updateOracional: function updateOracional() {
+      var _this3 = this;
+
+      this.actualizandoOracional = true;
       axios.post("/actualizar-oracional", this.oracional).then(function (res) {
         Vue.swal("Actualizado!!!", "Oracional actualizado correctamente", "success");
+        _this3.actualizandoOracional = false;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getOracional: function getOracional() {
-      var _this2 = this;
+      var _this4 = this;
 
       axios.get("/api/get-oracional/" + this.id).then(function (res) {
-        _this2.oracional = res.data;
+        _this4.oracional = res.data;
 
         if (res.data.estado == "Activo") {
-          _this2.publicar.estado = true;
+          _this4.publicar.estado = true;
         } else {
-          _this2.publicar.estado = false;
+          _this4.publicar.estado = false;
         }
 
-        _this2.url = "/api/get-dias-" + _this2.oracional.nombre + "/" + _this2.id;
+        _this4.url = "/api/get-dias-" + _this4.oracional.nombre + "/" + _this4.id;
 
-        _this2.getDias(_this2.url);
+        _this4.getDias(_this4.url);
       });
     },
     getDias: function getDias(url) {
@@ -3877,9 +3923,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      creando: false,
       form: {}
     };
   },
@@ -3891,7 +3939,8 @@ __webpack_require__.r(__webpack_exports__);
     storeOracional: function storeOracional() {
       var _this = this;
 
-      //Creamos el formData
+      this.creando = true; //Creamos el formData
+
       var data = new FormData(); //Añadimos la imagen seleccionada
 
       data.append("portada", this.form.portada);
@@ -3910,6 +3959,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if (res.data == 200) {
           Vue.swal("Muy Bien Johnky", "Oracional creado correctamente", "success");
+          _this.creando = false;
           _this.form = {};
         }
 
@@ -60367,7 +60417,25 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+                    !_vm.enviando
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("Guardar")]
+                        )
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Enviando...")]
+                        )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -60639,18 +60707,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-calendar" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Guardar")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -60807,7 +60863,25 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+                    !_vm.enviando
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "submit" }
+                          },
+                          [_vm._v("Guardar")]
+                        )
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Enviando...")]
+                        )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -61031,18 +61105,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-calendar" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-success", attrs: { type: "submit" } },
-        [_vm._v("Guardar")]
-      )
-    ])
   }
 ]
 render._withStripped = true
@@ -61199,7 +61261,20 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+                    !_vm.enviando
+                      ? _c("button", { staticClass: "btn btn-default" }, [
+                          _vm._v("Guardar")
+                        ])
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Enviando...")]
+                        )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -61423,14 +61498,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-calendar" })
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
-    ])
   }
 ]
 render._withStripped = true
@@ -61612,7 +61679,20 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(3),
+                  _c("div", { staticClass: "form-group col-md-9 text-right" }, [
+                    !_vm.enviando
+                      ? _c("button", { staticClass: "btn btn-default" }, [
+                          _vm._v("Guardar")
+                        ])
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Enviando...")]
+                        )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group col-md-12" }, [
                     _c(
@@ -62199,14 +62279,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-addon" }, [
       _c("i", { staticClass: "fa fa-calendar" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group col-md-9 text-right" }, [
-      _c("button", { staticClass: "btn btn-success" }, [_vm._v("Guardar")])
     ])
   }
 ]
@@ -63134,10 +63206,19 @@ var render = function() {
                     _vm._v(" Publicar oracional\n          ")
                   ]),
                   _vm._v(" "),
-                  _c("input", {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "submit", value: "Actualizar oracional" }
-                  }),
+                  !_vm.actualizandoOracional
+                    ? _c("input", {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "submit", value: "Actualizar oracional" }
+                      })
+                    : _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-default",
+                          attrs: { href: "#" }
+                        },
+                        [_vm._v("Actualizando...")]
+                      ),
                   _vm._v(" "),
                   _c(
                     "a",
@@ -63254,10 +63335,16 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _c("input", {
-                    staticClass: "btn btn-default",
-                    attrs: { type: "submit", value: "Actualizar editorial" }
-                  })
+                  !_vm.actualizarEditorial
+                    ? _c("input", {
+                        staticClass: "btn btn-default",
+                        attrs: { type: "submit", value: "Actualizar editorial" }
+                      })
+                    : _c(
+                        "a",
+                        { staticClass: "btn btn-default", attrs: { href: "" } },
+                        [_vm._v("Actualizando...")]
+                      )
                 ]
               )
             ])
@@ -63689,7 +63776,25 @@ var render = function() {
                     })
                   ]),
                   _vm._v(" "),
-                  _vm._m(3)
+                  _c("div", { staticClass: "box-footer" }, [
+                    !_vm.creando
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { type: "submit" }
+                          },
+                          [_c("span", [_vm._v("Crear oracional")])]
+                        )
+                      : _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-default",
+                            attrs: { href: "#" }
+                          },
+                          [_vm._v("Enviando...")]
+                        )
+                  ])
                 ])
               ])
             ])
@@ -63736,18 +63841,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "box-header with-border" }, [
       _c("h3", { staticClass: "box-title" }, [_vm._v("Informacion de portada")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "box-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-        [_c("span", [_vm._v("Crear")])]
-      )
     ])
   }
 ]

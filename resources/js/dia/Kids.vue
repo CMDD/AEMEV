@@ -75,7 +75,8 @@
                 </div>
 
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button v-if="!enviando" class="btn btn-default">Guardar</button>
+                  <a href="#" v-else class="btn btn-default">Enviando...</a>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -152,6 +153,7 @@ export default {
   },
   data() {
     return {
+      enviando: false,
       mananaVisible: false,
       temaVisible: false,
       nocheVisible: false,
@@ -166,17 +168,20 @@ export default {
   },
   methods: {
     store() {
+      this.enviando = true;
       if (
         this.form.oracion_manana == null ||
         this.form.tema_dia == null ||
         this.form.oracion_noche == null
       ) {
         Vue.swal("Error", "Verifica si los datos están completos!", "error");
+        this.enviando = false;
       } else {
         axios
           .post("api/crear-dia-kids", this.form)
           .then(res => {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.enviando = false;
             this.form = {
               oracional_id: this.$route.params.id
             };

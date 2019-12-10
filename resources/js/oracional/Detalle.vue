@@ -37,7 +37,13 @@
               <input type="checkbox" v-model="publicar.estado" @click="publicarOracional()" /> Publicar oracional
             </div>
 
-            <input type="submit" class="btn btn-default" value="Actualizar oracional" />
+            <input
+              v-if="!actualizandoOracional"
+              type="submit"
+              class="btn btn-default"
+              value="Actualizar oracional"
+            />
+            <a v-else href="#" class="btn btn-default">Actualizando...</a>
             <a
               class="btn btn-default"
               :href="'/#/' + oracional.nombre + '/' + oracional.id"
@@ -70,7 +76,13 @@
               <label for="exampleInputPassword1">Autor</label>
               <input type="text" class="form-control" v-model="editorial.autor" />
             </div>
-            <input type="submit" class="btn btn-default" value="Actualizar editorial" />
+            <input
+              type="submit"
+              class="btn btn-default"
+              v-if="!actualizarEditorial"
+              value="Actualizar editorial"
+            />
+            <a href class="btn btn-default" v-else>Actualizando...</a>
           </form>
         </div>
       </div>
@@ -118,6 +130,8 @@ export default {
   },
   data() {
     return {
+      actualizandoOracional: false,
+      actualizarEditorial: false,
       publicar: {
         id: this.$route.params.id,
         estado: null
@@ -149,6 +163,7 @@ export default {
       });
     },
     updateEditorial() {
+      this.actualizarEditorial = true;
       axios
         .post("/update-editorial", this.editorial)
         .then(res => {
@@ -157,12 +172,14 @@ export default {
             "Editorial actualizado correctamente",
             "success"
           );
+          this.actualizarEditorial = false;
         })
         .catch(error => {
           console.log(error);
         });
     },
     updateOracional() {
+      this.actualizandoOracional = true;
       axios
         .post("/actualizar-oracional", this.oracional)
         .then(res => {
@@ -171,6 +188,7 @@ export default {
             "Oracional actualizado correctamente",
             "success"
           );
+          this.actualizandoOracional = false;
         })
         .catch(error => {
           console.log(error);

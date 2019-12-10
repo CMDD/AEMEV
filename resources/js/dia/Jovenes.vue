@@ -58,7 +58,8 @@
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button type="submit" class="btn btn-success">Guardar</button>
+                  <button v-if="!enviando" type="submit" class="btn btn-default">Guardar</button>
+                  <a href="#" v-else class="btn btn-default">Enviando...</a>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -125,6 +126,7 @@
 export default {
   data() {
     return {
+      enviando: false,
       mananaVisible: false,
       reflexionVisible: false,
       nocheVisible: false,
@@ -139,18 +141,21 @@ export default {
   },
   methods: {
     store() {
+      this.enviando = true;
       if (
         this.form.oracion_manana == null ||
         this.form.reflexion == null ||
         this.form.oracion_noche == null
       ) {
         Vue.swal("Error", "Faltan campos por llenar", "error");
+        this.enviando = false;
       } else {
         axios
           .post("api/crear-dia-jovenes", this.form)
           .then(res => {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
             this.form = {};
+            this.enviando = false;
           })
           .catch(error => {
             Vue.swal("Error", "Verifica los datos", "error");

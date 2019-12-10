@@ -105,9 +105,10 @@
                 </div>
 
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-primary">
-                    <span>Crear</span>
+                  <button v-if="!creando" type="submit" class="btn btn-default">
+                    <span>Crear oracional</span>
                   </button>
+                  <a href="#" v-else class="btn btn-default">Enviando...</a>
                 </div>
               </div>
             </div>
@@ -129,6 +130,7 @@
 export default {
   data() {
     return {
+      creando: false,
       form: {}
     };
   },
@@ -138,6 +140,7 @@ export default {
       this.form.portada = this.$refs.file.files[0];
     },
     storeOracional() {
+      this.creando = true;
       //Creamos el formData
       var data = new FormData();
       //Añadimos la imagen seleccionada
@@ -163,7 +166,7 @@ export default {
               "Oracional creado correctamente",
               "success"
             );
-
+            this.creando = false;
             this.form = {};
           }
           if (res.data == 500) {

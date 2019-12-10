@@ -59,7 +59,8 @@
                 </div>
 
                 <div class="form-group col-md-9 text-right">
-                  <button type="submit" class="btn btn-success">Guardar</button>
+                  <button v-if="!enviando" type="submit" class="btn btn-default">Guardar</button>
+                  <a href="#" v-else class="btn btn-default">Enviando...</a>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -147,6 +148,7 @@ export default {
   },
   data() {
     return {
+      enviando: false,
       temaVisible: false,
       oracionesVisible: false,
       oracional: "",
@@ -167,13 +169,16 @@ export default {
   },
   methods: {
     store() {
+      this.enviando = true;
       if (this.form.tema.titulo === null || this.form.tarea_dia == null) {
         Vue.swal("Error", "Verifica los datos", "error");
+        this.enviando = false;
       } else {
         axios
           .post("api/crear-dia-adultos", this.form)
           .then(res => {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.enviando = false;
             this.form = {
               tema: [
                 {

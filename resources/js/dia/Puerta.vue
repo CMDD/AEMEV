@@ -75,7 +75,8 @@
                   </div>
                 </div>
                 <div class="form-group col-md-9 text-right">
-                  <button class="btn btn-success">Guardar</button>
+                  <button v-if="!enviando" class="btn btn-default">Guardar</button>
+                  <a v-else class="btn btn-default" href="#">Enviando...</a>
                 </div>
 
                 <div class="form-group col-md-12">
@@ -251,6 +252,7 @@ export default {
   },
   data() {
     return {
+      enviando: false,
       data_picker: "form-control pull-right",
       colectaVisible: false,
       lecturasVisible: false,
@@ -296,6 +298,7 @@ export default {
   },
   methods: {
     storeDia() {
+      this.enviando = true;
       if (
         this.form.reflexion[0].titulo == null ||
         this.form.evangelio[0].titulo == null
@@ -305,11 +308,13 @@ export default {
           "Verifica hgjhgsi los datos están completos!",
           "error"
         );
+        this.enviando = false;
       } else {
         axios
           .post("/api/crear-dia-puerta", this.form)
           .then(res => {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
+            this.enviando = false;
             this.form = {
               evangelio: [
                 {
