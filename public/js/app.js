@@ -2249,7 +2249,8 @@ __webpack_require__.r(__webpack_exports__);
               contenido: "",
               oracion: ""
             }],
-            oracional_id: _this.$route.params.id
+            oracional_id: _this.$route.params.id,
+            oracional: _this.oracional.nombre
           };
         })["catch"](function (error) {
           Vue.swal("Error", "Verifica los datos", "error");
