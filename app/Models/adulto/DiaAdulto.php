@@ -23,7 +23,7 @@ class DiaAdulto extends Model
         return $datos;
     }
     public function getDias($id){
-        $datos = DiaAdulto::where('oracional_id',$id)->orderBy('dia','ASC')->get();
+        $datos = DiaAdulto::where('oracional_id',$id)->orderBy('id','ASC')->get();
         // $datos->tema;
         return $datos;
     }
