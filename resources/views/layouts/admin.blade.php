@@ -22,7 +22,7 @@
             rel="stylesheet"
             href="/bower_components/Ionicons/css/ionicons.min.css"
         />
-        <link rel="stylesheet" href="/css/app.css?v=1.1" />
+        <link rel="stylesheet" href="/css/app.css?v=1.2" />
         <link rel="stylesheet" href="/dist/css/AdminLTE.min.css" />
         
         <link rel="stylesheet" href="/dist/css/skins/skin-purple.min.css" />
