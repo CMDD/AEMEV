@@ -111,13 +111,13 @@
     <!-- /.content -->
 </section>
 @stop @push('scripts')
-<script src="bower_components/ckeditor/ckeditor.js"></script>
-<script>
+{{-- <script src="bower_components/ckeditor/ckeditor.js"></script> --}}
+{{-- <script>
     $(function() {
         CKEDITOR.replace("editorial");
         CKEDITOR.replace("oracion_de_la_mañana");
         CKEDITOR.replace("tema_del_dia");
         CKEDITOR.replace("oracion_de_la_noche");
     });
-</script>
+</script> --}}
 @endPush
