@@ -22,7 +22,7 @@
             rel="stylesheet"
             href="/bower_components/Ionicons/css/ionicons.min.css"
         />
-        <link rel="stylesheet" href="/css/app.css" />
+        <link rel="stylesheet" href="/css/app.css?v=1" />
         <link rel="stylesheet" href="/dist/css/AdminLTE.min.css" />
         
         <link rel="stylesheet" href="/dist/css/skins/skin-purple.min.css" />
@@ -81,7 +81,7 @@
         @stack('scripts')
         <script src="/dist/js/adminlte.min.js"></script>
         <!-- CK Editor -->
-        <script src="/js/app.js?v=1"></script>
+        <script src="/js/app.js?v=1.1"></script>
 
         <script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
         <script>
