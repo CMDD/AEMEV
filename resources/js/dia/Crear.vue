@@ -186,7 +186,8 @@ export default {
                   contenido: "",
                   oracion: ""
                 }
-              ]
+              ],
+              oracional_id: this.$route.params.id
             };
           })
           .catch(error => {
