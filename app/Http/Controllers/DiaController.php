@@ -48,7 +48,7 @@ class DiaController extends Controller
 
      // Methods AppMovils
      public function diasKidsAll($id){
-        $dias = DiaKid::where('oracional_id',$id)->orderBy('id','ASC')->get();
+        $dias = DiaKid::where('oracional_id',$id)->orderBy('dia','ASC')->get();
         return $dias;
     }
     public function diasJovenesAll($id){
