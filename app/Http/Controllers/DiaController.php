@@ -52,7 +52,7 @@ class DiaController extends Controller
         return $dias;
     }
     public function diasJovenesAll($id){
-        $dias = DiaJoven::where('oracional_id',$id)->orderBy('id','ASC')->get();
+        $dias = DiaJoven::where('oracional_id',$id)->orderBy('dia','ASC')->get();
         return $dias;
     }
     public function diasAdultosAll($id){
