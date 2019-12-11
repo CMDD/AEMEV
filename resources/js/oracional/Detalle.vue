@@ -213,6 +213,7 @@ export default {
           serverSide: true,
           processing: true,
           ajax: url,
+          order: [[2, "ASC"]],
           columns: [
             { data: "nombre_oracional" },
 

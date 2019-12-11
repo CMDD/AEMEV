@@ -3724,6 +3724,7 @@ __webpack_require__.r(__webpack_exports__);
           serverSide: true,
           processing: true,
           ajax: url,
+          order: [[2, "ASC"]],
           columns: [{
             data: "nombre_oracional"
           }, {
