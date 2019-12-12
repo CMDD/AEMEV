@@ -82,13 +82,13 @@
                   <table class="table">
                     <tr>
                       <th>Id</th>
-                      <th>Oracional</th>
+
                       <th>Plan</th>
                       <th>Estado</th>
                     </tr>
                     <tr v-for="sus in suscripciones" :key="sus.id">
                       <td>{{sus.id}}</td>
-                      <td>{{sus.nombre_oracional}}</td>
+
                       <td>{{sus.plan}}</td>
                       <td>
                         <input
@@ -130,16 +130,6 @@
               </button>
             </div>
             <div class="modal-body">
-              <div class="form-group col-md-6">
-                <label for="exampleInputPassword1">Nombre oracional</label>
-                <select class="form-control" v-model="suscripcion.oracional">
-                  <option value>Seleccione...</option>
-                  <option value="Jovenes">Jovenes</option>
-                  <option value="Adultos">Adultos</option>
-                  <option value="Kids">Kids</option>
-                  <option value="Puerta">Puerta</option>
-                </select>
-              </div>
               <input type="hidden" v-model="suscripcion.id" />
               <div class="form-group col-md-6">
                 <label for="exampleInputPassword1">Plan</label>
@@ -190,6 +180,7 @@ export default {
     storeSuscription() {
       axios.post("api/admin-store-suscription", this.suscripcion).then(res => {
         console.log("desde el server", res.data);
+        this.getSuscripciones();
       });
     },
     updateUsuario() {

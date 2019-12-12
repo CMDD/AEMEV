@@ -77,7 +77,14 @@ class SuscripcionController extends Controller
     }
 
     public function adminStoreSuscription(Request $request){
-      return $request;
+           $suscripcion = new Suscripcion();
+            $suscripcion->precio = '3500';
+            $suscripcion->state = true;
+            $suscripcion->plan = $request->plan;
+            $suscripcion->user_id =  $request->id;
+            $suscripcion->save();
+            return response()->json(['status'=>200]);
+      
     }
    
 }

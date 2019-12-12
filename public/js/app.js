@@ -4810,16 +4810,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4839,30 +4829,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     storeSuscription: function storeSuscription() {
+      var _this = this;
+
       axios.post("api/admin-store-suscription", this.suscripcion).then(function (res) {
         console.log("desde el server", res.data);
+
+        _this.getSuscripciones();
       });
     },
     updateUsuario: function updateUsuario() {
-      var _this = this;
+      var _this2 = this;
 
       axios.post("api/update-user", this.form).then(function (res) {
         Vue.swal("Usuario actualizado!!!", "", "success");
-        _this.editar = false;
+        _this2.editar = false;
       });
     },
     getUsuario: function getUsuario() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/usuario/" + this.form.id).then(function (res) {
-        _this2.form = res.data;
+        _this3.form = res.data;
       });
     },
     getSuscripciones: function getSuscripciones() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/admin-suscripciones/" + this.form.id).then(function (res) {
-        _this3.suscripciones = res.data; // Vue.swal("Usuario Creado!!!", "", "success");
+        _this4.suscripciones = res.data; // Vue.swal("Usuario Creado!!!", "", "success");
       });
     },
     updateStateSucription: function updateStateSucription(id) {
@@ -65161,8 +65155,6 @@ var render = function() {
                           return _c("tr", { key: sus.id }, [
                             _c("td", [_vm._v(_vm._s(sus.id))]),
                             _vm._v(" "),
-                            _c("td", [_vm._v(_vm._s(sus.nombre_oracional))]),
-                            _vm._v(" "),
                             _c("td", [_vm._v(_vm._s(sus.plan))]),
                             _vm._v(" "),
                             _c("td", [
@@ -65267,67 +65259,6 @@ var render = function() {
                   _vm._m(4),
                   _vm._v(" "),
                   _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: "form-group col-md-6" }, [
-                      _c("label", { attrs: { for: "exampleInputPassword1" } }, [
-                        _vm._v("Nombre oracional")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "select",
-                        {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.suscripcion.oracional,
-                              expression: "suscripcion.oracional"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          on: {
-                            change: function($event) {
-                              var $$selectedVal = Array.prototype.filter
-                                .call($event.target.options, function(o) {
-                                  return o.selected
-                                })
-                                .map(function(o) {
-                                  var val = "_value" in o ? o._value : o.value
-                                  return val
-                                })
-                              _vm.$set(
-                                _vm.suscripcion,
-                                "oracional",
-                                $event.target.multiple
-                                  ? $$selectedVal
-                                  : $$selectedVal[0]
-                              )
-                            }
-                          }
-                        },
-                        [
-                          _c("option", { attrs: { value: "" } }, [
-                            _vm._v("Seleccione...")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Jovenes" } }, [
-                            _vm._v("Jovenes")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Adultos" } }, [
-                            _vm._v("Adultos")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Kids" } }, [
-                            _vm._v("Kids")
-                          ]),
-                          _vm._v(" "),
-                          _c("option", { attrs: { value: "Puerta" } }, [
-                            _vm._v("Puerta")
-                          ])
-                        ]
-                      )
-                    ]),
-                    _vm._v(" "),
                     _c("input", {
                       directives: [
                         {
@@ -65467,8 +65398,6 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("tr", [
       _c("th", [_vm._v("Id")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Oracional")]),
       _vm._v(" "),
       _c("th", [_vm._v("Plan")]),
       _vm._v(" "),
