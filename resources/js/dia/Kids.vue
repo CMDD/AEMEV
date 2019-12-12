@@ -180,11 +180,18 @@ export default {
         axios
           .post("api/crear-dia-kids", this.form)
           .then(res => {
-            Vue.swal("Excelente", "Día agregado correctamente", "success");
+            Vue.swal(
+              "Buena por esa jhonky",
+              "Día agregado correctamente",
+              "success"
+            );
             this.enviando = false;
             this.form = {
               oracional_id: this.$route.params.id
             };
+            this.mananaVisible = false;
+            this.temaVisible = false;
+            this.nocheVisible = false;
           })
           .catch(error => {
             Vue.swal(

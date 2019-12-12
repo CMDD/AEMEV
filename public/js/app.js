@@ -2659,11 +2659,14 @@ __webpack_require__.r(__webpack_exports__);
         this.enviando = false;
       } else {
         axios.post("api/crear-dia-kids", this.form).then(function (res) {
-          Vue.swal("Excelente", "Día agregado correctamente", "success");
+          Vue.swal("Buena por esa jhonky", "Día agregado correctamente", "success");
           _this.enviando = false;
           _this.form = {
             oracional_id: _this.$route.params.id
           };
+          _this.mananaVisible = false;
+          _this.temaVisible = false;
+          _this.nocheVisible = false;
         })["catch"](function (error) {
           Vue.swal("Error", "Error del servidor, Verifica si todos los campos estan llenos", "error");
         });
