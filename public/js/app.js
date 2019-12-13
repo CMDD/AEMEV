@@ -3014,6 +3014,11 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
         axios.post("/api/crear-dia-puerta", this.form).then(function (res) {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
           _this.enviando = false;
+          _this.colectaVisible = false;
+          _this.lecturasVisible = false;
+          _this.salmosVisible = false;
+          _this.evangelioVisible = false;
+          _this.reflexionVisible = false;
           _this.form = {
             oracional: _this.oracional.nombre,
             evangelio: [{

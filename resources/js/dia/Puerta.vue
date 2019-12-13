@@ -315,6 +315,11 @@ export default {
           .then(res => {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
             this.enviando = false;
+            this.colectaVisible = false;
+            this.lecturasVisible = false;
+            this.salmosVisible = false;
+            this.evangelioVisible = false;
+            this.reflexionVisible = false;
             this.form = {
               oracional: this.oracional.nombre,
               evangelio: [
