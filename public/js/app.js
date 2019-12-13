@@ -3015,6 +3015,7 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
           Vue.swal("Excelente", "Día agregado correctamente", "success");
           _this.enviando = false;
           _this.form = {
+            oracional: _this.oracional.nombre,
             evangelio: [{
               titulo: "",
               contenido: ""

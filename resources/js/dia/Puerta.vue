@@ -316,6 +316,7 @@ export default {
             Vue.swal("Excelente", "Día agregado correctamente", "success");
             this.enviando = false;
             this.form = {
+              oracional: this.oracional.nombre,
               evangelio: [
                 {
                   titulo: "",
