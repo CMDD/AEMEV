@@ -2662,7 +2662,8 @@ __webpack_require__.r(__webpack_exports__);
           Vue.swal("Buena por esa jhonky", "Día agregado correctamente", "success");
           _this.enviando = false;
           _this.form = {
-            oracional_id: _this.$route.params.id
+            oracional_id: _this.$route.params.id,
+            oracional: _this.oracional.nombre
           };
           _this.mananaVisible = false;
           _this.temaVisible = false;

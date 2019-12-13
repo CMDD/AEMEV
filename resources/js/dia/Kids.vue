@@ -187,7 +187,8 @@ export default {
             );
             this.enviando = false;
             this.form = {
-              oracional_id: this.$route.params.id
+              oracional_id: this.$route.params.id,
+              oracional: this.oracional.nombre
             };
             this.mananaVisible = false;
             this.temaVisible = false;
