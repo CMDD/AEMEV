@@ -64104,20 +64104,20 @@ var render = function() {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.form.descripcion,
-                            expression: "form.descripcion"
+                            value: _vm.form.descripcion.contenido,
+                            expression: "form.descripcion.contenido"
                           }
                         ],
                         staticClass: "form-control",
-                        domProps: { value: _vm.form.descripcion },
+                        domProps: { value: _vm.form.descripcion.contenido },
                         on: {
                           input: function($event) {
                             if ($event.target.composing) {
                               return
                             }
                             _vm.$set(
-                              _vm.form,
-                              "descripcion",
+                              _vm.form.descripcion,
+                              "contenido",
                               $event.target.value
                             )
                           }

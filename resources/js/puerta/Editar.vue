@@ -25,7 +25,7 @@
                 <div class="form-group col-md-3">
                   <div>
                     <label>Descripción del día</label>
-                    <textarea v-model="form.descripcion" class="form-control"></textarea>
+                    <textarea v-model="form.descripcion.contenido" class="form-control"></textarea>
                   </div>
                 </div>
                 <div class="form-group col-md-3">
