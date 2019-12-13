@@ -337,7 +337,13 @@ export default {
                   versiculo: []
                 }
               ],
-              lecturas: [],
+              lecturas: [
+                {
+                  titulo: "Primera Lectura",
+                  cita: "",
+                  contenido: ""
+                }
+              ],
               fecha: "",
               id_oracional: this.$route.params.id
             };

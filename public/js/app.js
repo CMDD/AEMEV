@@ -3030,7 +3030,11 @@ toastr__WEBPACK_IMPORTED_MODULE_0___default.a.options = {
               respuesta: "",
               versiculo: []
             }],
-            lecturas: [],
+            lecturas: [{
+              titulo: "Primera Lectura",
+              cita: "",
+              contenido: ""
+            }],
             fecha: "",
             id_oracional: _this.$route.params.id
           };
