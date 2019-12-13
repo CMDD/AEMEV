@@ -159,7 +159,8 @@ export default {
       nocheVisible: false,
       oracional: [],
       form: {
-        oracional_id: this.$route.params.id
+        oracional_id: this.$route.params.id,
+        oracional: ""
       }
     };
   },
