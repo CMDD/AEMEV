@@ -41,7 +41,7 @@ class DiaController extends Controller
         return $request;
     }
     public function getDias($id){
-        $dias =  DiaKid::where('oracional_id',$id)->get();
+        $dias =  DiaKid::where('oracional_id',$id)->orderby('dia',"ASC")->get();
   
         return Datatables::of($dias)
                   //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
