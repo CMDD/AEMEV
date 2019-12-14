@@ -11,7 +11,7 @@ class SoporteController extends Controller
     public function store(Request $request){
         $soporte = new Soporte();
         $soporte->comentario = $request['comentario'];
-        $soporte->user_id = $request['id'];
+        $soporte->user_id =(int) $request['id'];
         $soporte->save();
         return response()->json(['status'=>200]);
 
