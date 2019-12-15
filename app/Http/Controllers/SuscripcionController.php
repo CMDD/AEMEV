@@ -15,12 +15,18 @@ class SuscripcionController extends Controller
         // $result = Suscripcion::where('nombre_oracional',$request->oracional['nombre'])
         //         ->where('user_id',$request->id)->first();
 
-         
             $suscripcion = new Suscripcion();
             $suscripcion->precio = '3500';
             $suscripcion->state = true;
-            $suscripcion->plan = '1 año';
+            $suscripcion->plan = '1 mes';
             $suscripcion->user_id =  $request->id;
+
+            $suscripcion->orderId =  $request->orderId;
+            $suscripcion->purchaseState =  $request->purchaseState;
+            $suscripcion->productId =  $request->productId;
+            $suscripcion->purchaseToken =  $request->purchaseToken;
+
+
             $suscripcion->save();
             return response()->json(['status'=>200]);
          
