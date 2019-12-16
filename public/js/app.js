@@ -4602,7 +4602,13 @@ __webpack_require__.r(__webpack_exports__);
         processing: true,
         ajax: "api/admin-suscripciones",
         columns: [{
-          data: "purchaseState"
+          render: function render(data, type, row) {
+            if (row["purchaseState"] == 0) {
+              return "Activa";
+            } else {
+              return "Desactiva";
+            }
+          }
         }, {
           data: "plan"
         }, {

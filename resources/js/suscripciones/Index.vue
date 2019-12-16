@@ -55,7 +55,15 @@ export default {
         processing: true,
         ajax: "api/admin-suscripciones",
         columns: [
-          { data: "purchaseState" },
+          {
+            render: function(data, type, row) {
+              if (row["purchaseState"] == 0) {
+                return "Activa";
+              } else {
+                return "Desactiva";
+              }
+            }
+          },
           { data: "plan" },
           { data: "usuario" },
           { data: "orderId" },
