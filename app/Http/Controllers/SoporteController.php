@@ -21,6 +21,9 @@ class SoporteController extends Controller
         $soporte = Soporte::all();
         return Datatables::of($soporte)
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
+      ->addColumn('name', function($soporte){
+        return $soporte->users->name;
+      })
       ->addColumn('usuario', function($soporte){
         return $soporte->users->email;
       })
