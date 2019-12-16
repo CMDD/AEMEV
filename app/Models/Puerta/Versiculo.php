@@ -9,7 +9,7 @@ class Versiculo extends Model
 {
 
     public function salmo(){
-        return $this->belongsTo(Salmo::class);
+        return $this->belongsTo(Salmo::class,'salmo_id');
     }
      
 }

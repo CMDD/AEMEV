@@ -38,7 +38,7 @@ class DiaPuerta extends Model
         $dato->descripcion;
         $dato->lecturas;
         $dato->salmos;
-        $dato->versiculos;
+        // $dato->versiculos = $dato->salmos->versiculos;
         $dato->evangelio;
         $dato->reflexion;
         return $dato;

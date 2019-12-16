@@ -4604,11 +4604,11 @@ __webpack_require__.r(__webpack_exports__);
         columns: [{
           data: "state"
         }, {
-          data: "nombre_oracional"
-        }, {
           data: "plan"
         }, {
           data: "usuario"
+        }, {
+          data: "orderId"
         }, {
           data: "btn"
         }],
@@ -64966,11 +64966,11 @@ var staticRenderFns = [
                   _c("tr", [
                     _c("th", [_vm._v("Estado")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("Nombre")]),
-                    _vm._v(" "),
                     _c("th", [_vm._v("Plan")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Usuario")]),
+                    _vm._v(" "),
+                    _c("th", [_vm._v("OrderId")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Acción")])
                   ])

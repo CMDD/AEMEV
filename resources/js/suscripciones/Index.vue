@@ -29,9 +29,9 @@
             <thead>
               <tr>
                 <th>Estado</th>
-                <th>Nombre</th>
                 <th>Plan</th>
                 <th>Usuario</th>
+                <th>OrderId</th>
                 <th>Acción</th>
               </tr>
             </thead>
@@ -56,9 +56,9 @@ export default {
         ajax: "api/admin-suscripciones",
         columns: [
           { data: "state" },
-          { data: "nombre_oracional" },
           { data: "plan" },
           { data: "usuario" },
+          { data: "orderId" },
           { data: "btn" }
         ],
         language: {
