@@ -59970,8 +59970,8 @@ var render = function() {
                             _vm._v("Martes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Miercoles" } }, [
-                            _vm._v("Miercoles")
+                          _c("option", { attrs: { value: "Miércoles" } }, [
+                            _vm._v("Miércoles")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Jueves" } }, [
@@ -59982,8 +59982,8 @@ var render = function() {
                             _vm._v("Viernes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Sabado" } }, [
-                            _vm._v("Sabado")
+                          _c("option", { attrs: { value: "Sábado" } }, [
+                            _vm._v("Sábado")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Domingo" } }, [
@@ -62601,8 +62601,8 @@ var render = function() {
                             _vm._v("Martes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Miercoles" } }, [
-                            _vm._v("Miercoles")
+                          _c("option", { attrs: { value: "Miércoles" } }, [
+                            _vm._v("Miércoles")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Jueves" } }, [
@@ -62613,8 +62613,8 @@ var render = function() {
                             _vm._v("Viernes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Sabado" } }, [
-                            _vm._v("Sabado")
+                          _c("option", { attrs: { value: "Sábado" } }, [
+                            _vm._v("Sábado")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Domingo" } }, [
@@ -62968,8 +62968,8 @@ var render = function() {
                             _vm._v("Martes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Miercoles" } }, [
-                            _vm._v("Miercoles")
+                          _c("option", { attrs: { value: "Miércoles" } }, [
+                            _vm._v("Miércoles")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Jueves" } }, [
@@ -62980,8 +62980,8 @@ var render = function() {
                             _vm._v("Viernes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Sabado" } }, [
-                            _vm._v("Sabado")
+                          _c("option", { attrs: { value: "Sábado" } }, [
+                            _vm._v("Sábado")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Domingo" } }, [
@@ -64194,8 +64194,8 @@ var render = function() {
                             _vm._v("Martes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Miercoles" } }, [
-                            _vm._v("Miercoles")
+                          _c("option", { attrs: { value: "Miércoles" } }, [
+                            _vm._v("Miércoles")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Jueves" } }, [
@@ -64206,8 +64206,8 @@ var render = function() {
                             _vm._v("Viernes")
                           ]),
                           _vm._v(" "),
-                          _c("option", { attrs: { value: "Sabado" } }, [
-                            _vm._v("Sabado")
+                          _c("option", { attrs: { value: "Sábado" } }, [
+                            _vm._v("Sábado")
                           ]),
                           _vm._v(" "),
                           _c("option", { attrs: { value: "Domingo" } }, [
