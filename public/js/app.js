@@ -4602,7 +4602,7 @@ __webpack_require__.r(__webpack_exports__);
         processing: true,
         ajax: "api/admin-suscripciones",
         columns: [{
-          data: "state"
+          data: "purchaseState"
         }, {
           data: "plan"
         }, {

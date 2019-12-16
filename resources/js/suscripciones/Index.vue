@@ -55,7 +55,7 @@ export default {
         processing: true,
         ajax: "api/admin-suscripciones",
         columns: [
-          { data: "state" },
+          { data: "purchaseState" },
           { data: "plan" },
           { data: "usuario" },
           { data: "orderId" },
