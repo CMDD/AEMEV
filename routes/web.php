@@ -12,7 +12,11 @@
 */
 use App\Oracional;
 use App\Models\Puerta\DiaPuerta;
+
 Route::get('/', function () {
+    return view('layouts.login');
+});
+Route::get('/inicio', function () {
     return view('oracional.index');
 });
 Route::get('/test', function () {
