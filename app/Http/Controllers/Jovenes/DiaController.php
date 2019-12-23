@@ -31,6 +31,7 @@ class DiaController extends Controller
 
         $dia = DiaJoven::find($request->id);
         $dia->oracion_manana = $request->oracion_manana;
+        $dia->title_reflexion = $request->title_reflexion;
         $dia->reflexion = $request->reflexion;
         $dia->tipo_dia = $request->tipo_dia;
         $dia->dia = $request->dia;

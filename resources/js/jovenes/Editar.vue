@@ -97,6 +97,14 @@
                 </div>
 
                 <div class="form-group col-md-12" v-if="reflexionVisible">
+                  <input
+                    type="text"
+                    v-model="form.title_reflexion"
+                    class="form-control"
+                    placeholder="Titulo"
+                    required
+                  />
+                  <br />
                   <textarea
                     class="form-control mb-2"
                     v-model="form.reflexion"
