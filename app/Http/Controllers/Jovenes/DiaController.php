@@ -13,6 +13,7 @@ class DiaController extends Controller
 
         $dia = new DiaJoven();
         $dia->oracion_manana = $request->oracion_manana;
+        $dia->title_reflexion = $request->title_reflexion;
         $dia->reflexion = $request->reflexion;
         $dia->tipo_dia = $request->tipo_dia;
         $dia->dia = $request->dia;

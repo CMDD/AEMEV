@@ -2411,6 +2411,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -61189,6 +61197,38 @@ var render = function() {
                   _vm._v(" "),
                   _vm.reflexionVisible
                     ? _c("div", { staticClass: "form-group col-md-12" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.title_reflexion,
+                              expression: "form.title_reflexion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Titulo",
+                            required: ""
+                          },
+                          domProps: { value: _vm.form.title_reflexion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.form,
+                                "title_reflexion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("br"),
+                        _vm._v(" "),
                         _c("textarea", {
                           directives: [
                             {
