@@ -35,7 +35,7 @@ class SuscripcionController extends Controller
     public function getSuscripciones($id){
       $result = Suscripcion::where('user_id',$id)->where('state',1)->first();
       if($result){
-        return Oracional::where('estado','Activo')->orderBy('id','Desc')->get();
+        return Oracional::where('estado','Activo')->orderBy('id','Desc')->orderBy('nombre')->get();
       }else{
         return response()->json(['status'=>100]);
       }
