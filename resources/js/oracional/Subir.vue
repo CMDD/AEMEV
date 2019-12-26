@@ -153,7 +153,7 @@ export default {
       data.append("editorial_autor", this.form.editorial_autor);
 
       axios
-        .post("/api/crear-oracional", data, {
+        .post("api/crear-oracional", data, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
