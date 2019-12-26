@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Oracional;
 use App\Dia;
 use App\Models\Editorial;
+use App\Models\Puerta\Salmo;
 use Yajra\Datatables\Datatables;
 use Response;
 
@@ -149,6 +150,12 @@ class OracionalController extends Controller
             return response()->json(['code'=>201]);
         }
 
+    }
+
+    public function salmos(){
+        $salmos  = Salmo::find(25);
+        $salmos->versiculos;
+        return $salmos;
     }
 
    

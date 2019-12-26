@@ -139,11 +139,11 @@
                         placeholder="Al salmo respondemos:"
                       />
                       <ul class="versiculos">
-                        <li v-for="(input,index) in salmo.versiculo" :key="index">
+                        <li v-for="(input,index) in form.salmos[idx].versiculos" :key="index">
                           <input
                             type="text"
                             class="form-control"
-                            v-model="input.dato"
+                            v-model="input.contenido"
                             placeholder="Versículo"
                           />
                           <span @click="deleteInput(index,idx)">

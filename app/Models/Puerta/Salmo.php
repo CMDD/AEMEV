@@ -9,7 +9,7 @@ use App\Models\Puerta\Versiculo;
 class Salmo extends Model
 {
     public function versiculos(){
-        return $this->hasMany(Versiculo::class,'salmo_id');
+        return $this->hasMany(Versiculo::class);
     }
 
     public function store($request,$id){

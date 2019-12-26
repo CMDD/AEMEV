@@ -64617,60 +64617,62 @@ var render = function() {
                                   _c(
                                     "ul",
                                     { staticClass: "versiculos" },
-                                    _vm._l(salmo.versiculo, function(
-                                      input,
-                                      index
-                                    ) {
-                                      return _c("li", { key: index }, [
-                                        _c("input", {
-                                          directives: [
-                                            {
-                                              name: "model",
-                                              rawName: "v-model",
-                                              value: input.dato,
-                                              expression: "input.dato"
-                                            }
-                                          ],
-                                          staticClass: "form-control",
-                                          attrs: {
-                                            type: "text",
-                                            placeholder: "Versículo"
-                                          },
-                                          domProps: { value: input.dato },
-                                          on: {
-                                            input: function($event) {
-                                              if ($event.target.composing) {
-                                                return
+                                    _vm._l(
+                                      _vm.form.salmos[idx].versiculos,
+                                      function(input, index) {
+                                        return _c("li", { key: index }, [
+                                          _c("input", {
+                                            directives: [
+                                              {
+                                                name: "model",
+                                                rawName: "v-model",
+                                                value: input.contenido,
+                                                expression: "input.contenido"
                                               }
-                                              _vm.$set(
-                                                input,
-                                                "dato",
-                                                $event.target.value
-                                              )
-                                            }
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c(
-                                          "span",
-                                          {
+                                            ],
+                                            staticClass: "form-control",
+                                            attrs: {
+                                              type: "text",
+                                              placeholder: "Versículo"
+                                            },
+                                            domProps: {
+                                              value: input.contenido
+                                            },
                                             on: {
-                                              click: function($event) {
-                                                return _vm.deleteInput(
-                                                  index,
-                                                  idx
+                                              input: function($event) {
+                                                if ($event.target.composing) {
+                                                  return
+                                                }
+                                                _vm.$set(
+                                                  input,
+                                                  "contenido",
+                                                  $event.target.value
                                                 )
                                               }
                                             }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-trash"
-                                            })
-                                          ]
-                                        )
-                                      ])
-                                    }),
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            {
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.deleteInput(
+                                                    index,
+                                                    idx
+                                                  )
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-trash"
+                                              })
+                                            ]
+                                          )
+                                        ])
+                                      }
+                                    ),
                                     0
                                   ),
                                   _vm._v(" "),
