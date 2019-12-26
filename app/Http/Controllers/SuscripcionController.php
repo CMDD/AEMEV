@@ -45,7 +45,7 @@ class SuscripcionController extends Controller
 
     public function getOracionales($nombre){
         
-        return Oracional::where('nombre',$nombre)->orderBy('id', 'DESC')->get();
+        return Oracional::where('nombre',$nombre)->where('estado','Activo')->orderBy('id', 'DESC')->get();
     }
 
     // Administración
