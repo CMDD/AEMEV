@@ -46,7 +46,7 @@
             <a v-else href="#" class="btn btn-default">Actualizando...</a>
             <a
               class="btn btn-default"
-              :href="'/#/' + oracional.nombre + '/' + oracional.id"
+              :href="'/inicio#/' + oracional.nombre + '/' + oracional.id"
             >Agregar dia</a>
           </form>
         </div>

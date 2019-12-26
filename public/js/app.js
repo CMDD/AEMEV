@@ -63532,7 +63532,10 @@ var render = function() {
                       staticClass: "btn btn-default",
                       attrs: {
                         href:
-                          "/#/" + _vm.oracional.nombre + "/" + _vm.oracional.id
+                          "/inicio#/" +
+                          _vm.oracional.nombre +
+                          "/" +
+                          _vm.oracional.id
                       }
                     },
                     [_vm._v("Agregar dia")]
