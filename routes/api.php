@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // Rutas Oracionales
 Route::get('salmos','OracionalController@salmos');
+Route::post('crear-oracional','OracionalController@store');
 Route::get('lista-oracionales','OracionalController@lista');
 Route::get('get-oracional/{id}','OracionalController@detail');
 

@@ -4078,7 +4078,7 @@ __webpack_require__.r(__webpack_exports__);
       data.append("editorial_titulo", this.form.editorial_titulo);
       data.append("editorial_contenido", this.form.editorial_contenido);
       data.append("editorial_autor", this.form.editorial_autor);
-      axios.post("/api/crear-oracional", data, {
+      axios.post("api/crear-oracional", data, {
         headers: {
           "Content-Type": "multipart/form-data"
         }

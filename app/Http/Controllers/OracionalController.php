@@ -152,11 +152,7 @@ class OracionalController extends Controller
 
     }
 
-    public function salmos(){
-        $salmos  = Salmo::find(25);
-        $salmos->versiculos;
-        return $salmos;
-    }
+   
 
    
 }
