@@ -30,7 +30,7 @@ class SoporteController extends Controller
       })
       ->addColumn('btn', function ($soporte) {
       return '
-      <a class="btn btn-primary btn-sm"   href="' . url('#/'.$soporte->id) . '">
+      <a class="btn btn-primary btn-sm"   href="' . url('#/edit-soporte/'.$soporte->id) . '">
         <i class="fa fa-eye"></i>
       </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$soporte->name.'/'.$soporte->id) . '">
       <i class="fa fa-plus"></i>
@@ -38,5 +38,18 @@ class SoporteController extends Controller
       })
       ->rawColumns(['btn'])
       ->make(true);
+    }
+
+    public function show($id){
+      $soporte = Soporte::find($id);
+      $soporte->users;
+      return $soporte;
+    }
+
+    public function update(Request $request){
+      $soporte = Soporte::find($request->id);
+      $soporte->estado = $request->estado;
+      $soporte->save();
+      return response()->json(['status'=>200]);
     }
 }

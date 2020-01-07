@@ -43,6 +43,10 @@ const routes = [
         component: require("./soporte/Index.vue").default
     },
     {
+        path: "/edit-soporte/:id",
+        component: require("./soporte/Editar.vue").default
+    },
+    {
         path: "/suscripciones",
         component: require("./suscripciones/Index.vue").default
     },
