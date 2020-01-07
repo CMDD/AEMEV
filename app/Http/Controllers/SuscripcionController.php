@@ -50,7 +50,7 @@ class SuscripcionController extends Controller
 
     // Administración
     public function suscripciones(){
-        $sus = Suscripcion::all();
+        $sus = Suscripcion::orderBy('id','DESC');
         return Datatables::of($sus)
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
       ->addColumn('usuario', function($sus){
