@@ -4702,7 +4702,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
-  created: function created() {// this.renderDatatable("Abierto");
+  created: function created() {
+    this.renderDatatable("Abierto");
   },
   data: function data() {
     return {

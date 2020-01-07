@@ -54,7 +54,7 @@ import moment from "moment";
 export default {
   name: "app",
   created() {
-    // this.renderDatatable("Abierto");
+    this.renderDatatable("Abierto");
   },
   data() {
     return {
