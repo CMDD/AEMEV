@@ -7,11 +7,11 @@
       </h1>
       <ol class="breadcrumb">
         <li>
-          <a href="#">
-            <i class="fa fa-dashboard"></i> Home
+          <a href="#/">
+            <i class="fa fa-dashboard"></i> Dashboard
           </a>
         </li>
-        <li class="active">Dashboard</li>
+        <li class="active">Aqui</li>
       </ol>
     </section>
     <section class="content">
@@ -21,7 +21,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>0</h3>
+              <h3>{{datos.suscripciones}}</h3>
 
               <p>Suscripciones</p>
             </div>
@@ -40,7 +40,7 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3>
-                4
+                {{datos.oracionales}}
                 <!-- <sup style="font-size: 20px">%</sup> -->
               </h3>
 
@@ -60,7 +60,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>7</h3>
+              <h3>{{datos.usuarios}}</h3>
 
               <p>Usuarios registrados</p>
             </div>
@@ -74,8 +74,7 @@
           </div>
         </div>
         <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
+        <!-- <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
               <h3>8</h3>
@@ -90,7 +89,7 @@
               <i class="fa fa-arrow-circle-right"></i>
             </a>
           </div>
-        </div>
+        </div>-->
         <!-- ./col -->
       </div>
       <!-- /.row -->
@@ -101,8 +100,20 @@
 export default {
   data() {
     return {
-      title: "HOLA"
+      title: "HOLA",
+      datos: {}
     };
+  },
+  created() {
+    this.getDatos();
+  },
+  methods: {
+    getDatos() {
+      axios.get("dashboard/index").then(res => {
+        this.datos = res.data;
+        console.log(res.data);
+      });
+    }
   }
 };
 </script>
