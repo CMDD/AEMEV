@@ -4772,7 +4772,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -78302,10 +78301,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n            Mas información\n            "),
-      _c("i", { staticClass: "fa fa-arrow-circle-right" })
-    ])
+    return _c(
+      "a",
+      { staticClass: "small-box-footer", attrs: { href: "#/suscripciones" } },
+      [
+        _vm._v("\n            Mas información\n            "),
+        _c("i", { staticClass: "fa fa-arrow-circle-right" })
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -78319,10 +78322,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n            More info\n            "),
-      _c("i", { staticClass: "fa fa-arrow-circle-right" })
-    ])
+    return _c(
+      "a",
+      { staticClass: "small-box-footer", attrs: { href: "#/oracionales" } },
+      [
+        _vm._v("\n            More info\n            "),
+        _c("i", { staticClass: "fa fa-arrow-circle-right" })
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -78336,10 +78343,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-      _vm._v("\n            Mas información\n            "),
-      _c("i", { staticClass: "fa fa-arrow-circle-right" })
-    ])
+    return _c(
+      "a",
+      { staticClass: "small-box-footer", attrs: { href: "#/usuarios" } },
+      [
+        _vm._v("\n            Mas información\n            "),
+        _c("i", { staticClass: "fa fa-arrow-circle-right" })
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -81592,7 +81603,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("ol", { staticClass: "breadcrumb" }, [
           _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
+            _c("a", { attrs: { href: "#/" } }, [
               _c("i", { staticClass: "fa fa-dashboard" }),
               _vm._v(" Dashboard\n        ")
             ])
@@ -83130,15 +83141,15 @@ var staticRenderFns = [
     return _c("div", [
       _c("section", { staticClass: "content-header" }, [
         _c("h1", [
-          _vm._v("\n            Suscripciones\n            "),
+          _vm._v("\n      Suscripciones\n      "),
           _c("small", [_vm._v("El Man Está Vivo")])
         ]),
         _vm._v(" "),
         _c("ol", { staticClass: "breadcrumb" }, [
           _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
+            _c("a", { attrs: { href: "#/" } }, [
               _c("i", { staticClass: "fa fa-dashboard" }),
-              _vm._v(" Dashboard ")
+              _vm._v(" Dashboard\n        ")
             ])
           ]),
           _vm._v(" "),
@@ -83694,7 +83705,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("ol", { staticClass: "breadcrumb" }, [
           _c("li", [
-            _c("a", { attrs: { href: "#" } }, [
+            _c("a", { attrs: { href: "#/" } }, [
               _c("i", { staticClass: "fa fa-dashboard" }),
               _vm._v(" Dashboard\n        ")
             ])
