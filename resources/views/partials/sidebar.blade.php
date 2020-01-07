@@ -90,11 +90,11 @@
               </span>
           </a>
           <ul class="treeview-menu">
-            <li>
+            {{-- <li>
             
             <router-link
                 to="/store-user">Crear </router-link>
-            </li>
+            </li> --}}
             <li>
             
             <router-link
