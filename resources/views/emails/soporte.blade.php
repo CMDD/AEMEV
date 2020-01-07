@@ -8,7 +8,7 @@
     <style>
     .comentario{
         border-left: 2px solid #ccc;
-        margin-top: 5%;
+        margin-top: 20px;
         color: #888;
         padding-left: 20px;
         margin-left: 20px;
