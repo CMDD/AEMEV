@@ -4447,6 +4447,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var datatables__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! datatables */ "./node_modules/datatables/media/js/jquery.dataTables.js");
 /* harmony import */ var datatables__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(datatables__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
 //
 //
 //
@@ -4493,6 +4497,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
   created: function created() {
@@ -4502,6 +4507,13 @@ __webpack_require__.r(__webpack_exports__);
         processing: true,
         ajax: "/api/get-soporte",
         columns: [{
+          data: "estado"
+        }, {
+          render: function render(data, type, row) {
+            var fecha = moment__WEBPACK_IMPORTED_MODULE_1___default()(row["created_at"]).format("DD-MM-YY");
+            return fecha;
+          }
+        }, {
           data: "name"
         }, {
           data: "usuario"
@@ -82593,13 +82605,21 @@ var staticRenderFns = [
               [
                 _c("thead", [
                   _c("tr", [
+                    _c("th", [_vm._v("Estado")]),
+                    _vm._v(" "),
+                    _c("th", { staticStyle: { width: "10%" } }, [
+                      _vm._v("Fecha")
+                    ]),
+                    _vm._v(" "),
                     _c("th", [_vm._v("Nombre")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Email")]),
                     _vm._v(" "),
                     _c("th", [_vm._v("Comentario")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("Acción")])
+                    _c("th", { staticStyle: { width: "10%" } }, [
+                      _vm._v("Acción")
+                    ])
                   ])
                 ]),
                 _vm._v(" "),

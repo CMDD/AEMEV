@@ -28,10 +28,12 @@
           <table id="datatable-suscripciones" class="table table-bordered table-striped">
             <thead>
               <tr>
+                <th>Estado</th>
+                <th style="width:10%">Fecha</th>
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Comentario</th>
-                <th>Acción</th>
+                <th style="width:10%">Acción</th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -45,6 +47,7 @@
 
 <script>
 import datatable from "datatables";
+import moment from "moment";
 export default {
   name: "app",
   created() {
@@ -54,6 +57,13 @@ export default {
         processing: true,
         ajax: "/api/get-soporte",
         columns: [
+          { data: "estado" },
+          {
+            render: function(data, type, row) {
+              let fecha = moment(row["created_at"]).format("DD-MM-YY");
+              return fecha;
+            }
+          },
           { data: "name" },
           { data: "usuario" },
           { data: "comentario" },

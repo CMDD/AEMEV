@@ -12,13 +12,14 @@ class SoporteController extends Controller
         $soporte = new Soporte();
         $soporte->comentario = $request['comentario'];
         $soporte->user_id =(int) $request['id'];
+        $soporte->estado = 'Sin responder';
         $soporte->save();
         return response()->json(['status'=>200]);
 
     }
 
     public function index(){
-        $soporte = Soporte::all();
+        $soporte = Soporte::orderBy('id','DESC');
         return Datatables::of($soporte)
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
       ->addColumn('name', function($soporte){
