@@ -20,8 +20,8 @@ class SoporteController extends Controller
 
     }
 
-    public function index(){
-        $soporte = Soporte::orderBy('id','DESC');
+    public function index($tipo){
+        $soporte = Soporte::where('estado',$tipo)->orderBy('id','DESC');
         return Datatables::of($soporte)
       //  ->addColumn('btn','ixtus.partials.botones_suscripcion')
       ->addColumn('name', function($soporte){
@@ -34,9 +34,7 @@ class SoporteController extends Controller
       return '
       <a class="btn btn-primary btn-sm"   href="' . url('#/edit-soporte/'.$soporte->id) . '">
         <i class="fa fa-eye"></i>
-      </a> <a class="btn btn-primary btn-sm"  href="' . url('#/'.$soporte->name.'/'.$soporte->id) . '">
-      <i class="fa fa-plus"></i>
-    </a> ';
+      </a>';
       })
       ->rawColumns(['btn'])
       ->make(true);
@@ -57,6 +55,13 @@ class SoporteController extends Controller
 
 
     public function envioMail(Request $request){
+
+      $soporte = new Soporte();
+      $soporte->comentario = $request['mensaje'];
+      $soporte->user_id =(int) $request['user_id'];
+      $soporte->tipo = "Respuesta";
+      $soporte->save();
+      
       Mail::to($request->email)
             ->send(new SoporteMail($request));
       return response()->json(['status'=>200]);

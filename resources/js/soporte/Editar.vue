@@ -120,7 +120,8 @@ export default {
         mensaje: "",
         nombre: "",
         email: "",
-        comentario: ""
+        comentario: "",
+        user_id: ""
       },
       form: {
         users: {
@@ -165,6 +166,7 @@ export default {
           this.respuesta.nombre = res.data.users.name;
           this.respuesta.email = res.data.users.email;
           this.respuesta.comentario = res.data.comentario;
+          this.respuesta.user_id = res.data.users.id;
           console.log(res.data);
         })
         .catch();

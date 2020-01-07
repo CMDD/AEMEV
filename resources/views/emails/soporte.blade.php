@@ -12,26 +12,18 @@
         color: #888;
         padding-left: 20px;
         margin-left: 20px;
-
-        
     }
     </style>
 </head>
 <body>
     <h2>¡Hola {{$request->nombre}}!</h2>
     <p>{{$request->mensaje}}</p>
-
     <div>
-       
         <div class="comentario">
             <em> 
                 {{$request->comentario}}
-
             </em>
-           
         </div>
     </div>
-
-   
 </body>
 </html>

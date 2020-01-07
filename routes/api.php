@@ -101,7 +101,7 @@ Route::get('update-state-suscription/{id}','SuscripcionController@updateStateSus
 //Soporte 
 Route::post('soporte',"SoporteController@store");
 Route::post('update-soporte',"SoporteController@update");
-Route::get('get-soporte',"SoporteController@index");
+Route::get('get-soporte/{tipo}',"SoporteController@index");
 Route::get('soporte-show/{id}',"SoporteController@show");
 
 

@@ -4579,7 +4579,8 @@ __webpack_require__.r(__webpack_exports__);
         mensaje: "",
         nombre: "",
         email: "",
-        comentario: ""
+        comentario: "",
+        user_id: ""
       },
       form: {
         users: {
@@ -4625,6 +4626,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.respuesta.nombre = res.data.users.name;
         _this3.respuesta.email = res.data.users.email;
         _this3.respuesta.comentario = res.data.comentario;
+        _this3.respuesta.user_id = res.data.users.id;
         console.log(res.data);
       })["catch"]();
     }
@@ -4693,58 +4695,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "app",
-  created: function created() {
-    $(document).ready(function () {
-      $("#datatable-suscripciones").DataTable({
-        serverSide: true,
-        processing: true,
-        ajax: "/api/get-soporte",
-        columns: [{
-          data: "estado"
-        }, {
-          render: function render(data, type, row) {
-            var fecha = moment__WEBPACK_IMPORTED_MODULE_1___default()(row["created_at"]).format("DD-MM-YY");
-            return fecha;
-          }
-        }, {
-          data: "name"
-        }, {
-          data: "usuario"
-        }, {
-          data: "comentario"
-        }, {
-          data: "btn"
-        }],
-        language: {
-          sProcessing: "Procesando...",
-          sLengthMenu: "Mostrar _MENU_ registros",
-          sZeroRecords: "No se encontraron resultados",
-          sEmptyTable: "Ningún dato disponible en esta tabla",
-          sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-          sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
-          sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
-          sInfoPostFix: "",
-          sSearch: "Buscar:",
-          sUrl: "",
-          sInfoThousands: ",",
-          sLoadingRecords: "Cargando...",
-          oPaginate: {
-            sFirst: "Primero",
-            sLast: "Último",
-            sNext: "Siguiente",
-            sPrevious: "Anterior"
-          },
-          oAria: {
-            sSortAscending: ": Activar para ordenar la columna de manera ascendente",
-            sSortDescending: ": Activar para ordenar la columna de manera descendente"
-          }
-        }
-      });
-    });
+  created: function created() {// this.renderDatatable("Abierto");
   },
   data: function data() {
     return {
@@ -4755,6 +4713,62 @@ __webpack_require__.r(__webpack_exports__);
         filterable: true
       }]
     };
+  },
+  methods: {
+    getSoporte: function getSoporte(tipo) {
+      $("#datatable-suscripciones").dataTable().fnDestroy();
+      this.renderDatatable(tipo);
+    },
+    renderDatatable: function renderDatatable(tipo) {
+      var url = "/api/get-soporte/" + tipo;
+      $(document).ready(function () {
+        $("#datatable-suscripciones").DataTable({
+          serverSide: true,
+          processing: true,
+          ajax: url,
+          columns: [{
+            data: "estado"
+          }, {
+            render: function render(data, type, row) {
+              var fecha = moment__WEBPACK_IMPORTED_MODULE_1___default()(row["created_at"]).format("DD-MM-YY");
+              return fecha;
+            }
+          }, {
+            data: "name"
+          }, {
+            data: "usuario"
+          }, {
+            data: "comentario"
+          }, {
+            data: "btn"
+          }],
+          language: {
+            sProcessing: "Procesando...",
+            sLengthMenu: "Mostrar _MENU_ registros",
+            sZeroRecords: "No se encontraron resultados",
+            sEmptyTable: "Ningún dato disponible en esta tabla",
+            sInfo: "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            sInfoEmpty: "Mostrando registros del 0 al 0 de un total de 0 registros",
+            sInfoFiltered: "(filtrado de un total de _MAX_ registros)",
+            sInfoPostFix: "",
+            sSearch: "Buscar:",
+            sUrl: "",
+            sInfoThousands: ",",
+            sLoadingRecords: "Cargando...",
+            oPaginate: {
+              sFirst: "Primero",
+              sLast: "Último",
+              sNext: "Siguiente",
+              sPrevious: "Anterior"
+            },
+            oAria: {
+              sSortAscending: ": Activar para ordenar la columna de manera ascendente",
+              sSortDescending: ": Activar para ordenar la columna de manera descendente"
+            }
+          }
+        });
+      });
+    }
   }
 });
 
@@ -83247,72 +83261,113 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("section", { staticClass: "content container-fluid" }, [
+      _c("div", { staticClass: "box" }, [
+        _c("div", { staticClass: "box-header" }, [
+          _c("h3", { staticClass: "box-title" }, [_vm._v("Listado")]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-default",
+              on: {
+                click: function($event) {
+                  return _vm.getSoporte("Abierto")
+                }
+              }
+            },
+            [_vm._v("Abiertos")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-default",
+              on: {
+                click: function($event) {
+                  return _vm.getSoporte("Cerrado")
+                }
+              }
+            },
+            [_vm._v("Cerrados")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-default",
+              on: {
+                click: function($event) {
+                  return _vm.getSoporte("En proceso")
+                }
+              }
+            },
+            [_vm._v("En proceso")]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(1)
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", { staticClass: "content-header" }, [
-        _c("h1", [
-          _vm._v("\n      Soporte\n      "),
-          _c("small", [_vm._v("El Man Está Vivo")])
+    return _c("section", { staticClass: "content-header" }, [
+      _c("h1", [
+        _vm._v("\n      Soporte\n      "),
+        _c("small", [_vm._v("El Man Está Vivo")])
+      ]),
+      _vm._v(" "),
+      _c("ol", { staticClass: "breadcrumb" }, [
+        _c("li", [
+          _c("a", { attrs: { href: "#/" } }, [
+            _c("i", { staticClass: "fa fa-dashboard" }),
+            _vm._v(" Dashboard\n        ")
+          ])
         ]),
         _vm._v(" "),
-        _c("ol", { staticClass: "breadcrumb" }, [
-          _c("li", [
-            _c("a", { attrs: { href: "#/" } }, [
-              _c("i", { staticClass: "fa fa-dashboard" }),
-              _vm._v(" Dashboard\n        ")
+        _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-body" }, [
+      _c(
+        "table",
+        {
+          staticClass: "table table-bordered table-striped",
+          attrs: { id: "datatable-suscripciones" }
+        },
+        [
+          _c("thead", [
+            _c("tr", [
+              _c("th", [_vm._v("Estado")]),
+              _vm._v(" "),
+              _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Fecha")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Nombre")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Email")]),
+              _vm._v(" "),
+              _c("th", [_vm._v("Comentario")]),
+              _vm._v(" "),
+              _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Acción")])
             ])
           ]),
           _vm._v(" "),
-          _c("li", { staticClass: "active" }, [_vm._v("Aqui")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "content container-fluid" }, [
-        _c("div", { staticClass: "box" }, [
-          _c("div", { staticClass: "box-header" }, [
-            _c("h3", { staticClass: "box-title" }, [_vm._v("Listado")])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "box-body" }, [
-            _c(
-              "table",
-              {
-                staticClass: "table table-bordered table-striped",
-                attrs: { id: "datatable-suscripciones" }
-              },
-              [
-                _c("thead", [
-                  _c("tr", [
-                    _c("th", [_vm._v("Estado")]),
-                    _vm._v(" "),
-                    _c("th", { staticStyle: { width: "10%" } }, [
-                      _vm._v("Fecha")
-                    ]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Nombre")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Email")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Comentario")]),
-                    _vm._v(" "),
-                    _c("th", { staticStyle: { width: "10%" } }, [
-                      _vm._v("Acción")
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("tbody")
-              ]
-            )
-          ])
-        ])
-      ])
+          _c("tbody")
+        ]
+      )
     ])
   }
 ]
