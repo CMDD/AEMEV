@@ -12,7 +12,7 @@ class SoporteController extends Controller
         $soporte = new Soporte();
         $soporte->comentario = $request['comentario'];
         $soporte->user_id =(int) $request['id'];
-        $soporte->estado = 'Sin responder';
+        $soporte->estado = 'Abierto';
         $soporte->save();
         return response()->json(['status'=>200]);
 
