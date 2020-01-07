@@ -34,7 +34,7 @@
                                 <th>Fecha Inicial</th>
                                 <th>Usuario</th>
                                 <th>OrderId</th>
-                                <th>Acción</th>
+                                <!-- <th>Acción</th> -->
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -95,8 +95,8 @@ export default {
                         }
                     },
                     { data: "usuario" },
-                    { data: "orderId" },
-                    { data: "btn" }
+                    { data: "orderId" }
+                    // { data: "btn" }
                 ],
                 language: {
                     sProcessing: "Procesando...",

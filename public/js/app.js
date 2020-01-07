@@ -4656,9 +4656,8 @@ __webpack_require__.r(__webpack_exports__);
         }, {
           data: "usuario"
         }, {
-          data: "orderId"
-        }, {
-          data: "btn"
+          data: "orderId" // { data: "btn" }
+
         }],
         language: {
           sProcessing: "Procesando...",
@@ -82684,9 +82683,7 @@ var staticRenderFns = [
                     _vm._v(" "),
                     _c("th", [_vm._v("Usuario")]),
                     _vm._v(" "),
-                    _c("th", [_vm._v("OrderId")]),
-                    _vm._v(" "),
-                    _c("th", [_vm._v("Acción")])
+                    _c("th", [_vm._v("OrderId")])
                   ])
                 ]),
                 _vm._v(" "),
