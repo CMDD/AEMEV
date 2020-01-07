@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Soporte;
 use Yajra\Datatables\Datatables;
+use Mail;
+use App\Mail\SoporteMail;
 
 class SoporteController extends Controller
 {
@@ -50,6 +52,13 @@ class SoporteController extends Controller
       $soporte = Soporte::find($request->id);
       $soporte->estado = $request->estado;
       $soporte->save();
+      return response()->json(['status'=>200]);
+    }
+
+
+    public function envioMail(Request $request){
+      Mail::to('jhon54plex@hotmail.com')
+            ->send(new SoporteMail($request));
       return response()->json(['status'=>200]);
     }
 }

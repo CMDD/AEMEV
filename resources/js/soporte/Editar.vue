@@ -62,12 +62,33 @@
                 </div>
               </div>
             </div>
-
             <div class="col-md-6">
-              <div class="box box-info">
+              <div class="box box-primary">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Historial</h3>
+                  <h3 class="box-title">Responder</h3>
                 </div>
+                <form @submit.prevent="enviarMensaje()">
+                  <div class="box-body">
+                    <div class="form-group col-md-12">
+                      <label for="exampleInputPassword1">Asunto</label>
+                      <input type="text" class="form-control" v-model="respuesta.asunto" />
+                    </div>
+
+                    <div class="form-group col-md-12">
+                      <label for="exampleInputPassword1">Mensaje</label>
+                      <textarea class="form-control my-2" v-model="respuesta.mensaje" rows="10"></textarea>
+                    </div>
+                  </div>
+                  <div class="box-footer">
+                    <button v-if="!creando" type="submit" class="btn btn-default">
+                      <span>Enviar</span>
+                    </button>
+                    <a href="#" v-else class="btn btn-default">Enviando...</a>
+                    <!-- <button type="submit" class="btn btn-default text-right">
+                    <span>Responder</span>
+                    </button>-->
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -90,6 +111,11 @@ export default {
     return {
       creando: false,
       id: this.$route.params.id,
+      respuesta: {
+        asunto: "Soporte App ¡El Man Está Vivo!",
+        mensaje: "",
+        nombre: ""
+      },
       form: {
         users: {
           name: "",
@@ -102,6 +128,14 @@ export default {
     this.getSoporte();
   },
   methods: {
+    enviarMensaje() {
+      this.creando = true;
+      axios.post("/envio-email", this.respuesta).then(res => {
+        console.log(res.data);
+        Vue.swal("", "Correo enviado correctamente", "success");
+        this.creando = false;
+      });
+    },
     storeSoporte() {
       this.creando = true;
       axios.post("/api/update-soporte", this.form).then(res => {
@@ -116,6 +150,7 @@ export default {
         .get("/api/soporte-show/" + this.id)
         .then(res => {
           this.form = res.data;
+          this.respuesta.nombre = res.data.users.name;
           console.log(res.data);
         })
         .catch();

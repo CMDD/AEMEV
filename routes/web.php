@@ -56,3 +56,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('dashboard/index','DashboardController@index');
+
+// Soporte
+Route::post('envio-email',"SoporteController@envioMail");

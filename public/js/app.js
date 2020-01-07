@@ -4544,11 +4544,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       creando: false,
       id: this.$route.params.id,
+      respuesta: {
+        asunto: "Soporte App ¡El Man Está Vivo!",
+        mensaje: "",
+        nombre: ""
+      },
       form: {
         users: {
           name: "",
@@ -4561,22 +4587,33 @@ __webpack_require__.r(__webpack_exports__);
     this.getSoporte();
   },
   methods: {
-    storeSoporte: function storeSoporte() {
+    enviarMensaje: function enviarMensaje() {
       var _this = this;
+
+      this.creando = true;
+      axios.post("/envio-email", this.respuesta).then(function (res) {
+        console.log(res.data);
+        Vue.swal("", "Correo enviado correctamente", "success");
+        _this.creando = false;
+      });
+    },
+    storeSoporte: function storeSoporte() {
+      var _this2 = this;
 
       this.creando = true;
       axios.post("/api/update-soporte", this.form).then(function (res) {
         if (res.data.status == 200) {
           Vue.swal("", "Actualizado correctamente", "success");
-          _this.creando = false;
+          _this2.creando = false;
         }
       });
     },
     getSoporte: function getSoporte() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/soporte-show/" + this.id).then(function (res) {
-        _this2.form = res.data;
+        _this3.form = res.data;
+        _this3.respuesta.nombre = res.data.users.name;
         console.log(res.data);
       })["catch"]();
     }
@@ -82976,7 +83013,114 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1)
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("div", { staticClass: "box box-primary" }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.enviarMensaje()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "box-body" }, [
+                        _c("div", { staticClass: "form-group col-md-12" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputPassword1" } },
+                            [_vm._v("Asunto")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.respuesta.asunto,
+                                expression: "respuesta.asunto"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.respuesta.asunto },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.respuesta,
+                                  "asunto",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-group col-md-12" }, [
+                          _c(
+                            "label",
+                            { attrs: { for: "exampleInputPassword1" } },
+                            [_vm._v("Mensaje")]
+                          ),
+                          _vm._v(" "),
+                          _c("textarea", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.respuesta.mensaje,
+                                expression: "respuesta.mensaje"
+                              }
+                            ],
+                            staticClass: "form-control my-2",
+                            attrs: { rows: "10" },
+                            domProps: { value: _vm.respuesta.mensaje },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.respuesta,
+                                  "mensaje",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "box-footer" }, [
+                        !_vm.creando
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-default",
+                                attrs: { type: "submit" }
+                              },
+                              [_c("span", [_vm._v("Enviar")])]
+                            )
+                          : _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-default",
+                                attrs: { href: "#" }
+                              },
+                              [_vm._v("Enviando...")]
+                            )
+                      ])
+                    ]
+                  )
+                ])
+              ])
             ])
           ]
         )
@@ -83011,12 +83155,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "box box-info" }, [
-        _c("div", { staticClass: "box-header with-border" }, [
-          _c("h3", { staticClass: "box-title" }, [_vm._v("Historial")])
-        ])
-      ])
+    return _c("div", { staticClass: "box-header with-border" }, [
+      _c("h3", { staticClass: "box-title" }, [_vm._v("Responder")])
     ])
   }
 ]
