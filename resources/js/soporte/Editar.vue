@@ -119,7 +119,8 @@ export default {
         asunto: "Soporte App ¡El Man Está Vivo!",
         mensaje: "",
         nombre: "",
-        email: ""
+        email: "",
+        comentario: ""
       },
       form: {
         users: {
@@ -163,6 +164,7 @@ export default {
           this.form = res.data;
           this.respuesta.nombre = res.data.users.name;
           this.respuesta.email = res.data.users.email;
+          this.respuesta.comentario = res.data.comentario;
           console.log(res.data);
         })
         .catch();

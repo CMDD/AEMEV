@@ -4578,7 +4578,8 @@ __webpack_require__.r(__webpack_exports__);
         asunto: "Soporte App ¡El Man Está Vivo!",
         mensaje: "",
         nombre: "",
-        email: ""
+        email: "",
+        comentario: ""
       },
       form: {
         users: {
@@ -4623,6 +4624,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.form = res.data;
         _this3.respuesta.nombre = res.data.users.name;
         _this3.respuesta.email = res.data.users.email;
+        _this3.respuesta.comentario = res.data.comentario;
         console.log(res.data);
       })["catch"]();
     }
