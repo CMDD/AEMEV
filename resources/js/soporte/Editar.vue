@@ -78,6 +78,9 @@
                       <label for="exampleInputPassword1">Mensaje</label>
                       <textarea class="form-control my-2" v-model="respuesta.mensaje" rows="10"></textarea>
                     </div>
+                    <div class="form-group col-md-12">
+                      <p class="recordatorio">{{recordatorio}}</p>
+                    </div>
                   </div>
                   <div class="box-footer">
                     <button v-if="!creando" type="submit" class="btn btn-default">
@@ -109,6 +112,7 @@
 export default {
   data() {
     return {
+      recordatorio: "¡Recuerda actualizar el estado!",
       creando: false,
       id: this.$route.params.id,
       respuesta: {
@@ -166,3 +170,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.recordatorio {
+  color: #605ca8;
+  font-size: 21px;
+}
+</style>
