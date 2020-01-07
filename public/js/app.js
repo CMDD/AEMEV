@@ -4595,6 +4595,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(res.data);
         Vue.swal("", "Correo enviado correctamente", "success");
         _this.creando = false;
+      })["catch"](function (error) {
+        Vue.swal("", "Error al envíar correo", "error");
+        _this.creando = false;
       });
     },
     storeSoporte: function storeSoporte() {

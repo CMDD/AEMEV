@@ -130,11 +130,17 @@ export default {
   methods: {
     enviarMensaje() {
       this.creando = true;
-      axios.post("/envio-email", this.respuesta).then(res => {
-        console.log(res.data);
-        Vue.swal("", "Correo enviado correctamente", "success");
-        this.creando = false;
-      });
+      axios
+        .post("/envio-email", this.respuesta)
+        .then(res => {
+          console.log(res.data);
+          Vue.swal("", "Correo enviado correctamente", "success");
+          this.creando = false;
+        })
+        .catch(error => {
+          Vue.swal("", "Error al envíar correo", "error");
+          this.creando = false;
+        });
     },
     storeSoporte() {
       this.creando = true;
