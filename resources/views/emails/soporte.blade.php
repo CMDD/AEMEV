@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <h1>¡Hola {{$request->nombre}}!</h1>
+    <h2>¡Hola {{$request->nombre}}!</h2>
     <p>{{$request->mensaje}}</p>
 
     <div>
