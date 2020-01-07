@@ -57,7 +57,7 @@ class SoporteController extends Controller
 
 
     public function envioMail(Request $request){
-      Mail::to('jhon54plex@hotmail.com')
+      Mail::to($request->email)
             ->send(new SoporteMail($request));
       return response()->json(['status'=>200]);
     }

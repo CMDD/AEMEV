@@ -4573,7 +4573,8 @@ __webpack_require__.r(__webpack_exports__);
       respuesta: {
         asunto: "Soporte App ¡El Man Está Vivo!",
         mensaje: "",
-        nombre: ""
+        nombre: "",
+        email: ""
       },
       form: {
         users: {
@@ -4617,6 +4618,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("/api/soporte-show/" + this.id).then(function (res) {
         _this3.form = res.data;
         _this3.respuesta.nombre = res.data.users.name;
+        _this3.respuesta.email = res.data.users.email;
         console.log(res.data);
       })["catch"]();
     }
